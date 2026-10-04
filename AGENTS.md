@@ -63,7 +63,11 @@ The app is branded **Tabbyrinth** and only ever updates to releases published in
 - **Updater:** `apps/app/tauri-release.conf.json` points the Tauri updater at `https://github.com/avie293/tabby-app/releases/latest/download/latest.json` and verifies updates with the Tabbyrinth public key. Local `pnpm app:dev` / `tauri build` without that config have no updater.
 - **Signing key:** the private key lives outside the repo at `%USERPROFILE%\.tauri\tabbyrinth.key` and is stored as the `TAURI_SIGNING_PRIVATE_KEY` repository secret. Never commit it.
 - **Publishing:** push a tag `vX.Y.Z` (e.g. `git tag v1.0.0 && git push origin v1.0.0`). `.github/workflows/release.yml` sets that version, builds and signs the Windows installer, and publishes a GitHub release with `latest.json`. Installed apps pick it up on their next update check.
-- **Integrating Modrinth updates:** the `upstream` remote is `modrinth/code` (partial clone, `blob:none`). Run `git fetch upstream main`, then `git merge upstream/main` on a branch. Upstream changes to deleted parts (`apps/frontend`, `apps/docs`, Modrinth's CI workflows) show up as modify/delete conflicts and are resolved by keeping them deleted. Keep Tabbyrinth branding, the purple brand color, the removed ads and our synced options (`saves`, `essential_settings`) intact. Build and test before tagging a release.
+- **Integrating Modrinth updates:** `.upstream-base` holds the `modrinth/code` commit this fork currently matches. The `upstream` remote points at `modrinth/code` as a partial clone (`git remote add upstream https://github.com/modrinth/code.git`, then `git config remote.upstream.promisor true` and `git config remote.upstream.partialclonefilter blob:none` if missing). Upstream history is never pushed here. To integrate:
+  1. `git fetch --filter=blob:none upstream main` and work on a branch.
+  2. `git diff $(cat .upstream-base) upstream/main -- . ':!apps/frontend' ':!apps/docs' ':!.github/workflows' | git apply -3`
+  3. Resolve conflicts. Keep Tabbyrinth branding, the purple brand color, the removed ads, our updater config and our synced options (`saves`, `essential_settings`).
+  4. Write `git rev-parse upstream/main` into `.upstream-base`, build, test, commit, then tag a release.
 
 ## Project-Specific Instructions
 

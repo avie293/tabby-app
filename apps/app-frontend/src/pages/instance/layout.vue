@@ -51,6 +51,7 @@
 				@open-folder="() => instance && showInstanceInFolder(instance.id)"
 				@export="() => !instance?.quarantined && exportModal?.show()"
 				@create-shortcut="() => createShortcut()"
+				@install-essential="() => installEssentialInInstance()"
 				@report="reportSharedInstance"
 			/>
 		</div>
@@ -130,6 +131,7 @@ import { handleSevereError } from '@/composables/use-error.js'
 import { useInstanceConsole } from '@/composables/useInstanceConsole'
 import { trackEvent } from '@/helpers/analytics'
 import { toError } from '@/helpers/errors'
+import { installEssential } from '@/helpers/essential'
 import {
 	getSharedInstanceUnavailableReason,
 	install_existing_instance,
@@ -200,6 +202,23 @@ const messages = defineMessages({
 	shortcutCreationError: {
 		id: 'app.instance.shortcut.creation-error',
 		defaultMessage: 'Error creating shortcut',
+	},
+	essentialInstalling: {
+		id: 'app.instance.essential.installing',
+		defaultMessage: 'Installing Essential',
+	},
+	essentialAlreadyInstalled: {
+		id: 'app.instance.essential.already-installed',
+		defaultMessage: 'Essential is already installed in this instance',
+	},
+	essentialInstallError: {
+		id: 'app.instance.essential.install-error',
+		defaultMessage: "Essential couldn't be installed",
+	},
+	essentialInstallErrorText: {
+		id: 'app.instance.essential.install-error-text',
+		defaultMessage:
+			'Essential may not be available for this Minecraft version and mod loader yet. ({error})',
 	},
 })
 
@@ -767,6 +786,25 @@ const createShortcut = async () => {
 			type: 'error',
 			title: formatMessage(messages.shortcutCreationError),
 			text: `${error}`,
+		})
+	}
+}
+
+async function installEssentialInInstance() {
+	if (!instance.value || instance.value.quarantined) return
+	try {
+		const installed = await installEssential(instance.value.id)
+		addNotification({
+			type: installed ? 'success' : 'info',
+			title: formatMessage(
+				installed ? messages.essentialInstalling : messages.essentialAlreadyInstalled,
+			),
+		})
+	} catch (error: unknown) {
+		addNotification({
+			type: 'error',
+			title: formatMessage(messages.essentialInstallError),
+			text: formatMessage(messages.essentialInstallErrorText, { error: `${error}` }),
 		})
 	}
 }

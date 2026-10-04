@@ -180,6 +180,7 @@ import {
 	PlayIcon,
 	ReportIcon,
 	SettingsIcon,
+	SparklesIcon,
 	StopCircleIcon,
 	TimerIcon,
 	UnknownIcon,
@@ -203,6 +204,7 @@ import {
 } from '@modrinth/ui'
 import { computed } from 'vue'
 
+import { supportsEssential } from '@/helpers/essential'
 import type { GameInstance } from '@/helpers/types'
 
 import InstanceHeaderServerMetadata from './instance-page-header-server-metadata.vue'
@@ -215,6 +217,10 @@ const messages = defineMessages({
 	exportModpack: {
 		id: 'instance.action.export-modpack',
 		defaultMessage: 'Export modpack',
+	},
+	installEssential: {
+		id: 'instance.action.install-essential',
+		defaultMessage: 'Install Essential',
 	},
 	instanceSettings: {
 		id: 'instance.action.settings',
@@ -307,6 +313,7 @@ const emit = defineEmits<{
 	openFolder: []
 	export: []
 	createShortcut: []
+	installEssential: []
 	report: [event?: MouseEvent]
 }>()
 
@@ -383,6 +390,20 @@ const moreActions = computed<ButtonMenuOption[]>(() => {
 				action: () => emit('createShortcut'),
 			},
 		)
+	}
+
+	if (
+		!props.instance.quarantined &&
+		props.instance.install_stage === 'installed' &&
+		props.instance.shared_instance?.role !== 'member' &&
+		supportsEssential(props.instance.loader)
+	) {
+		actions.push({
+			id: 'install-essential',
+			label: formatMessage(messages.installEssential),
+			icon: SparklesIcon,
+			action: () => emit('installEssential'),
+		})
 	}
 
 	if (props.instance.shared_instance?.role === 'member') {

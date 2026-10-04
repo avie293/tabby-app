@@ -14,6 +14,11 @@ use super::command_history::{
     merge_command_history_from_instance, normalize_command_history,
     reconcile_command_history,
 };
+use super::essential_settings::{
+    detach_essential_settings, ensure_essential_settings,
+    essential_settings_path, reconcile_essential_settings,
+    seed_essential_settings,
+};
 use super::files::{
     begin_checkpoint, detach_link, instance_dir, instance_is_running,
     instance_option_enabled, option_can_apply_while_running, read_nbt_file,
@@ -65,6 +70,8 @@ pub struct GlobalSyncedOptions {
     pub data_packs: bool,
     #[serde(default)]
     pub saves: bool,
+    #[serde(default)]
+    pub essential_settings: bool,
 }
 
 impl GlobalSyncedOptions {
@@ -81,6 +88,7 @@ impl GlobalSyncedOptions {
             SyncedOption::ResourcePacks => self.resource_packs,
             SyncedOption::DataPacks => self.data_packs,
             SyncedOption::Saves => self.saves,
+            SyncedOption::EssentialSettings => self.essential_settings,
         }
     }
 
@@ -97,6 +105,9 @@ impl GlobalSyncedOptions {
             SyncedOption::ResourcePacks => self.resource_packs = enabled,
             SyncedOption::DataPacks => self.data_packs = enabled,
             SyncedOption::Saves => self.saves = enabled,
+            SyncedOption::EssentialSettings => {
+                self.essential_settings = enabled
+            }
         }
     }
 }
@@ -276,6 +287,7 @@ async fn version_capability(
             | SyncedOption::ResourcePacks
             | SyncedOption::DataPacks
             | SyncedOption::Saves
+            | SyncedOption::EssentialSettings
     ) {
         return CapabilityStatus::Supported;
     }
@@ -293,7 +305,8 @@ async fn version_capability(
         SyncedOption::GameOptions
         | SyncedOption::ResourcePacks
         | SyncedOption::DataPacks
-        | SyncedOption::Saves => unreachable!(),
+        | SyncedOption::Saves
+        | SyncedOption::EssentialSettings => unreachable!(),
         // Mojang's manifest does not include Beta 1.8 Pre-release as a
         // separate entry, so b1.8 is the first resolvable version at that
         // boundary.
@@ -327,7 +340,7 @@ async fn version_capability(
 
     CapabilityStatus::Unsupported(
 		match option {
-			SyncedOption::GameOptions | SyncedOption::ResourcePacks | SyncedOption::DataPacks | SyncedOption::Saves => unreachable!(),
+			SyncedOption::GameOptions | SyncedOption::ResourcePacks | SyncedOption::DataPacks | SyncedOption::Saves | SyncedOption::EssentialSettings => unreachable!(),
 			SyncedOption::MultiplayerServers => {
 				"Multiplayer server syncing requires Minecraft Beta 1.8 Pre-release or newer."
 			}
@@ -643,9 +656,9 @@ async fn defer_option(
     state: &State,
 ) -> crate::Result<()> {
     let variants: &[&str] = match option {
-        SyncedOption::CommandHistory | SyncedOption::MultiplayerServers => {
-            &["default"]
-        }
+        SyncedOption::CommandHistory
+        | SyncedOption::MultiplayerServers
+        | SyncedOption::EssentialSettings => &["default"],
         SyncedOption::CreativeHotbars => &["legacy", "components"],
         SyncedOption::ResourcePacks | SyncedOption::DataPacks => {
             return synced_packs::detach(metadata, option, state).await;
@@ -829,7 +842,8 @@ async fn instance_option_join_action(
         SyncedOption::Screenshots
         | SyncedOption::ResourcePacks
         | SyncedOption::DataPacks
-        | SyncedOption::Saves => SyncedOptionJoinAction::Attach,
+        | SyncedOption::Saves
+        | SyncedOption::EssentialSettings => SyncedOptionJoinAction::Attach,
     })
 }
 
@@ -1048,6 +1062,7 @@ pub(crate) async fn prepare_instance_update(
         SyncedOption::CommandHistory,
         SyncedOption::CreativeHotbars,
         SyncedOption::MultiplayerServers,
+        SyncedOption::EssentialSettings,
     ] {
         if option == SyncedOption::GameOptions {
             if let Err(error) =
@@ -1142,12 +1157,16 @@ async fn reconcile_option(
         }
         SyncedOption::Screenshots => Ok(()),
         SyncedOption::Saves => ensure_saves(metadata, state).await,
+        SyncedOption::EssentialSettings => {
+            reconcile_essential_settings(metadata, state).await
+        }
     }
 }
 
-/// Makes sure a participating instance launches with the shared worlds folder,
-/// e.g. after the app directory moved and the link has not been restored yet.
-pub(crate) async fn ensure_saves_before_launch(
+/// Makes sure a participating instance launches with the shared worlds folder
+/// and Essential settings, e.g. after the app directory moved or Essential was
+/// just installed and created its own default config.
+pub(crate) async fn ensure_synced_links_before_launch(
     instance_id: &str,
 ) -> crate::Result<()> {
     let state = State::get().await?;
@@ -1157,11 +1176,18 @@ pub(crate) async fn ensure_saves_before_launch(
         .ok_or_else(|| ErrorKind::InputError("Unknown instance".to_string()))?;
     if sync_files_are_protected(&metadata)
         || instance_is_running(&metadata, &state).await?
-        || !option_participates(&metadata, SyncedOption::Saves, &state).await?
     {
         return Ok(());
     }
-    ensure_saves(&metadata, &state).await
+    if option_participates(&metadata, SyncedOption::Saves, &state).await? {
+        ensure_saves(&metadata, &state).await?;
+    }
+    if option_participates(&metadata, SyncedOption::EssentialSettings, &state)
+        .await?
+    {
+        reconcile_essential_settings(&metadata, &state).await?;
+    }
+    Ok(())
 }
 
 pub async fn reconcile_changed_file(
@@ -1271,7 +1297,8 @@ async fn backup_instance_option_file(
         SyncedOption::Screenshots
         | SyncedOption::ResourcePacks
         | SyncedOption::DataPacks
-        | SyncedOption::Saves => return Ok(()),
+        | SyncedOption::Saves
+        | SyncedOption::EssentialSettings => return Ok(()),
     };
     if !path.exists() {
         return Ok(());
@@ -1369,6 +1396,9 @@ pub(super) async fn seed_from_instance(
         }
         SyncedOption::Screenshots => {}
         SyncedOption::Saves => ensure_saves(metadata, state).await?,
+        SyncedOption::EssentialSettings => {
+            seed_essential_settings(metadata, state).await?
+        }
     }
     Ok(())
 }
@@ -1395,6 +1425,9 @@ async fn ensure_option(
         }
         SyncedOption::Screenshots => Ok(()),
         SyncedOption::Saves => ensure_saves(metadata, state).await,
+        SyncedOption::EssentialSettings => {
+            ensure_essential_settings(metadata, true, state).await
+        }
     }
 }
 
@@ -1433,6 +1466,9 @@ async fn detach_option(
         }
         SyncedOption::Screenshots => Ok(()),
         SyncedOption::Saves => detach_saves(metadata, state).await,
+        SyncedOption::EssentialSettings => {
+            detach_essential_settings(metadata, state).await
+        }
     }
 }
 
@@ -1445,6 +1481,9 @@ async fn canonical_exists(
             super::game_options::canonical_exists(state).await?
         }
         SyncedOption::CommandHistory => command_history_path(state).exists(),
+        SyncedOption::EssentialSettings => {
+            essential_settings_path(state).exists()
+        }
         SyncedOption::CreativeHotbars => hotbar_state_exists(state).await?,
         SyncedOption::MultiplayerServers => {
             synced_servers::canonical_exists(state).await?
@@ -1503,6 +1542,7 @@ fn option_from_str(value: &str) -> Option<SyncedOption> {
         "resource_packs" => Some(SyncedOption::ResourcePacks),
         "data_packs" => Some(SyncedOption::DataPacks),
         "saves" => Some(SyncedOption::Saves),
+        "essential_settings" => Some(SyncedOption::EssentialSettings),
         _ => None,
     }
 }

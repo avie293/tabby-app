@@ -1,7 +1,9 @@
-import type {
-	AbstractWebNotificationManager,
-	CreationFlowContextValue,
-	CreationFlowModal,
+import {
+	type AbstractWebNotificationManager,
+	type CreationFlowContextValue,
+	type CreationFlowModal,
+	defineMessages,
+	useVIntl,
 } from '@modrinth/ui'
 import { provide, ref, useTemplateRef } from 'vue'
 import type { ComponentExposed } from 'vue-component-type-helpers'
@@ -12,6 +14,7 @@ import type ModpackAlreadyInstalledModal from '@/components/ui/modal/ModpackAlre
 import { useAppSettings } from '@/composables/use-app-settings.ts'
 import { trackEvent } from '@/helpers/analytics'
 import { get_project, get_search_results } from '@/helpers/cache.js'
+import { installEssential, supportsEssential, useEssentialAutoInstall } from '@/helpers/essential'
 import { import_instance } from '@/helpers/import.js'
 import {
 	type CreatePackLocation,
@@ -19,18 +22,52 @@ import {
 	install_create_modpack_instance,
 	install_get_modpack_preview,
 	installJobInstanceId,
+	wait_for_install_job,
 } from '@/helpers/install'
 import { list } from '@/helpers/instance'
 import { get_loader_versions as getLoaderManifest } from '@/helpers/metadata.js'
 import type { InstanceIconConfig, InstanceLoader } from '@/helpers/types'
+import type { AppEvents } from '@/providers/app-events'
+
+const messages = defineMessages({
+	essentialAutoInstallError: {
+		id: 'app.creation.essential.auto-install-error',
+		defaultMessage: "Essential couldn't be added automatically",
+	},
+	essentialAutoInstallErrorText: {
+		id: 'app.creation.essential.auto-install-error-text',
+		defaultMessage:
+			'Essential may not be available for this Minecraft version and mod loader yet. ({error})',
+	},
+})
 
 export function setupCreationModal(
 	notificationManager: AbstractWebNotificationManager,
+	appEvents: AppEvents,
 	getGeneratedIconConfig?: (iconPath: string) => InstanceIconConfig | null,
 ) {
-	const { handleError } = notificationManager
+	const { handleError, addNotification } = notificationManager
 	const router = useRouter()
 	const appSettings = useAppSettings()
+	const { formatMessage } = useVIntl()
+	const autoInstallEssential = useEssentialAutoInstall()
+
+	async function addEssentialAfterInstall(
+		job: Awaited<ReturnType<typeof install_create_instance>>,
+	) {
+		const instanceId = installJobInstanceId(job)
+		if (!instanceId) return
+		try {
+			await wait_for_install_job(appEvents, job.job_id)
+			await installEssential(instanceId)
+		} catch (error) {
+			addNotification({
+				type: 'warning',
+				title: formatMessage(messages.essentialAutoInstallError),
+				text: formatMessage(messages.essentialAutoInstallErrorText, { error: `${error}` }),
+			})
+		}
+	}
 
 	const installationModal =
 		useTemplateRef<ComponentExposed<typeof CreationFlowModal>>('installationModal')
@@ -177,6 +214,9 @@ export function setupCreationModal(
 				iconPath,
 				iconConfig: iconPath ? getGeneratedIconConfig?.(iconPath) : null,
 			})
+			if (autoInstallEssential.value && supportsEssential(loader)) {
+				void addEssentialAfterInstall(job)
+			}
 			await navigateToCreatedInstance(job)
 
 			trackEvent('InstanceCreate', {

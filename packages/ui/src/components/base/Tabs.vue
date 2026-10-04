@@ -14,7 +14,7 @@
 				tab.value === value
 					? color === 'gray'
 						? 'border-surface-5 bg-surface-4 text-contrast'
-						: 'border-green bg-highlight-green text-green'
+						: 'border-brand bg-highlight text-brand'
 					: 'border-transparent bg-transparent text-primary hover:bg-surface-4'
 			"
 			role="tab"
@@ -32,7 +32,7 @@
 					tab.value === value
 						? color === 'gray'
 							? 'text-contrast'
-							: 'text-green'
+							: 'text-brand'
 						: 'text-secondary'
 				"
 			/>

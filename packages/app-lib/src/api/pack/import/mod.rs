@@ -25,6 +25,7 @@ pub mod atlauncher;
 pub mod curseforge;
 pub mod gdlauncher;
 pub mod mmc;
+pub mod modrinth_app;
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq)]
 #[cfg_attr(
@@ -37,6 +38,7 @@ pub enum ImportLauncherType {
     ATLauncher,
     GDLauncher,
     Curseforge,
+    ModrinthApp,
     #[serde(other)]
     Unknown,
 }
@@ -49,6 +51,7 @@ impl fmt::Display for ImportLauncherType {
             ImportLauncherType::ATLauncher => write!(f, "ATLauncher"),
             ImportLauncherType::GDLauncher => write!(f, "GDLauncher"),
             ImportLauncherType::Curseforge => write!(f, "Curseforge"),
+            ImportLauncherType::ModrinthApp => write!(f, "ModrinthApp"),
             ImportLauncherType::Unknown => write!(f, "Unknown"),
         }
     }
@@ -75,6 +78,7 @@ pub async fn get_importable_instances(
         )
         .await
         .unwrap_or_else(|| "instances".to_string()),
+        ImportLauncherType::ModrinthApp => return Ok(Vec::new()),
         ImportLauncherType::Unknown => {
             let types = [
                 ImportLauncherType::MultiMC,
@@ -190,6 +194,16 @@ async fn import_instance_inner(
             )
             .await
         }
+        ImportLauncherType::ModrinthApp => {
+            modrinth_app::import_modrinth_app(
+                base_path,
+                instance_folder,
+                instance_id,
+                reporter.clone(),
+                details.clone(),
+            )
+            .await
+        }
         ImportLauncherType::Unknown => {
             let types = [
                 ImportLauncherType::MultiMC,
@@ -268,6 +282,9 @@ pub fn get_default_launcher_path(
             }
             Some(dirs::document_dir()?.join("curseforge").join("minecraft"))
         }
+        ImportLauncherType::ModrinthApp => {
+            modrinth_app::modrinth_app_settings_dir()
+        }
         ImportLauncherType::Unknown => None,
     };
     let path = path?;
@@ -342,6 +359,9 @@ pub async fn is_valid_importable_instance(
         ImportLauncherType::Curseforge => {
             curseforge::is_valid_curseforge(instance_path).await
         }
+        ImportLauncherType::ModrinthApp => {
+            modrinth_app::is_staged_import(&instance_path).await
+        }
         ImportLauncherType::Unknown => false,
     }
 }
@@ -372,10 +392,45 @@ pub(crate) async fn copy_dotminecraft_with_reporter(
     reporter: InstallProgressReporter,
     details: InstallPhaseDetails,
 ) -> crate::Result<()> {
+    copy_dotminecraft_filtered_with_reporter(
+        instance_id,
+        dotminecraft,
+        io_semaphore,
+        reporter,
+        details,
+        |_| true,
+    )
+    .await
+}
+
+/// Copies an instance folder, skipping every file whose path relative to
+/// `dotminecraft` (with `/` separators) is rejected by `include`.
+pub(crate) async fn copy_dotminecraft_filtered_with_reporter(
+    instance_id: &str,
+    dotminecraft: PathBuf,
+    io_semaphore: &IoSemaphore,
+    reporter: InstallProgressReporter,
+    details: InstallPhaseDetails,
+    include: impl Fn(&str) -> bool + Send + Sync,
+) -> crate::Result<()> {
     let state = crate::State::get().await?;
     let _lease = state.content_store.lease().await;
     let dotminecraft = tokio::fs::canonicalize(&dotminecraft).await?;
-    let subfiles = get_all_subfiles(&dotminecraft, false).await?;
+    let subfiles = get_all_subfiles(&dotminecraft, false)
+        .await?
+        .into_iter()
+        .filter(|source| {
+            source.strip_prefix(&dotminecraft).is_ok_and(|relative| {
+                include(
+                    &relative
+                        .components()
+                        .map(|part| part.as_os_str().to_string_lossy())
+                        .collect::<Vec<_>>()
+                        .join("/"),
+                )
+            })
+        })
+        .collect::<Vec<_>>();
     let mut content_paths = std::collections::HashSet::new();
     let mut duplicate_content_paths = std::collections::HashSet::new();
     for source in &subfiles {

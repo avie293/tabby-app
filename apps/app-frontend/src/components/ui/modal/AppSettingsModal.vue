@@ -2,6 +2,7 @@
 import {
 	CoffeeIcon,
 	HeartHandshakeIcon,
+	ImportIcon,
 	LanguagesIcon,
 	LightBulbIcon,
 	MicrochipIcon,
@@ -39,6 +40,7 @@ import FeaturesSettings from '@/components/ui/settings/display/FeaturesSettings.
 import LanguageSettings from '@/components/ui/settings/display/LanguageSettings.vue'
 import InstancesSyncedSettings from '@/components/ui/settings/instances/instances-synced-settings/index.vue'
 import JavaSettings from '@/components/ui/settings/instances/JavaSettings.vue'
+import ModrinthAppImportSettings from '@/components/ui/settings/instances/ModrinthAppImportSettings.vue'
 import ResourceManagementSettings from '@/components/ui/settings/instances/ResourceManagementSettings.vue'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
 import { appSettingsKeys, appSettingsQueryOptions, set } from '@/helpers/settings.ts'
@@ -151,6 +153,15 @@ const tabs = [
 		category: tabCategories.instances,
 		icon: RefreshCwIcon,
 		content: InstancesSyncedSettings,
+	},
+	{
+		name: defineMessage({
+			id: 'app.settings.tabs.modrinth-app-import',
+			defaultMessage: 'Import from Modrinth App',
+		}),
+		category: tabCategories.instances,
+		icon: ImportIcon,
+		content: ModrinthAppImportSettings,
 	},
 	{
 		name: defineMessage({
@@ -312,7 +323,7 @@ const messages = defineMessages({
 	},
 	appVersion: {
 		id: 'app.settings.app-version',
-		defaultMessage: 'Tabbyrinth {version}',
+		defaultMessage: 'Tabbyapp {version}',
 	},
 	macos: {
 		id: 'app.settings.operating-system.macos',

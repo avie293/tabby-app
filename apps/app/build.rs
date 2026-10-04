@@ -57,6 +57,10 @@ fn main() {
                         "get_importable_instances",
                         "is_valid_importable_instance",
                         "get_default_launcher_path",
+                        "modrinth_app_list_instances",
+                        "modrinth_app_import_instances",
+                        "modrinth_app_transfer_playtime",
+                        "modrinth_app_get_history",
                     ])
                     .default_permission(
                         DefaultPermissionRule::AllowAllCommands,

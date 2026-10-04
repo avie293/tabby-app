@@ -77,10 +77,9 @@ function tooltip(groupIndex: number, toolIndex: number) {
 				v-tooltip="tooltip(groupIndex, toolIndex)"
 				:label="formatMessage(option.message)"
 				type="quiet"
-				:color="props.tool === option.id ? 'green' : undefined"
+				:color="props.tool === option.id ? 'brand' : undefined"
 				:class="{
-					'!bg-highlight-green shadow-[inset_0_0_0_1px_var(--color-green)]':
-						props.tool === option.id,
+					'!bg-highlight shadow-[inset_0_0_0_1px_var(--color-brand)]': props.tool === option.id,
 				}"
 				:aria-pressed="props.tool === option.id"
 				@click="emit('select', option.id)"

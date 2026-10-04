@@ -126,14 +126,11 @@
 				v-else
 				class="flex flex-col border-0 border-t border-solid border-surface-5 bg-surface-4"
 			>
-				<div
-					class="px-3 py-2"
-					:class="draftSelectedTimeframeMode === 'last' ? 'bg-highlight-green' : ''"
-				>
+				<div class="px-3 py-2" :class="draftSelectedTimeframeMode === 'last' ? 'bg-highlight' : ''">
 					<div class="flex items-center gap-2.5 py-0.5 transition-colors">
 						<span
 							class="shrink-0 text-sm font-semibold"
-							:class="draftSelectedTimeframeMode === 'last' ? 'text-green' : 'text-primary'"
+							:class="draftSelectedTimeframeMode === 'last' ? 'text-brand' : 'text-primary'"
 						>
 							{{ formatMessage(messages.lastTimeframePrefix) }}
 						</span>

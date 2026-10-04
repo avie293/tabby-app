@@ -25,6 +25,7 @@ export type GameInstance = {
 		creative_hotbars: boolean
 		screenshots: boolean
 		saves: boolean
+		essential_settings: boolean
 	}
 
 	link?: InstanceLink | null

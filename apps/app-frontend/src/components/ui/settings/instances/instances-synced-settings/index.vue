@@ -115,6 +115,24 @@ const messages = defineMessages({
 		defaultMessage:
 			'Use the same singleplayer worlds across your instances. Other instances join from their own settings, so only add instances with compatible versions and mods.',
 	},
+	essentialSettings: {
+		id: 'app.settings.synced-options.essential-settings',
+		defaultMessage: 'Sync Essential settings',
+	},
+	essentialSettingsDescription: {
+		id: 'app.settings.synced-options.essential-settings.description',
+		defaultMessage:
+			'Use the same Essential mod settings across your instances that have Essential installed.',
+	},
+	essentialSettingsSyncSourceTitle: {
+		id: 'app.settings.synced-options.choose-sync-source.essential-settings-title',
+		defaultMessage: 'Choose Essential settings source',
+	},
+	essentialSettingsSyncSourceDescription: {
+		id: 'app.settings.synced-options.choose-sync-source.essential-settings-description',
+		defaultMessage:
+			'Choose which instance to copy your Essential settings from. These settings are only used for the initial sync, and you can change them in-game from any instance afterward.',
+	},
 	savesSyncSourceTitle: {
 		id: 'app.settings.synced-options.choose-sync-source.saves-title',
 		defaultMessage: 'Choose worlds source',
@@ -246,6 +264,11 @@ const globalRows: Array<{
 		title: 'saves',
 		description: 'savesDescription',
 	},
+	{
+		option: 'essential_settings',
+		title: 'essentialSettings',
+		description: 'essentialSettingsDescription',
+	},
 ]
 
 const availableGlobalRows = globalRows.filter((row) => isSyncedOptionAvailable(row.option))
@@ -259,6 +282,7 @@ const defaultGlobalOptions: GlobalSyncedOptions = {
 	creative_hotbars: false,
 	screenshots: false,
 	saves: false,
+	essential_settings: false,
 }
 
 const globalOptionsQuery = useQuery(globalSyncedOptionsQueryOptions())
@@ -323,6 +347,8 @@ const baseInstanceTitle = computed(() => {
 			return formatMessage(messages.dataPacksSyncSourceTitle)
 		case 'saves':
 			return formatMessage(messages.savesSyncSourceTitle)
+		case 'essential_settings':
+			return formatMessage(messages.essentialSettingsSyncSourceTitle)
 		default:
 			return ''
 	}
@@ -344,6 +370,8 @@ const baseInstanceDescription = computed(() => {
 			return formatMessage(messages.dataPacksSyncSourceDescription)
 		case 'saves':
 			return formatMessage(messages.savesSyncSourceDescription)
+		case 'essential_settings':
+			return formatMessage(messages.essentialSettingsSyncSourceDescription)
 		default:
 			return ''
 	}

@@ -133,7 +133,7 @@ pub use self::synced_options::{
     set_command_history, set_global_option as set_global_synced_option,
 };
 pub(crate) use self::synced_options::{
-    ensure_saves_before_launch, monitor_persisted_processes,
+    ensure_synced_links_before_launch, monitor_persisted_processes,
     prepare_instance_update,
     reconcile_changed_file as reconcile_synced_option_file,
     reconcile_instance_after_pack_update, remove_generated_instance_files,

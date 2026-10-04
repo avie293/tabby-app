@@ -536,6 +536,7 @@ pub(crate) async fn get_instance_sync_preferences(
         resource_packs: enabled_features.contains("resource_packs"),
         data_packs: enabled_features.contains("data_packs"),
         saves: enabled_features.contains("saves"),
+        essential_settings: enabled_features.contains("essential_settings"),
     })
 }
 
@@ -573,6 +574,9 @@ async fn attach_sync_preferences(
                 "resource_packs" => record.synced_options.resource_packs = true,
                 "data_packs" => record.synced_options.data_packs = true,
                 "saves" => record.synced_options.saves = true,
+                "essential_settings" => {
+                    record.synced_options.essential_settings = true
+                }
                 _ => {}
             }
         }

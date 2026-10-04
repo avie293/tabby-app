@@ -1187,10 +1187,11 @@ pub async fn launch_minecraft(
     }
 
     if let Err(error) =
-        crate::api::instance::ensure_saves_before_launch(&instance.id).await
+        crate::api::instance::ensure_synced_links_before_launch(&instance.id)
+            .await
     {
         tracing::warn!(
-            "Failed to link synced worlds before launching {}: {error}",
+            "Failed to link synced files before launching {}: {error}",
             instance.id
         );
     }

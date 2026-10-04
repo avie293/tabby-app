@@ -39,6 +39,8 @@ pub struct InstanceSyncedOptions {
     pub data_packs: bool,
     #[serde(default)]
     pub saves: bool,
+    #[serde(default)]
+    pub essential_settings: bool,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Serialize, Deserialize)]
@@ -52,6 +54,7 @@ pub enum SyncedOption {
     ResourcePacks,
     DataPacks,
     Saves,
+    EssentialSettings,
 }
 
 impl SyncedOption {
@@ -69,10 +72,11 @@ impl SyncedOption {
             Self::ResourcePacks => "resource_packs",
             Self::DataPacks => "data_packs",
             Self::Saves => "saves",
+            Self::EssentialSettings => "essential_settings",
         }
     }
 
-    pub const ALL: [Self; 8] = [
+    pub const ALL: [Self; 9] = [
         Self::GameOptions,
         Self::CommandHistory,
         Self::MultiplayerServers,
@@ -81,6 +85,7 @@ impl SyncedOption {
         Self::ResourcePacks,
         Self::DataPacks,
         Self::Saves,
+        Self::EssentialSettings,
     ];
 }
 

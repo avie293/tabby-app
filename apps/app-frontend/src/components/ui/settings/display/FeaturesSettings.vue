@@ -17,6 +17,7 @@ import {
 	QUICK_INSTANCE_LIMIT_MAX,
 	useQuickInstanceLimit,
 } from '@/composables/use-quick-instance-limit.ts'
+import { useEssentialAutoInstall } from '@/helpers/essential'
 import { type GlobalSyncedOptions, set_global_synced_option } from '@/helpers/instance.ts'
 import {
 	type AppSettings,
@@ -37,6 +38,7 @@ const { updatePreferences } = injectUserPreferences()
 const settingsModal = inject(appSettingsModalContextKey, null)
 const quickInstances = useQuickInstanceLimit()
 const queryClient = useQueryClient()
+const autoInstallEssential = useEssentialAutoInstall()
 
 const messages = defineMessages({
 	syncAcrossDevicesTitle: {
@@ -109,6 +111,19 @@ const messages = defineMessages({
 	showJumpInDescription: {
 		id: 'app.features-settings.show-jump-in.description',
 		defaultMessage: 'Show recently played worlds and instances at the top of the Play page.',
+	},
+	essentialTitle: {
+		id: 'app.features-settings.essential.title',
+		defaultMessage: 'Essential',
+	},
+	essentialAutoInstallTitle: {
+		id: 'app.features-settings.essential-auto-install.title',
+		defaultMessage: 'Add Essential to new instances',
+	},
+	essentialAutoInstallDescription: {
+		id: 'app.features-settings.essential-auto-install.description',
+		defaultMessage:
+			'Automatically install the Essential mod when you create a Fabric, Forge or NeoForge instance. You can also add it to an existing instance from its More actions menu.',
 	},
 })
 
@@ -391,6 +406,25 @@ onBeforeUnmount(() => {
 				id="show-jump-in-section"
 				v-model="current.showJumpIn"
 				:aria-label="formatMessage(messages.showJumpInTitle)"
+			/>
+		</div>
+	</section>
+
+	<section class="mt-8 border-0 border-t border-solid border-surface-4 pt-6">
+		<h2 class="m-0 text-xl font-semibold text-contrast">
+			{{ formatMessage(messages.essentialTitle) }}
+		</h2>
+		<div class="mt-4 flex items-center justify-between gap-4">
+			<div>
+				<h3 class="m-0 text-lg font-semibold text-contrast">
+					{{ formatMessage(messages.essentialAutoInstallTitle) }}
+				</h3>
+				<p class="m-0 mt-1">{{ formatMessage(messages.essentialAutoInstallDescription) }}</p>
+			</div>
+			<Toggle
+				id="essential-auto-install"
+				v-model="autoInstallEssential"
+				:aria-label="formatMessage(messages.essentialAutoInstallTitle)"
 			/>
 		</div>
 	</section>

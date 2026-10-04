@@ -110,6 +110,9 @@ pub(in crate::api::instance) fn instance_option_enabled(
         SyncedOption::ResourcePacks => metadata.synced_options.resource_packs,
         SyncedOption::DataPacks => metadata.synced_options.data_packs,
         SyncedOption::Saves => metadata.synced_options.saves,
+        SyncedOption::EssentialSettings => {
+            metadata.synced_options.essential_settings
+        }
     }
 }
 

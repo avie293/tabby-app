@@ -1,4 +1,5 @@
 mod command_history;
+mod essential_settings;
 mod files;
 pub(super) mod game_options;
 mod hotbars;
@@ -27,7 +28,7 @@ pub use self::orchestration::{
     set_global_option, set_instance_option, synced_options_path,
 };
 pub(crate) use self::orchestration::{
-    ensure_saves_before_launch, monitor_persisted_processes,
+    ensure_synced_links_before_launch, monitor_persisted_processes,
     prepare_instance_update, reconcile_instance_after_pack_update,
     remove_generated_instance_files,
 };

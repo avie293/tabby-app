@@ -301,6 +301,7 @@ export type SyncedOption =
 	| 'creative_hotbars'
 	| 'screenshots'
 	| 'saves'
+	| 'essential_settings'
 
 export function isSyncedOptionAvailable(option: SyncedOption): boolean {
 	return option !== 'data_packs'

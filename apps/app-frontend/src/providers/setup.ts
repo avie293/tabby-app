@@ -29,7 +29,7 @@ export function setupProviders(
 	const onboardingChecklist = setupOnboardingChecklistProvider(appEvents)
 
 	return {
-		...setupCreationModal(notificationManager, getGeneratedIconConfig),
+		...setupCreationModal(notificationManager, appEvents, getGeneratedIconConfig),
 		onboardingChecklist,
 		tags,
 	}

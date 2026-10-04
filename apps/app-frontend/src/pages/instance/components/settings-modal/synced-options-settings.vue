@@ -174,6 +174,18 @@ const messages = defineMessages({
 		id: 'instance.settings.tabs.synced-options.saves.disabled-in-app',
 		defaultMessage: 'World syncing is turned off in app settings.',
 	},
+	essentialSettings: {
+		id: 'instance.settings.tabs.synced-options.essential-settings',
+		defaultMessage: 'Unsync Essential settings',
+	},
+	essentialSettingsDescription: {
+		id: 'instance.settings.tabs.synced-options.essential-settings.override-description',
+		defaultMessage: "Keep this instance's Essential settings separate from the synced settings.",
+	},
+	essentialSettingsDisabled: {
+		id: 'instance.settings.tabs.synced-options.essential-settings.disabled-in-app',
+		defaultMessage: 'Essential settings syncing is turned off in app settings.',
+	},
 	hotbarConflictTitle: {
 		id: 'instance.settings.tabs.synced-options.hotbars-conflict.title',
 		defaultMessage: 'Choose creative hotbars',
@@ -207,6 +219,7 @@ const globalDisabledMessages: Record<InstanceSyncedOption, keyof typeof messages
 	command_history: 'commandHistoryDisabled',
 	creative_hotbars: 'creativeHotbarsDisabled',
 	saves: 'savesDisabled',
+	essential_settings: 'essentialSettingsDisabled',
 }
 
 const rows: Array<{
@@ -248,6 +261,11 @@ const rows: Array<{
 		option: 'saves',
 		title: 'saves',
 		description: 'savesDescription',
+	},
+	{
+		option: 'essential_settings',
+		title: 'essentialSettings',
+		description: 'essentialSettingsDescription',
 	},
 ]
 

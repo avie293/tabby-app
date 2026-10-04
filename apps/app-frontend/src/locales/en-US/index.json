@@ -165,7 +165,7 @@
     "message": "Hide nametag"
   },
   "app.appearance-settings.minimize-launcher.description": {
-    "message": "Minimize Modrinth App when Minecraft starts."
+    "message": "Minimize Tabbyrinth when Minecraft starts."
   },
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Minimize app"
@@ -207,7 +207,7 @@
     "message": "Home and content"
   },
   "app.behavior-settings.refocus-on-game-close.description": {
-    "message": "Bring Modrinth App to the foreground when Minecraft exits."
+    "message": "Bring Tabbyrinth to the foreground when Minecraft exits."
   },
   "app.behavior-settings.refocus-on-game-close.title": {
     "message": "Refocus app when Minecraft closes"
@@ -301,6 +301,12 @@
   },
   "app.content.sync-resource-packs-disabled": {
     "message": "Turn on resource pack syncing in app settings first."
+  },
+  "app.creation.essential.auto-install-error": {
+    "message": "Essential couldn't be added automatically"
+  },
+  "app.creation.essential.auto-install-error-text": {
+    "message": "Essential may not be available for this Minecraft version and mod loader yet. ({error})"
   },
   "app.download-manager.active": {
     "message": "Active"
@@ -416,6 +422,15 @@
   "app.export-modal.version-number-placeholder": {
     "message": "1.0.0"
   },
+  "app.features-settings.essential-auto-install.description": {
+    "message": "Automatically install the Essential mod when you create a Fabric, Forge or NeoForge instance. You can also add it to an existing instance from its More actions menu."
+  },
+  "app.features-settings.essential-auto-install.title": {
+    "message": "Add Essential to new instances"
+  },
+  "app.features-settings.essential.title": {
+    "message": "Essential"
+  },
   "app.features-settings.instance-pages.title": {
     "message": "Instances"
   },
@@ -495,7 +510,7 @@
     "message": "View instance"
   },
   "app.hosting.update-required.description": {
-    "message": "You need to update to use Modrinth Hosting through the Modrinth App"
+    "message": "You need to update to use Modrinth Hosting through Tabbyrinth"
   },
   "app.hosting.update-required.download": {
     "message": "Download to update"
@@ -504,7 +519,7 @@
     "message": "Excited Modrinth Bot"
   },
   "app.hosting.update-required.title": {
-    "message": "Modrinth App update required"
+    "message": "Tabbyrinth update required"
   },
   "app.install.phase.downloading_content": {
     "message": "Downloading content"
@@ -685,6 +700,18 @@
   },
   "app.instance.content.managed-content.shared-header": {
     "message": "Shared content"
+  },
+  "app.instance.essential.already-installed": {
+    "message": "Essential is already installed in this instance"
+  },
+  "app.instance.essential.install-error": {
+    "message": "Essential couldn't be installed"
+  },
+  "app.instance.essential.install-error-text": {
+    "message": "Essential may not be available for this Minecraft version and mod loader yet. ({error})"
+  },
+  "app.instance.essential.installing": {
+    "message": "Installing Essential"
   },
   "app.instance.modpack-already-installed.body": {
     "message": "This modpack is already installed in the <bold>{instanceName}</bold> instance. Are you sure you want to duplicate it?"
@@ -1596,7 +1623,7 @@
     "message": "Export ZIP"
   },
   "app.screenshots.selection.global-export-filename": {
-    "message": "Modrinth screenshots.zip"
+    "message": "Tabbyrinth screenshots.zip"
   },
   "app.screenshots.selection.instance-export-filename": {
     "message": "{instance} screenshots.zip"
@@ -1626,7 +1653,7 @@
     "message": "Oldest"
   },
   "app.settings.app-version": {
-    "message": "Modrinth App {version}"
+    "message": "Tabbyrinth {version}"
   },
   "app.settings.default-instance-options.environment-variables.description": {
     "message": "Environment variables set when launching an instance."
@@ -1902,7 +1929,7 @@
     "message": "Some of your instances cannot use this setting"
   },
   "app.settings.game-options.compatibility.reason.launcher-controlled": {
-    "message": "This setting is managed by Modrinth’s launch settings."
+    "message": "This setting is managed by Tabbyrinth’s launch settings."
   },
   "app.settings.game-options.custom-value.placeholder": {
     "message": "Enter a value"
@@ -2739,7 +2766,7 @@
     "message": "Ads make Modrinth possible and fund creator payouts. Our partners may store or access cookies in the app to personalize ads and measure performance. You can opt out or manage your preferences below."
   },
   "app.settings.privacy.discord-rich-presence.description": {
-    "message": "Show Modrinth App as your current activity on Discord. This does not affect Rich Presence added to instances by mods. Requires an app restart."
+    "message": "Show your current game as your activity on Discord. This does not affect Rich Presence added to instances by mods. Requires an app restart."
   },
   "app.settings.privacy.discord-rich-presence.title": {
     "message": "Discord Rich Presence"
@@ -2784,7 +2811,7 @@
     "message": "Browse for an app directory"
   },
   "app.settings.resource-management.app-directory.description": {
-    "message": "Where Modrinth App stores instances and other files. Changes take effect after restarting the app."
+    "message": "Where Tabbyrinth stores instances and other files. Changes take effect after restarting the app."
   },
   "app.settings.resource-management.app-directory.select": {
     "message": "Select a new app directory"
@@ -2894,6 +2921,12 @@
   "app.settings.synced-options.choose-sync-source.data-packs-title": {
     "message": "Choose data packs source"
   },
+  "app.settings.synced-options.choose-sync-source.essential-settings-description": {
+    "message": "Choose which instance to copy your Essential settings from. These settings are only used for the initial sync, and you can change them in-game from any instance afterward."
+  },
+  "app.settings.synced-options.choose-sync-source.essential-settings-title": {
+    "message": "Choose Essential settings source"
+  },
   "app.settings.synced-options.choose-sync-source.game-settings-description": {
     "message": "Choose which instance to copy your game settings from. These settings are only used for the initial sync, and you can edit them from any instance afterward."
   },
@@ -2963,6 +2996,12 @@
   "app.settings.synced-options.edit.no-synced-data": {
     "message": "Choose a sync source before editing this setting."
   },
+  "app.settings.synced-options.essential-settings": {
+    "message": "Sync Essential settings"
+  },
+  "app.settings.synced-options.essential-settings.description": {
+    "message": "Use the same Essential mod settings across your instances that have Essential installed."
+  },
   "app.settings.synced-options.game-settings": {
     "message": "Sync game options"
   },
@@ -2976,7 +3015,7 @@
     "message": "These settings changed elsewhere"
   },
   "app.settings.synced-options.game-settings.custom-empty": {
-    "message": "Settings added by mods will appear here after Modrinth finds them in one of your instances."
+    "message": "Settings added by mods will appear here after Tabbyrinth finds them in one of your instances."
   },
   "app.settings.synced-options.game-settings.description": {
     "message": "Use the same game options across your instances."
@@ -3456,13 +3495,13 @@
     "message": "Synced resource packs"
   },
   "app.update-popup.body.download-complete": {
-    "message": "Modrinth App v{version} has finished downloading. Reload to update now, or automatically when you close Modrinth App."
+    "message": "Tabbyrinth v{version} has finished downloading. Reload to update now, or automatically when you close Tabbyrinth."
   },
   "app.update-popup.body.linux": {
-    "message": "Modrinth App v{version} is available. Use your package manager to update for the latest features and fixes!"
+    "message": "Tabbyrinth v{version} is available. Use your package manager to update for the latest features and fixes!"
   },
   "app.update-popup.body.metered": {
-    "message": "Modrinth App v{version} is available now! Since you're on a metered network, we didn't automatically download it."
+    "message": "Tabbyrinth v{version} is available now! Since you're on a metered network, we didn't automatically download it."
   },
   "app.update-popup.changelog": {
     "message": "Changelog"
@@ -3507,7 +3546,7 @@
     "message": "Press <shortcut>N</shortcut> to quick create an instance"
   },
   "app.welcome-screen.title": {
-    "message": "Welcome to Modrinth"
+    "message": "Welcome to Tabbyrinth"
   },
   "app.world.server-modal.placeholder-address": {
     "message": "example.modrinth.gg"
@@ -3673,6 +3712,9 @@
   },
   "instance.action.export-modpack": {
     "message": "Export modpack"
+  },
+  "instance.action.install-essential": {
+    "message": "Install Essential"
   },
   "instance.action.launch-instance": {
     "message": "Launch instance"
@@ -3945,7 +3987,7 @@
     "message": "TNT"
   },
   "instance.icon-editor.symbol.wrenth-rinth": {
-    "message": "Modrinth Wrench"
+    "message": "Wrench"
   },
   "instance.icon-editor.symbol.zombie": {
     "message": "Zombie"
@@ -4255,6 +4297,15 @@
   },
   "instance.settings.tabs.synced-options.creative-hotbars.override-description": {
     "message": "Keep this instance's saved creative hotbars separate from synced hotbars."
+  },
+  "instance.settings.tabs.synced-options.essential-settings": {
+    "message": "Unsync Essential settings"
+  },
+  "instance.settings.tabs.synced-options.essential-settings.disabled-in-app": {
+    "message": "Essential settings syncing is turned off in app settings."
+  },
+  "instance.settings.tabs.synced-options.essential-settings.override-description": {
+    "message": "Keep this instance's Essential settings separate from the synced settings."
   },
   "instance.settings.tabs.synced-options.game-settings": {
     "message": "Unsync game settings"

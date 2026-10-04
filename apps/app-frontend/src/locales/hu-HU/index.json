@@ -162,7 +162,7 @@
     "message": "Névcímke eltüntetése"
   },
   "app.appearance-settings.minimize-launcher.description": {
-    "message": "A Modrinth App bezáródik a Minecraft indításakor"
+    "message": "A Tabbyrinth bezáródik a Minecraft indításakor"
   },
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Alkalmazás bezárása"
@@ -441,7 +441,7 @@
     "message": "Példány megtekintése"
   },
   "app.hosting.update-required.description": {
-    "message": "Frissítened kell, hogy használhasd a Modrinth Hostingot a Modrinth Appon keresztül"
+    "message": "Frissítened kell, hogy használhasd a Modrinth Hostingot a Tabbyrinthon keresztül"
   },
   "app.hosting.update-required.download": {
     "message": "Letöltés a frissítéshez"
@@ -450,7 +450,7 @@
     "message": "Izgatott Modrinth bot"
   },
   "app.hosting.update-required.title": {
-    "message": "Frissítés szükséges a Modrinth Apphoz"
+    "message": "Frissítés szükséges a Tabbyrinthhoz"
   },
   "app.install.phase.downloading_content": {
     "message": "A tartalom letöltése..."
@@ -1569,7 +1569,7 @@
     "message": "Legrégibb"
   },
   "app.settings.app-version": {
-    "message": "Modrinth App {version}"
+    "message": "Tabbyrinth {version}"
   },
   "app.settings.default-instance-options.environment-variables.description": {
     "message": "A példány indításakor beállított környezeti változók."
@@ -2682,7 +2682,7 @@
     "message": "A hirdetések teszik lehetővé a Modrinth működését, és biztosítják a tartalomkészítők juttatásait. Partnereink sütiket tárolhatnak vagy érhetnek el az alkalmazásban a hirdetések személyre szabása és a teljesítmény mérése céljából. Alább leiratkozhatsz erről, illetve beállíthatod a preferenciáidat."
   },
   "app.settings.privacy.discord-rich-presence.description": {
-    "message": "A Modrinth App megjelenítése aktuális tevékenységként a Discordon. Ez nem érinti a modok által a példányokhoz hozzáadott Rich Presence-t. Az alkalmazás újraindítását igényli."
+    "message": "A Tabbyrinth megjelenítése aktuális tevékenységként a Discordon. Ez nem érinti a modok által a példányokhoz hozzáadott Rich Presence-t. Az alkalmazás újraindítását igényli."
   },
   "app.settings.privacy.discord-rich-presence.title": {
     "message": "Discord Rich Presence"
@@ -2727,7 +2727,7 @@
     "message": "Alkalmazáskönyvtár tallózása"
   },
   "app.settings.resource-management.app-directory.description": {
-    "message": "A Modrinth App ebben a mappában tárolja a példányokat és az egyéb fájlokat. A módosítások az alkalmazás újraindítása után lépnek érvénybe."
+    "message": "A Tabbyrinth ebben a mappában tárolja a példányokat és az egyéb fájlokat. A módosítások az alkalmazás újraindítása után lépnek érvénybe."
   },
   "app.settings.resource-management.app-directory.select": {
     "message": "Új alkalmazáskönyvtár kiválasztása"
@@ -3321,13 +3321,13 @@
     "message": "Szinkronizált erőforráscsomagok"
   },
   "app.update-popup.body.download-complete": {
-    "message": "A Modrinth App v{version} letöltése befejeződött. Válaszd a Frissítés lehetőséget a frissítéshez, vagy az alkalmazás bezárásakor automatikusan frissül."
+    "message": "A Tabbyrinth v{version} letöltése befejeződött. Válaszd a Frissítés lehetőséget a frissítéshez, vagy az alkalmazás bezárásakor automatikusan frissül."
   },
   "app.update-popup.body.linux": {
-    "message": "A Modrinth App v{version} elérhető. A legújabb funkciókért és javításokért frissíts a csomagkezelőddel!"
+    "message": "A Tabbyrinth v{version} elérhető. A legújabb funkciókért és javításokért frissíts a csomagkezelőddel!"
   },
   "app.update-popup.body.metered": {
-    "message": "A Modrinth App v{version} már elérhető! Mivel korlátozott adatforgalmú hálózaton vagy, nem töltöttük le automatikusan."
+    "message": "A Tabbyrinth v{version} már elérhető! Mivel korlátozott adatforgalmú hálózaton vagy, nem töltöttük le automatikusan."
   },
   "app.update-popup.changelog": {
     "message": "Változásnapló"

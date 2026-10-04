@@ -5280,7 +5280,7 @@
     "defaultMessage": "Новий сервер"
   },
   "servers.list-empty.no-servers-description": {
-    "defaultMessage": "Установлюйте моди, запрошуйте друзів і грайте разом із Modrinth App."
+    "defaultMessage": "Установлюйте моди, запрошуйте друзів і грайте разом із Tabbyrinth."
   },
   "servers.list-empty.one-click-mod-installs-description": {
     "defaultMessage": "Виберіть свої улюблені моди, а ми подбаємо про решту."
@@ -5289,7 +5289,7 @@
     "defaultMessage": "Установлення в одне натискання"
   },
   "servers.list-empty.play-with-friends-description": {
-    "defaultMessage": "Запросіть друзів грати на вашому сервері в один клік через Modrinth App."
+    "defaultMessage": "Запросіть друзів грати на вашому сервері в один клік через Tabbyrinth."
   },
   "servers.list-empty.play-with-friends-title": {
     "defaultMessage": "Грайте з друзями"
@@ -5886,7 +5886,7 @@
     "defaultMessage": "Результати пошуку"
   },
   "settings.language.coverage.app-tooltip": {
-    "defaultMessage": "Близько {percentage}% Modrinth App доступно цією мовою."
+    "defaultMessage": "Близько {percentage}% Tabbyrinth доступно цією мовою."
   },
   "settings.language.coverage.label": {
     "defaultMessage": "Підтримується {percentage}%"

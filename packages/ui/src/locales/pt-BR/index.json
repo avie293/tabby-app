@@ -5328,7 +5328,7 @@
     "defaultMessage": "Novo servidor"
   },
   "servers.list-empty.no-servers-description": {
-    "defaultMessage": "Instale mods, convide amigos e joguem juntos, tudo pelo Modrinth App."
+    "defaultMessage": "Instale mods, convide amigos e joguem juntos, tudo pelo Tabbyrinth."
   },
   "servers.list-empty.one-click-mod-installs-description": {
     "defaultMessage": "Escolha seus mods favoritos e nós cuidamos do resto."
@@ -5337,7 +5337,7 @@
     "defaultMessage": "Instalação de mods com um clique"
   },
   "servers.list-empty.play-with-friends-description": {
-    "defaultMessage": "Convide seus amigos para jogar no seu servidor com um clique pelo Modrinth App."
+    "defaultMessage": "Convide seus amigos para jogar no seu servidor com um clique pelo Tabbyrinth."
   },
   "servers.list-empty.play-with-friends-title": {
     "defaultMessage": "Jogue com amigos"
@@ -5934,7 +5934,7 @@
     "defaultMessage": "Resultados da busca"
   },
   "settings.language.coverage.app-tooltip": {
-    "defaultMessage": "Cerca de {percentage}% do Modrinth App está disponível neste idioma."
+    "defaultMessage": "Cerca de {percentage}% do Tabbyrinth está disponível neste idioma."
   },
   "settings.language.coverage.label": {
     "defaultMessage": "{percentage}% suportado"

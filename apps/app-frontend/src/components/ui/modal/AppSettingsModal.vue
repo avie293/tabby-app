@@ -5,11 +5,11 @@ import {
 	LanguagesIcon,
 	LightBulbIcon,
 	MicrochipIcon,
-	ModrinthIcon,
 	PaintbrushIcon,
 	RefreshCwIcon,
 	Settings2Icon,
 	ShieldIcon,
+	TagCategoryPawPrintIcon,
 	ToggleRightIcon,
 	UserIcon,
 } from '@modrinth/assets'
@@ -312,7 +312,7 @@ const messages = defineMessages({
 	},
 	appVersion: {
 		id: 'app.settings.app-version',
-		defaultMessage: 'Modrinth App {version}',
+		defaultMessage: 'Tabbyrinth {version}',
 	},
 	macos: {
 		id: 'app.settings.operating-system.macos',
@@ -373,7 +373,7 @@ const messages = defineMessages({
 						}"
 						@click="devModeCount"
 					>
-						<ModrinthIcon aria-hidden="true" class="w-6 h-6" />
+						<TagCategoryPawPrintIcon aria-hidden="true" class="w-6 h-6" />
 					</button>
 					<div v-if="appInfo" class="max-w-[200px]">
 						<p class="m-0">

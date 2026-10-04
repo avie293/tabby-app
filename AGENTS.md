@@ -56,6 +56,15 @@ The website and app `prepr` commands
 - **App:** `pnpm app:dev` (copy `.env` template in `packages/app-lib/` first)
 - **Storybook (packages/ui):** `pnpm storybook`
 
+## Tabbyrinth Releases and Upstream Updates
+
+The app is branded **Tabbyrinth** and only ever updates to releases published in this repository, never to official Modrinth App versions.
+
+- **Updater:** `apps/app/tauri-release.conf.json` points the Tauri updater at `https://github.com/avie293/tabby-app/releases/latest/download/latest.json` and verifies updates with the Tabbyrinth public key. Local `pnpm app:dev` / `tauri build` without that config have no updater.
+- **Signing key:** the private key lives outside the repo at `%USERPROFILE%\.tauri\tabbyrinth.key` and is stored as the `TAURI_SIGNING_PRIVATE_KEY` repository secret. Never commit it.
+- **Publishing:** push a tag `vX.Y.Z` (e.g. `git tag v1.0.0 && git push origin v1.0.0`). `.github/workflows/release.yml` sets that version, builds and signs the Windows installer, and publishes a GitHub release with `latest.json`. Installed apps pick it up on their next update check.
+- **Integrating Modrinth updates:** the `upstream` remote is `modrinth/code` (partial clone, `blob:none`). Run `git fetch upstream main`, then `git merge upstream/main` on a branch. Upstream changes to deleted parts (`apps/frontend`, `apps/docs`, Modrinth's CI workflows) show up as modify/delete conflicts and are resolved by keeping them deleted. Keep Tabbyrinth branding, the purple brand color, the removed ads and our synced options (`saves`, `essential_settings`) intact. Build and test before tagging a release.
+
 ## Project-Specific Instructions
 
 Each project may have its own file with detailed instructions:

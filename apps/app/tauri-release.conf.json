@@ -1,24 +1,6 @@
 {
 	"bundle": {
-		"createUpdaterArtifacts": "v1Compatible",
-		"windows": {
-			"signCommand": {
-				"cmd": "jsign",
-				"args": [
-					"sign",
-					"--verbose",
-					"--storetype",
-					"DIGICERTONE",
-					"--keystore",
-					"https://clientauth.one.digicert.com",
-					"--storepass",
-					"env:DIGICERT_ONE_SIGNER_CREDENTIALS",
-					"--tsaurl",
-					"https://timestamp.sectigo.com,http://timestamp.digicert.com",
-					"%1"
-				]
-			}
-		}
+		"createUpdaterArtifacts": true
 	},
 	"build": {
 		"features": ["updater"]
@@ -30,10 +12,10 @@
 	},
 	"plugins": {
 		"updater": {
-			"pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDIwMzM5QkE0M0FCOERBMzkKUldRNTJyZzZwSnN6SUdPRGdZREtUUGxMblZqeG9OVHYxRUlRTzJBc2U3MUNJaDMvZDQ1UytZZmYK",
-			"endpoints": ["https://launcher-files.modrinth.com/updates.json"],
+			"pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEYwQjQ5NzQ2OEM3QzY3MTEKUldRUlozeU1ScGUwOEl6SHA3akxlbCtyT05mbDJiamlZZmlScGpXekZvN1RpajQxVHY0T2FueWMK",
+			"endpoints": ["https://github.com/avie293/tabby-app/releases/latest/download/latest.json"],
 			"windows": {
-				"installMode": "quiet"
+				"installMode": "passive"
 			}
 		}
 	}

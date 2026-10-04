@@ -1,0 +1,77 @@
+name: Release Tabbyrinth
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Build and publish (Windows)
+    runs-on: windows-latest
+    env:
+      SQLX_OFFLINE: 'true'
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Cache Rust build
+        uses: Swatinem/rust-cache@v2
+
+      - name: Set version from tag and select production environment
+        shell: bash
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          echo "Building Tabbyrinth $VERSION"
+          node -e "
+            const fs = require('fs')
+            const file = 'apps/app-frontend/package.json'
+            const pkg = JSON.parse(fs.readFileSync(file, 'utf8'))
+            pkg.version = process.argv[1]
+            fs.writeFileSync(file, JSON.stringify(pkg, null, '\t') + '\n')
+          " "$VERSION"
+          sed -i "0,/^version = .*/s//version = \"$VERSION\"/" apps/app/Cargo.toml
+          sed -i "0,/^version = .*/s//version = \"$VERSION\"/" packages/app-lib/Cargo.toml
+          cp packages/app-lib/.env.prod packages/app-lib/.env
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build, sign and publish release
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ''
+        with:
+          projectPath: apps/app
+          tauriScript: pnpm tauri
+          args: --config tauri-release.conf.json --bundles nsis
+          tagName: ${{ github.ref_name }}
+          releaseName: Tabbyrinth ${{ github.ref_name }}
+          releaseBody: See the commit history for what changed in this version.
+          releaseDraft: false
+          prerelease: false
+          includeUpdaterJson: true

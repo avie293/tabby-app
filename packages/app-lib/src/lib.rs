@@ -27,7 +27,7 @@ pub use event::{
     emit::init_loading,
 };
 pub use logger::start_logger;
-pub use state::State;
+pub use state::{State, migrate_legacy_app_dirs};
 pub use util::fetch::DownloadReason;
 
 pub fn launcher_user_agent() -> String {

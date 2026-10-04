@@ -285,13 +285,13 @@
     "message": "Modrinth Pride"
   },
   "app.update-popup.body.download-complete": {
-    "message": "Tapos nang ma-download ang Tabbyrinth v{version}. Mag-reload upang ma-update ngayon, o awtomatiko sa pagsara ng Tabbyrinth."
+    "message": "Tapos nang ma-download ang Tabbyapp v{version}. Mag-reload upang ma-update ngayon, o awtomatiko sa pagsara ng Tabbyapp."
   },
   "app.update-popup.body.linux": {
-    "message": "Magagamit na ngayon ang Tabbyrinth v{version}. Gamitin ang iyong package manager upang i-update sa pinabagong tampok at pag-aayos!"
+    "message": "Magagamit na ngayon ang Tabbyapp v{version}. Gamitin ang iyong package manager upang i-update sa pinabagong tampok at pag-aayos!"
   },
   "app.update-popup.body.metered": {
-    "message": "Magagamit na ngayon ang Tabbyrinth v{version}! Hindi namin dinanload kaagad dahil naka-metro ang inyong network."
+    "message": "Magagamit na ngayon ang Tabbyapp v{version}! Hindi namin dinanload kaagad dahil naka-metro ang inyong network."
   },
   "app.update-popup.changelog": {
     "message": "Changelog"

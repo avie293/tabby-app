@@ -15,11 +15,11 @@ const { formatMessage } = useVIntl()
 const messages = defineMessages({
 	title: {
 		id: 'app.hosting.update-required.title',
-		defaultMessage: 'Tabbyrinth update required',
+		defaultMessage: 'Tabbyapp update required',
 	},
 	description: {
 		id: 'app.hosting.update-required.description',
-		defaultMessage: 'You need to update to use Modrinth Hosting through Tabbyrinth',
+		defaultMessage: 'You need to update to use Modrinth Hosting through Tabbyapp',
 	},
 	downloadToUpdate: {
 		id: 'app.hosting.update-required.download',

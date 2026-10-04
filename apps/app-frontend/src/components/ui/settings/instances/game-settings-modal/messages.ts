@@ -1006,7 +1006,7 @@ export const presentationMessages = defineMessages({
 	},
 	bucketLauncherControlled: {
 		id: 'app.settings.game-options.compatibility.reason.launcher-controlled',
-		defaultMessage: 'This setting is managed by Tabbyrinth’s launch settings.',
+		defaultMessage: 'This setting is managed by Tabbyapp’s launch settings.',
 	},
 })
 

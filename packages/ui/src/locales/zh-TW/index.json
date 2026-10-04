@@ -5328,7 +5328,7 @@
     "defaultMessage": "建立新的伺服器"
   },
   "servers.list-empty.no-servers-description": {
-    "defaultMessage": "安裝模組、邀請好友並一起暢玩，這一切都能在 Tabbyrinth 中輕鬆完成。"
+    "defaultMessage": "安裝模組、邀請好友並一起暢玩，這一切都能在 Tabbyapp 中輕鬆完成。"
   },
   "servers.list-empty.one-click-mod-installs-description": {
     "defaultMessage": "挑選你喜愛的模組，剩下的就交給我們處理。"
@@ -5337,7 +5337,7 @@
     "defaultMessage": "一鍵安裝模組"
   },
   "servers.list-empty.play-with-friends-description": {
-    "defaultMessage": "透過 Tabbyrinth 邀請好友一鍵加入你的伺服器遊玩。"
+    "defaultMessage": "透過 Tabbyapp 邀請好友一鍵加入你的伺服器遊玩。"
   },
   "servers.list-empty.play-with-friends-title": {
     "defaultMessage": "與好友同樂"
@@ -5934,7 +5934,7 @@
     "defaultMessage": "搜尋結果"
   },
   "settings.language.coverage.app-tooltip": {
-    "defaultMessage": "Tabbyrinth 在這個語言的翻譯完成度約為 {percentage}%。"
+    "defaultMessage": "Tabbyapp 在這個語言的翻譯完成度約為 {percentage}%。"
   },
   "settings.language.coverage.label": {
     "defaultMessage": "翻譯完成度 {percentage}%"

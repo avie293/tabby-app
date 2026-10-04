@@ -55,10 +55,10 @@
 			}
 		]
 	},
-	"productName": "Tabbyrinth",
+	"productName": "Tabbyapp",
 	"version": "../app-frontend/package.json",
-	"mainBinaryName": "Tabbyrinth",
-	"identifier": "Tabbyrinth",
+	"mainBinaryName": "Tabbyapp",
+	"identifier": "Tabbyapp",
 	"plugins": {
 		"deep-link": {
 			"desktop": {
@@ -77,7 +77,7 @@
 				"fullscreen": false,
 				"height": 800,
 				"resizable": true,
-				"title": "Tabbyrinth",
+				"title": "Tabbyapp",
 				"label": "main",
 				"width": 1280,
 				"minHeight": 700,

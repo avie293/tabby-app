@@ -5922,7 +5922,7 @@
     "defaultMessage": "Zoekresultaten"
   },
   "settings.language.coverage.app-tooltip": {
-    "defaultMessage": "Ongeveer {percentage}% van de Tabbyrinth is beschikbaar in deze taal."
+    "defaultMessage": "Ongeveer {percentage}% van de Tabbyapp is beschikbaar in deze taal."
   },
   "settings.language.coverage.label": {
     "defaultMessage": "{percentage}% ondersteund"

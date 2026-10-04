@@ -162,7 +162,7 @@
     "message": "Gem nametag"
   },
   "app.appearance-settings.minimize-launcher.description": {
-    "message": "Minimér Tabbyrinth når Minecraft starter."
+    "message": "Minimér Tabbyapp når Minecraft starter."
   },
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Minimer app"
@@ -711,13 +711,13 @@
     "message": "Slå til"
   },
   "app.update-popup.body.download-complete": {
-    "message": "Tabbyrinth v{version} er færdig med at download. Genindlæs for at opdatere nu, eller automatisk når du lukker Tabbyrinth."
+    "message": "Tabbyapp v{version} er færdig med at download. Genindlæs for at opdatere nu, eller automatisk når du lukker Tabbyapp."
   },
   "app.update-popup.body.linux": {
-    "message": "Tabbyrinth v{version} er nu tilgængelig. Brug din pakke-manager til at opdatere for de nyeste features og fejlrettelser!"
+    "message": "Tabbyapp v{version} er nu tilgængelig. Brug din pakke-manager til at opdatere for de nyeste features og fejlrettelser!"
   },
   "app.update-popup.body.metered": {
-    "message": "Tabbyrinth v{version} er nu tilgængelig! Siden du er på et begrænset netværk, vi downloadede den ikke automatisk."
+    "message": "Tabbyapp v{version} er nu tilgængelig! Siden du er på et begrænset netværk, vi downloadede den ikke automatisk."
   },
   "app.update-popup.changelog": {
     "message": "Ændringslog"

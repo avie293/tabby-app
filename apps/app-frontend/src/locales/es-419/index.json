@@ -3426,13 +3426,13 @@
     "message": "Paquetes de recursos sincronizados"
   },
   "app.update-popup.body.download-complete": {
-    "message": "La descarga de la Tabbyrinth v{version} ha finalizado. Actualiza ahora o automáticamente al cerrar la Tabbyrinth."
+    "message": "La descarga de la Tabbyapp v{version} ha finalizado. Actualiza ahora o automáticamente al cerrar la Tabbyapp."
   },
   "app.update-popup.body.linux": {
-    "message": "La Tabbyrinth v{version} está disponible. ¡Usa tu gestor de paquetes para actualizarla y tener las últimas funciones y corrección de errores!"
+    "message": "La Tabbyapp v{version} está disponible. ¡Usa tu gestor de paquetes para actualizarla y tener las últimas funciones y corrección de errores!"
   },
   "app.update-popup.body.metered": {
-    "message": "¡La Tabbyrinth v{version} ya está disponible! Al estar usando una red de datos límitada, no la hemos descargado automáticamente."
+    "message": "¡La Tabbyapp v{version} ya está disponible! Al estar usando una red de datos límitada, no la hemos descargado automáticamente."
   },
   "app.update-popup.changelog": {
     "message": "Registro de cambios"

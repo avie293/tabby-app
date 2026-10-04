@@ -1698,16 +1698,16 @@ const updatePopupMessages = defineMessages({
 	},
 	meteredBody: {
 		id: 'app.update-popup.body.metered',
-		defaultMessage: `Tabbyrinth v{version} is available now! Since you're on a metered network, we didn't automatically download it.`,
+		defaultMessage: `Tabbyapp v{version} is available now! Since you're on a metered network, we didn't automatically download it.`,
 	},
 	downloadedBody: {
 		id: 'app.update-popup.body.download-complete',
-		defaultMessage: `Tabbyrinth v{version} has finished downloading. Reload to update now, or automatically when you close Tabbyrinth.`,
+		defaultMessage: `Tabbyapp v{version} has finished downloading. Reload to update now, or automatically when you close Tabbyapp.`,
 	},
 	linuxBody: {
 		id: 'app.update-popup.body.linux',
 		defaultMessage:
-			'Tabbyrinth v{version} is available. Use your package manager to update for the latest features and fixes!',
+			'Tabbyapp v{version} is available. Use your package manager to update for the latest features and fixes!',
 	},
 	reload: {
 		id: 'app.update-popup.reload',
@@ -2258,7 +2258,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 				<span
 					class="shrink-0 select-none pointer-events-none text-xl font-extrabold leading-none tracking-tight text-contrast"
 				>
-					Tabby<span class="text-brand">rinth</span>
+					Tabby<span class="text-brand">app</span>
 				</span>
 				<div data-tauri-drag-region class="ml-2 flex shrink-0 items-center gap-2">
 					<IconButton

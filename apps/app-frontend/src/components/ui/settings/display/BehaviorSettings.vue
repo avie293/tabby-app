@@ -61,7 +61,7 @@ const messages = defineMessages({
 	},
 	minimizeLauncherDescription: {
 		id: 'app.appearance-settings.minimize-launcher.description',
-		defaultMessage: 'Minimize Tabbyrinth when Minecraft starts.',
+		defaultMessage: 'Minimize Tabbyapp when Minecraft starts.',
 	},
 	refocusOnGameCloseTitle: {
 		id: 'app.behavior-settings.refocus-on-game-close.title',
@@ -69,7 +69,7 @@ const messages = defineMessages({
 	},
 	refocusOnGameCloseDescription: {
 		id: 'app.behavior-settings.refocus-on-game-close.description',
-		defaultMessage: 'Bring Tabbyrinth to the foreground when Minecraft exits.',
+		defaultMessage: 'Bring Tabbyapp to the foreground when Minecraft exits.',
 	},
 	defaultLandingPageHome: {
 		id: 'app.appearance-settings.default-landing-page.home',

@@ -139,9 +139,19 @@ fn main() {
 
     let tauri_context = tauri::generate_context!();
 
+    let legacy_dir_migration = theseus::migrate_legacy_app_dirs(
+        &tauri_context.config().identifier,
+        &["Tabbyrinth"],
+    );
+
     let _log_guard = theseus::start_logger(&tauri_context.config().identifier);
 
-    tracing::info!("Initialized tracing subscriber. Loading Tabbyrinth!");
+    tracing::info!("Initialized tracing subscriber. Loading Tabbyapp!");
+    if let Err(error) = legacy_dir_migration {
+        tracing::error!(
+            "Failed to move data from the previous app name: {error}"
+        );
+    }
 
     let mut builder = tauri::Builder::default();
 

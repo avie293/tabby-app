@@ -486,7 +486,7 @@
     "message": "Посмотреть сборку"
   },
   "app.hosting.update-required.description": {
-    "message": "Обновитесь, чтобы использовать Modrinth Hosting через Tabbyrinth"
+    "message": "Обновитесь, чтобы использовать Modrinth Hosting через Tabbyapp"
   },
   "app.hosting.update-required.download": {
     "message": "Скачать и обновить"
@@ -495,7 +495,7 @@
     "message": "Восторженный Modrinth Bot"
   },
   "app.hosting.update-required.title": {
-    "message": "Обновите Tabbyrinth"
+    "message": "Обновите Tabbyapp"
   },
   "app.install.phase.downloading_content": {
     "message": "Скачивание контента"
@@ -1596,7 +1596,7 @@
     "message": "Сначала старые"
   },
   "app.settings.app-version": {
-    "message": "Tabbyrinth {version}"
+    "message": "Tabbyapp {version}"
   },
   "app.settings.default-instance-options.environment-variables.description": {
     "message": "Переменные среды при запуске игры."

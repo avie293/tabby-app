@@ -15,6 +15,36 @@ pub const METADATA_FOLDER_NAME: &str = "meta";
 pub const SYNCED_OPTIONS_FOLDER_NAME: &str = "synced-options";
 pub const STORE_FOLDER_NAME: &str = "store";
 
+/// Renames the settings and local data folders of an earlier app identifier to
+/// the current one, so renaming the app keeps its instances, settings and
+/// webview data. Folders that already exist under the current identifier are
+/// left alone.
+pub fn migrate_legacy_app_dirs(
+    app_identifier: &str,
+    legacy_identifiers: &[&str],
+) -> std::io::Result<()> {
+    if std::env::var_os("THESEUS_CONFIG_DIR").is_some() {
+        return Ok(());
+    }
+    for base in [dirs::data_dir(), dirs::data_local_dir()]
+        .into_iter()
+        .flatten()
+    {
+        let target = base.join(app_identifier);
+        if target.exists() {
+            continue;
+        }
+        if let Some(source) = legacy_identifiers
+            .iter()
+            .map(|legacy| base.join(legacy))
+            .find(|source| source.is_dir())
+        {
+            std::fs::rename(source, target)?;
+        }
+    }
+    Ok(())
+}
+
 #[derive(Clone, Debug)]
 pub struct DirectoryInfo {
     pub settings_dir: PathBuf, // Base settings directory- app database

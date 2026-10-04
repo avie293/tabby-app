@@ -165,7 +165,7 @@
     "message": "Hide nametag"
   },
   "app.appearance-settings.minimize-launcher.description": {
-    "message": "Minimize Tabbyrinth when Minecraft starts."
+    "message": "Minimize Tabbyapp when Minecraft starts."
   },
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Minimize app"
@@ -207,7 +207,7 @@
     "message": "Home and content"
   },
   "app.behavior-settings.refocus-on-game-close.description": {
-    "message": "Bring Tabbyrinth to the foreground when Minecraft exits."
+    "message": "Bring Tabbyapp to the foreground when Minecraft exits."
   },
   "app.behavior-settings.refocus-on-game-close.title": {
     "message": "Refocus app when Minecraft closes"
@@ -510,7 +510,7 @@
     "message": "View instance"
   },
   "app.hosting.update-required.description": {
-    "message": "You need to update to use Modrinth Hosting through Tabbyrinth"
+    "message": "You need to update to use Modrinth Hosting through Tabbyapp"
   },
   "app.hosting.update-required.download": {
     "message": "Download to update"
@@ -519,7 +519,7 @@
     "message": "Excited Modrinth Bot"
   },
   "app.hosting.update-required.title": {
-    "message": "Tabbyrinth update required"
+    "message": "Tabbyapp update required"
   },
   "app.install.phase.downloading_content": {
     "message": "Downloading content"
@@ -1623,7 +1623,7 @@
     "message": "Export ZIP"
   },
   "app.screenshots.selection.global-export-filename": {
-    "message": "Tabbyrinth screenshots.zip"
+    "message": "Tabbyapp screenshots.zip"
   },
   "app.screenshots.selection.instance-export-filename": {
     "message": "{instance} screenshots.zip"
@@ -1653,7 +1653,7 @@
     "message": "Oldest"
   },
   "app.settings.app-version": {
-    "message": "Tabbyrinth {version}"
+    "message": "Tabbyapp {version}"
   },
   "app.settings.default-instance-options.environment-variables.description": {
     "message": "Environment variables set when launching an instance."
@@ -1929,7 +1929,7 @@
     "message": "Some of your instances cannot use this setting"
   },
   "app.settings.game-options.compatibility.reason.launcher-controlled": {
-    "message": "This setting is managed by Tabbyrinth’s launch settings."
+    "message": "This setting is managed by Tabbyapp’s launch settings."
   },
   "app.settings.game-options.custom-value.placeholder": {
     "message": "Enter a value"
@@ -2759,6 +2759,84 @@
   "app.settings.java-installations.location.title": {
     "message": "Java {version, number} location"
   },
+  "app.settings.modrinth-app-import.data.content": {
+    "message": "Mods, resource packs, shaders and data packs"
+  },
+  "app.settings.modrinth-app-import.data.playtime": {
+    "message": "Playtime"
+  },
+  "app.settings.modrinth-app-import.data.screenshots": {
+    "message": "Screenshots"
+  },
+  "app.settings.modrinth-app-import.data.settings": {
+    "message": "Game settings, configs and other files"
+  },
+  "app.settings.modrinth-app-import.data.title": {
+    "message": "What to import"
+  },
+  "app.settings.modrinth-app-import.data.worlds": {
+    "message": "Worlds"
+  },
+  "app.settings.modrinth-app-import.description": {
+    "message": "Bring instances, worlds and playtime over from the Modrinth App installed on this computer. The Modrinth App itself is not changed."
+  },
+  "app.settings.modrinth-app-import.import-button": {
+    "message": "{count, plural, =0 {Select instances to import} one {Import # instance} other {Import # instances}}"
+  },
+  "app.settings.modrinth-app-import.import-started": {
+    "message": "{count, plural, one {Importing # instance} other {Importing # instances}}"
+  },
+  "app.settings.modrinth-app-import.import-started-text": {
+    "message": "You can follow the progress in the downloads panel."
+  },
+  "app.settings.modrinth-app-import.instances.already-imported": {
+    "message": "Already imported"
+  },
+  "app.settings.modrinth-app-import.instances.empty": {
+    "message": "Your Modrinth App doesn't have any installed instances."
+  },
+  "app.settings.modrinth-app-import.instances.select-all": {
+    "message": "Select all"
+  },
+  "app.settings.modrinth-app-import.instances.title": {
+    "message": "Instances"
+  },
+  "app.settings.modrinth-app-import.loading": {
+    "message": "Reading your Modrinth App instances..."
+  },
+  "app.settings.modrinth-app-import.not-found": {
+    "message": "No Modrinth App installation was found on this computer."
+  },
+  "app.settings.modrinth-app-import.playtime.description": {
+    "message": "Add the playtime of a Modrinth App instance to any instance here, for example after you rebuilt it."
+  },
+  "app.settings.modrinth-app-import.playtime.empty": {
+    "message": "None of your Modrinth App instances have playtime yet."
+  },
+  "app.settings.modrinth-app-import.playtime.hours": {
+    "message": "{hours} h {minutes} min"
+  },
+  "app.settings.modrinth-app-import.playtime.minutes": {
+    "message": "{minutes} min"
+  },
+  "app.settings.modrinth-app-import.playtime.target": {
+    "message": "Choose an instance"
+  },
+  "app.settings.modrinth-app-import.playtime.title": {
+    "message": "Transfer playtime"
+  },
+  "app.settings.modrinth-app-import.playtime.transfer": {
+    "message": "Transfer"
+  },
+  "app.settings.modrinth-app-import.playtime.transferred": {
+    "message": "Transferred to {instance}"
+  },
+  "app.settings.modrinth-app-import.playtime.transferred-notification": {
+    "message": "Added {playtime} to {instance}"
+  },
+  "app.settings.modrinth-app-import.playtime.unknown-instance": {
+    "message": "a removed instance"
+  },
   "app.settings.operating-system.macos": {
     "message": "macOS"
   },
@@ -2811,7 +2889,7 @@
     "message": "Browse for an app directory"
   },
   "app.settings.resource-management.app-directory.description": {
-    "message": "Where Tabbyrinth stores instances and other files. Changes take effect after restarting the app."
+    "message": "Where Tabbyapp stores instances and other files. Changes take effect after restarting the app."
   },
   "app.settings.resource-management.app-directory.select": {
     "message": "Select a new app directory"
@@ -3015,7 +3093,7 @@
     "message": "These settings changed elsewhere"
   },
   "app.settings.synced-options.game-settings.custom-empty": {
-    "message": "Settings added by mods will appear here after Tabbyrinth finds them in one of your instances."
+    "message": "Settings added by mods will appear here after Tabbyapp finds them in one of your instances."
   },
   "app.settings.synced-options.game-settings.description": {
     "message": "Use the same game options across your instances."
@@ -3166,6 +3244,9 @@
   },
   "app.settings.tabs.language": {
     "message": "Language"
+  },
+  "app.settings.tabs.modrinth-app-import": {
+    "message": "Import from Modrinth App"
   },
   "app.settings.tabs.privacy": {
     "message": "Privacy"
@@ -3495,13 +3576,13 @@
     "message": "Synced resource packs"
   },
   "app.update-popup.body.download-complete": {
-    "message": "Tabbyrinth v{version} has finished downloading. Reload to update now, or automatically when you close Tabbyrinth."
+    "message": "Tabbyapp v{version} has finished downloading. Reload to update now, or automatically when you close Tabbyapp."
   },
   "app.update-popup.body.linux": {
-    "message": "Tabbyrinth v{version} is available. Use your package manager to update for the latest features and fixes!"
+    "message": "Tabbyapp v{version} is available. Use your package manager to update for the latest features and fixes!"
   },
   "app.update-popup.body.metered": {
-    "message": "Tabbyrinth v{version} is available now! Since you're on a metered network, we didn't automatically download it."
+    "message": "Tabbyapp v{version} is available now! Since you're on a metered network, we didn't automatically download it."
   },
   "app.update-popup.changelog": {
     "message": "Changelog"
@@ -3546,7 +3627,7 @@
     "message": "Press <shortcut>N</shortcut> to quick create an instance"
   },
   "app.welcome-screen.title": {
-    "message": "Welcome to Tabbyrinth"
+    "message": "Welcome to Tabbyapp"
   },
   "app.world.server-modal.placeholder-address": {
     "message": "example.modrinth.gg"

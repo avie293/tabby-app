@@ -165,7 +165,7 @@
     "message": "Namensschild ausblenden"
   },
   "app.appearance-settings.minimize-launcher.description": {
-    "message": "Minimiere Tabbyrinth, wenn Minecraft startet."
+    "message": "Minimiere Tabbyapp, wenn Minecraft startet."
   },
   "app.appearance-settings.minimize-launcher.title": {
     "message": "App minimieren"
@@ -501,7 +501,7 @@
     "message": "Instanz anzeigen"
   },
   "app.hosting.update-required.description": {
-    "message": "Du musst aktualisieren, um Modrinth Hosting durch Tabbyrinth zu verwenden"
+    "message": "Du musst aktualisieren, um Modrinth Hosting durch Tabbyapp zu verwenden"
   },
   "app.hosting.update-required.download": {
     "message": "Zum Aktualisieren herunterladen"
@@ -510,7 +510,7 @@
     "message": "Begeisterter Modrinth-Bot"
   },
   "app.hosting.update-required.title": {
-    "message": "Update von Tabbyrinth erforderlich"
+    "message": "Update von Tabbyapp erforderlich"
   },
   "app.install.phase.downloading_content": {
     "message": "Inhalte werden heruntergeladen"
@@ -1614,7 +1614,7 @@
     "message": "ZIP exportieren"
   },
   "app.screenshots.selection.global-export-filename": {
-    "message": "Screenshots aus Tabbyrinth.zip"
+    "message": "Screenshots aus Tabbyapp.zip"
   },
   "app.screenshots.selection.instance-export-filename": {
     "message": "Screenshots aus {instance}.zip"
@@ -1644,7 +1644,7 @@
     "message": "Älteste"
   },
   "app.settings.app-version": {
-    "message": "Tabbyrinth {version}"
+    "message": "Tabbyapp {version}"
   },
   "app.settings.default-instance-options.environment-variables.description": {
     "message": "Umgebungsvariablen, die beim Starten einer Instanz gesetzt werden."
@@ -1920,7 +1920,7 @@
     "message": "Einige deiner Instanzen können diese Einstellung nicht verwenden"
   },
   "app.settings.game-options.compatibility.reason.launcher-controlled": {
-    "message": "Diese Einstellung wird über die Startoptionen von Tabbyrinth verwaltet."
+    "message": "Diese Einstellung wird über die Startoptionen von Tabbyapp verwaltet."
   },
   "app.settings.game-options.custom-value.placeholder": {
     "message": "Wert eingeben"
@@ -2750,6 +2750,84 @@
   "app.settings.java-installations.location.title": {
     "message": "Java {version, number} Installation"
   },
+  "app.settings.modrinth-app-import.data.content": {
+    "message": "Mods, Ressourcenpakete, Shader und Datenpakete"
+  },
+  "app.settings.modrinth-app-import.data.playtime": {
+    "message": "Spielzeit"
+  },
+  "app.settings.modrinth-app-import.data.screenshots": {
+    "message": "Screenshots"
+  },
+  "app.settings.modrinth-app-import.data.settings": {
+    "message": "Spieleinstellungen, Configs und sonstige Dateien"
+  },
+  "app.settings.modrinth-app-import.data.title": {
+    "message": "Was importiert werden soll"
+  },
+  "app.settings.modrinth-app-import.data.worlds": {
+    "message": "Welten"
+  },
+  "app.settings.modrinth-app-import.description": {
+    "message": "Übernimm Instanzen, Welten und Spielzeit aus der Modrinth App auf diesem Computer. Die Modrinth App selbst wird dabei nicht verändert."
+  },
+  "app.settings.modrinth-app-import.import-button": {
+    "message": "{count, plural, =0 {Instanzen zum Importieren auswählen} one {# Instanz importieren} other {# Instanzen importieren}}"
+  },
+  "app.settings.modrinth-app-import.import-started": {
+    "message": "{count, plural, one {# Instanz wird importiert} other {# Instanzen werden importiert}}"
+  },
+  "app.settings.modrinth-app-import.import-started-text": {
+    "message": "Den Fortschritt siehst du im Download-Bereich."
+  },
+  "app.settings.modrinth-app-import.instances.already-imported": {
+    "message": "Bereits importiert"
+  },
+  "app.settings.modrinth-app-import.instances.empty": {
+    "message": "Deine Modrinth App hat keine installierten Instanzen."
+  },
+  "app.settings.modrinth-app-import.instances.select-all": {
+    "message": "Alle auswählen"
+  },
+  "app.settings.modrinth-app-import.instances.title": {
+    "message": "Instanzen"
+  },
+  "app.settings.modrinth-app-import.loading": {
+    "message": "Deine Modrinth-App-Instanzen werden gelesen..."
+  },
+  "app.settings.modrinth-app-import.not-found": {
+    "message": "Auf diesem Computer wurde keine Modrinth App gefunden."
+  },
+  "app.settings.modrinth-app-import.playtime.description": {
+    "message": "Füge die Spielzeit einer Modrinth-App-Instanz einer beliebigen Instanz hier hinzu, zum Beispiel wenn du sie neu aufgebaut hast."
+  },
+  "app.settings.modrinth-app-import.playtime.empty": {
+    "message": "Keine deiner Modrinth-App-Instanzen hat bisher Spielzeit."
+  },
+  "app.settings.modrinth-app-import.playtime.hours": {
+    "message": "{hours} Std. {minutes} Min."
+  },
+  "app.settings.modrinth-app-import.playtime.minutes": {
+    "message": "{minutes} Min."
+  },
+  "app.settings.modrinth-app-import.playtime.target": {
+    "message": "Instanz auswählen"
+  },
+  "app.settings.modrinth-app-import.playtime.title": {
+    "message": "Spielzeit übertragen"
+  },
+  "app.settings.modrinth-app-import.playtime.transfer": {
+    "message": "Übertragen"
+  },
+  "app.settings.modrinth-app-import.playtime.transferred": {
+    "message": "Übertragen auf {instance}"
+  },
+  "app.settings.modrinth-app-import.playtime.transferred-notification": {
+    "message": "{playtime} zu {instance} hinzugefügt"
+  },
+  "app.settings.modrinth-app-import.playtime.unknown-instance": {
+    "message": "eine entfernte Instanz"
+  },
   "app.settings.operating-system.macos": {
     "message": "macOS"
   },
@@ -2802,7 +2880,7 @@
     "message": "Nach einem App-Verzeichnis suchen"
   },
   "app.settings.resource-management.app-directory.description": {
-    "message": "Wo Tabbyrinth Instanzen und andere Dateien speichert. Änderungen werden nach dem Neustarten der App angewendet."
+    "message": "Wo Tabbyapp Instanzen und andere Dateien speichert. Änderungen werden nach dem Neustarten der App angewendet."
   },
   "app.settings.resource-management.app-directory.select": {
     "message": "Neues App-Verzeichnis auswählen"
@@ -3006,7 +3084,7 @@
     "message": "Diese Einstellungen haben sich woanders geändert"
   },
   "app.settings.synced-options.game-settings.custom-empty": {
-    "message": "Einstellungen, die durch Mods hinzugefügt wurden, werden hier angezeigt, sobald Tabbyrinth sie in einer deiner Instanzen findet."
+    "message": "Einstellungen, die durch Mods hinzugefügt wurden, werden hier angezeigt, sobald Tabbyapp sie in einer deiner Instanzen findet."
   },
   "app.settings.synced-options.game-settings.description": {
     "message": "Verwende dieselben Spieloptionen für alle deine Instanzen."
@@ -3157,6 +3235,9 @@
   },
   "app.settings.tabs.language": {
     "message": "Sprache"
+  },
+  "app.settings.tabs.modrinth-app-import": {
+    "message": "Aus Modrinth App importieren"
   },
   "app.settings.tabs.privacy": {
     "message": "Datenschutz"
@@ -3477,13 +3558,13 @@
     "message": "Synchronisierte Ressourcenpakete"
   },
   "app.update-popup.body.download-complete": {
-    "message": "Tabbyrinth v{version} wurde heruntergeladen. Jetzt neu laden, um sofort zu aktualisieren, oder beim Schließen von Tabbyrinth automatisch aktualisieren."
+    "message": "Tabbyapp v{version} wurde heruntergeladen. Jetzt neu laden, um sofort zu aktualisieren, oder beim Schließen von Tabbyapp automatisch aktualisieren."
   },
   "app.update-popup.body.linux": {
-    "message": "Tabbyrinth v{version} ist verfügbar. Verwende deinen Paketmanager, um die neuesten Funktionen und Fehlerbehebungen zu installieren!"
+    "message": "Tabbyapp v{version} ist verfügbar. Verwende deinen Paketmanager, um die neuesten Funktionen und Fehlerbehebungen zu installieren!"
   },
   "app.update-popup.body.metered": {
-    "message": "Tabbyrinth v{version} ist jetzt verfügbar! Da du ein getaktetes Netzwerk nutzt, haben wir den Download nicht automatisch gestartet."
+    "message": "Tabbyapp v{version} ist jetzt verfügbar! Da du ein getaktetes Netzwerk nutzt, haben wir den Download nicht automatisch gestartet."
   },
   "app.update-popup.changelog": {
     "message": "Änderungen"
@@ -3528,7 +3609,7 @@
     "message": "Drücke <shortcut>N</shortcut>, um schnell eine Instanz zu erstellen"
   },
   "app.welcome-screen.title": {
-    "message": "Willkommen bei Tabbyrinth"
+    "message": "Willkommen bei Tabbyapp"
   },
   "app.world.server-modal.placeholder-address": {
     "message": "example.modrinth.gg"

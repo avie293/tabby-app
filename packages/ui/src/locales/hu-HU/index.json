@@ -5307,7 +5307,7 @@
     "defaultMessage": "Új szerver"
   },
   "servers.list-empty.no-servers-description": {
-    "defaultMessage": "Telepíts modokat, hívd meg a barátaidat, és játsszatok együtt, mindezt a Tabbyrinthban."
+    "defaultMessage": "Telepíts modokat, hívd meg a barátaidat, és játsszatok együtt, mindezt a Tabbyappban."
   },
   "servers.list-empty.one-click-mod-installs-description": {
     "defaultMessage": "Válaszd ki a kedvenc modjaidat, a többit bízd ránk!"
@@ -5316,7 +5316,7 @@
     "defaultMessage": "Modok telepítése egy kattintással"
   },
   "servers.list-empty.play-with-friends-description": {
-    "defaultMessage": "Hívd meg barátaidat játszani a szerveredre a Tabbyrinthból, egyetlen kattintással."
+    "defaultMessage": "Hívd meg barátaidat játszani a szerveredre a Tabbyappból, egyetlen kattintással."
   },
   "servers.list-empty.play-with-friends-title": {
     "defaultMessage": "Játssz a barátaiddal"
@@ -5913,7 +5913,7 @@
     "defaultMessage": "Keresési eredmények"
   },
   "settings.language.coverage.app-tooltip": {
-    "defaultMessage": "A Tabbyrinth körülbelül {percentage}%-a érhető el ezen a nyelven."
+    "defaultMessage": "A Tabbyapp körülbelül {percentage}%-a érhető el ezen a nyelven."
   },
   "settings.language.coverage.label": {
     "defaultMessage": "{percentage}% támogatott"

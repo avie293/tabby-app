@@ -366,13 +366,13 @@
     "message": "Pemilih rupa"
   },
   "app.update-popup.body.download-complete": {
-    "message": "Tabbyrinth v{version} telah selesai mengunduh. Muat ulang untuk memperbarui sekarang, atau secara otomatis saat Anda menutup Tabbyrinth."
+    "message": "Tabbyapp v{version} telah selesai mengunduh. Muat ulang untuk memperbarui sekarang, atau secara otomatis saat Anda menutup Tabbyapp."
   },
   "app.update-popup.body.linux": {
-    "message": "Tabbyrinth v{version} tersedia. Gunakan pengelola paket Anda untuk memperbarui dan mendapatkan fitur-fitur dan perbaikan terbaru!"
+    "message": "Tabbyapp v{version} tersedia. Gunakan pengelola paket Anda untuk memperbarui dan mendapatkan fitur-fitur dan perbaikan terbaru!"
   },
   "app.update-popup.body.metered": {
-    "message": "Tabbyrinth v{version} sudah tersedia! Karena Anda saat ini sedang berada dalam jaringan terukur, kami tidak mengunduhnya secara otomatis."
+    "message": "Tabbyapp v{version} sudah tersedia! Karena Anda saat ini sedang berada dalam jaringan terukur, kami tidak mengunduhnya secara otomatis."
   },
   "app.update-popup.changelog": {
     "message": "Catatan perubahan"

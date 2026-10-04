@@ -1,4 +1,4 @@
-name: Release Tabbyrinth
+name: Release Tabbyapp
 
 on:
   push:
@@ -44,7 +44,7 @@ jobs:
         shell: bash
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
-          echo "Building Tabbyrinth $VERSION"
+          echo "Building Tabbyapp $VERSION"
           node -e "
             const fs = require('fs')
             const file = 'apps/app-frontend/package.json'
@@ -70,7 +70,7 @@ jobs:
           tauriScript: pnpm tauri
           args: --config tauri-release.conf.json --bundles nsis
           tagName: ${{ github.ref_name }}
-          releaseName: Tabbyrinth ${{ github.ref_name }}
+          releaseName: Tabbyapp ${{ github.ref_name }}
           releaseBody: See the commit history for what changed in this version.
           releaseDraft: false
           prerelease: false

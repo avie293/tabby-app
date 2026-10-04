@@ -165,7 +165,7 @@
     "message": "Dölj namnskylt"
   },
   "app.appearance-settings.minimize-launcher.description": {
-    "message": "Minimera Tabbyrinth när Minecraft startar."
+    "message": "Minimera Tabbyapp när Minecraft startar."
   },
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Minimera app"
@@ -465,7 +465,7 @@
     "message": "Visa instans"
   },
   "app.hosting.update-required.description": {
-    "message": "Du behöver uppdatera för att använda Modrinth Hosting genom Tabbyrinth"
+    "message": "Du behöver uppdatera för att använda Modrinth Hosting genom Tabbyapp"
   },
   "app.hosting.update-required.download": {
     "message": "Ladda ner för att uppdatera"
@@ -474,7 +474,7 @@
     "message": "Exalterad Modrinth-bot"
   },
   "app.hosting.update-required.title": {
-    "message": "Tabbyrinth-uppdatering krävs"
+    "message": "Tabbyapp-uppdatering krävs"
   },
   "app.install.phase.downloading_content": {
     "message": "Laddar ner innehåll"
@@ -1581,7 +1581,7 @@
     "message": "Äldst"
   },
   "app.settings.app-version": {
-    "message": "Tabbyrinth {version}"
+    "message": "Tabbyapp {version}"
   },
   "app.settings.default-instance-options.environment-variables.placeholder": {
     "message": "Ange miljövariabler..."
@@ -2112,7 +2112,7 @@
     "message": "Annonser gör Modrinth möjligt och finansierar utbetalningar till skapare. Våra partner kan lagra eller komma åt kakor i appen för att rikta annonser och mäta statistik. Du kan välja bort eller hantera dina inställningar nedan."
   },
   "app.settings.privacy.discord-rich-presence.description": {
-    "message": "Visa Tabbyrinth som din nuvarande aktivitet på Discord. Detta påverkar inte Rich Presence som lagts till i instanser av moddar. Kräver en app omstart."
+    "message": "Visa Tabbyapp som din nuvarande aktivitet på Discord. Detta påverkar inte Rich Presence som lagts till i instanser av moddar. Kräver en app omstart."
   },
   "app.settings.privacy.telemetry.description": {
     "message": "Modrinth samlar in anonymiserad statistik och användningsdata för att förbättra vår användarupplevelse och anpassa din upplevelse. Genom att inaktivera det här alternativet avanmäler du dig och din data kommer inte längre samlas in."
@@ -2151,7 +2151,7 @@
     "message": "Bläddra efter en appmapp"
   },
   "app.settings.resource-management.app-directory.description": {
-    "message": "Var Tabbyrinth lagrar instanser och andra filer. Ändringar träder i kraft efter appen startas om."
+    "message": "Var Tabbyapp lagrar instanser och andra filer. Ändringar träder i kraft efter appen startas om."
   },
   "app.settings.resource-management.app-directory.select": {
     "message": "Välj en ny appmapp"
@@ -2544,13 +2544,13 @@
     "message": "Synkroniserade resurspaket"
   },
   "app.update-popup.body.download-complete": {
-    "message": "Tabbyrinth v{version} har laddats ner. Ladda om för att uppdatera nu, eller automatiskt när du stänger Tabbyrinth."
+    "message": "Tabbyapp v{version} har laddats ner. Ladda om för att uppdatera nu, eller automatiskt när du stänger Tabbyapp."
   },
   "app.update-popup.body.linux": {
-    "message": "Tabbyrinth v{version} är tillgänglig. Använd din pakethanterare för att uppdatera och få tillgång till de senaste funktionerna och buggfixarna!"
+    "message": "Tabbyapp v{version} är tillgänglig. Använd din pakethanterare för att uppdatera och få tillgång till de senaste funktionerna och buggfixarna!"
   },
   "app.update-popup.body.metered": {
-    "message": "Tabbyrinth v{version} är nu tillgänglig! Eftersom du använder ett nätverk med datatrafikbegränsningar har vi inte laddat ner det automatiskt."
+    "message": "Tabbyapp v{version} är nu tillgänglig! Eftersom du använder ett nätverk med datatrafikbegränsningar har vi inte laddat ner det automatiskt."
   },
   "app.update-popup.changelog": {
     "message": "Ändringslogg"

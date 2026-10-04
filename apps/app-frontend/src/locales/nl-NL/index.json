@@ -486,7 +486,7 @@
     "message": "Bekijk instantie"
   },
   "app.hosting.update-required.description": {
-    "message": "Je moet bijwerken om Modrinth Hosting te gebruiken via de Tabbyrinth"
+    "message": "Je moet bijwerken om Modrinth Hosting te gebruiken via de Tabbyapp"
   },
   "app.hosting.update-required.download": {
     "message": "Update aan het downloaden"
@@ -3015,13 +3015,13 @@
     "message": "Pakketten konden niet worden geladen. Probeer deze te herladen."
   },
   "app.update-popup.body.download-complete": {
-    "message": "Tabbyrinth v{version} is klaar met downloaden. Herlaad om nu te updaten, of automatisch wanneer je de Tabbyrinth afsluit."
+    "message": "Tabbyapp v{version} is klaar met downloaden. Herlaad om nu te updaten, of automatisch wanneer je de Tabbyapp afsluit."
   },
   "app.update-popup.body.linux": {
     "message": "De Modrinth-app v{version} is beschikbaar. Gebruik je pakketbeheerder om bij te werken en zo de nieuwste functies en verbeteringen te krijgen!"
   },
   "app.update-popup.body.metered": {
-    "message": "Tabbyrinth v{version} is nu beschikbaar! Omdat je nu op een netwerk met datalimiet zit, is de download niet automatisch gestart."
+    "message": "Tabbyapp v{version} is nu beschikbaar! Omdat je nu op een netwerk met datalimiet zit, is de download niet automatisch gestart."
   },
   "app.update-popup.changelog": {
     "message": "Wijzigingen"

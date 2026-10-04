@@ -2,7 +2,7 @@
 	<Transition name="splash-fade" @after-leave="onAfterLeave">
 		<div v-if="!doneLoading" class="splash-screen" :class="`${theme.active}-mode`">
 			<div class="app-logo-wrapper" data-tauri-drag-region>
-				<span class="app-logo">Tabby<span class="app-logo-accent">rinth</span></span>
+				<span class="app-logo">Tabby<span class="app-logo-accent">app</span></span>
 				<ProgressBar class="loading-bar" :progress="Math.min(loadingProgress, 100)" />
 				<span v-if="message">{{ message }}</span>
 			</div>

@@ -4,6 +4,7 @@ pub mod friends;
 pub mod handler;
 pub mod instance;
 pub mod jre;
+pub mod local_servers;
 pub mod logs;
 pub mod metadata;
 pub mod minecraft_auth;

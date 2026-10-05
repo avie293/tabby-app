@@ -407,6 +407,21 @@
   "app.export-modal.export-complete-description": {
     "message": "{name} was exported successfully."
   },
+  "app.export-modal.format-label": {
+    "message": "Format"
+  },
+  "app.export-modal.format.curseforge": {
+    "message": "CurseForge (.zip)"
+  },
+  "app.export-modal.format.curseforge-hint": {
+    "message": "Mods available on CurseForge are referenced by ID; all other files are included in the zip."
+  },
+  "app.export-modal.format.modrinth": {
+    "message": "Modrinth (.mrpack)"
+  },
+  "app.export-modal.format.tabpack": {
+    "message": "Tabbyapp (.tabpack)"
+  },
   "app.export-modal.header": {
     "message": "Export modpack"
   },
@@ -1261,6 +1276,120 @@
   },
   "app.library.title": {
     "message": "Library"
+  },
+  "app.local-server.command-placeholder": {
+    "message": "Type a command, e.g. op YourName"
+  },
+  "app.local-server.console": {
+    "message": "Console"
+  },
+  "app.local-server.console-empty": {
+    "message": "Start the server to see its console here."
+  },
+  "app.local-server.delete": {
+    "message": "Delete server"
+  },
+  "app.local-server.delete-confirm": {
+    "message": "Delete {name} and all of its worlds? This cannot be undone."
+  },
+  "app.local-server.join-friends": {
+    "message": "Joining from other networks is coming soon."
+  },
+  "app.local-server.join-local": {
+    "message": "On this PC, join {address} in Minecraft."
+  },
+  "app.local-server.join-title": {
+    "message": "How to join"
+  },
+  "app.local-server.memory": {
+    "message": "Memory: {memory} MB"
+  },
+  "app.local-server.open-folder": {
+    "message": "Open folder"
+  },
+  "app.local-server.port": {
+    "message": "Port"
+  },
+  "app.local-server.save": {
+    "message": "Save"
+  },
+  "app.local-server.settings": {
+    "message": "Settings"
+  },
+  "app.local-server.stop-to-edit": {
+    "message": "Changes take effect the next time the server starts."
+  },
+  "app.local-servers.action.start": {
+    "message": "Start"
+  },
+  "app.local-servers.action.stop": {
+    "message": "Stop"
+  },
+  "app.local-servers.create-button": {
+    "message": "Create server"
+  },
+  "app.local-servers.create.button": {
+    "message": "Create server"
+  },
+  "app.local-servers.create.creating": {
+    "message": "Downloading server..."
+  },
+  "app.local-servers.create.eula": {
+    "message": "I agree to the Minecraft End User License Agreement (EULA)"
+  },
+  "app.local-servers.create.eula-link": {
+    "message": "Read the EULA"
+  },
+  "app.local-servers.create.header": {
+    "message": "Create a server"
+  },
+  "app.local-servers.create.memory": {
+    "message": "Memory: {memory} MB"
+  },
+  "app.local-servers.create.name": {
+    "message": "Name"
+  },
+  "app.local-servers.create.name-placeholder": {
+    "message": "My server"
+  },
+  "app.local-servers.create.software": {
+    "message": "Server software"
+  },
+  "app.local-servers.create.version": {
+    "message": "Minecraft version"
+  },
+  "app.local-servers.create.version-placeholder": {
+    "message": "Choose a version"
+  },
+  "app.local-servers.description": {
+    "message": "Host a Minecraft server right on your computer and play with friends."
+  },
+  "app.local-servers.empty": {
+    "message": "You haven't created a server on this PC yet."
+  },
+  "app.local-servers.software.fabric": {
+    "message": "Fabric"
+  },
+  "app.local-servers.software.paper": {
+    "message": "Paper"
+  },
+  "app.local-servers.software.vanilla": {
+    "message": "Vanilla"
+  },
+  "app.local-servers.status.running": {
+    "message": "Online"
+  },
+  "app.local-servers.status.starting": {
+    "message": "Starting"
+  },
+  "app.local-servers.status.stopped": {
+    "message": "Offline"
+  },
+  "app.local-servers.status.stopping": {
+    "message": "Stopping"
+  },
+  "app.local-servers.title": {
+    "message": "Servers on this PC"
   },
   "app.modal.install-to-play.additional-context": {
     "message": "Additional context"

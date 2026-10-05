@@ -83,24 +83,6 @@ fn main() {
                     ),
             )
             .plugin(
-                "local-servers",
-                InlinedPlugin::new()
-                    .commands(&[
-                        "local_server_list",
-                        "local_server_get",
-                        "local_server_create",
-                        "local_server_edit",
-                        "local_server_delete",
-                        "local_server_start",
-                        "local_server_stop",
-                        "local_server_send_command",
-                        "local_server_console",
-                    ])
-                    .default_permission(
-                        DefaultPermissionRule::AllowAllCommands,
-                    ),
-            )
-            .plugin(
                 "logs",
                 InlinedPlugin::new()
                     .commands(&[

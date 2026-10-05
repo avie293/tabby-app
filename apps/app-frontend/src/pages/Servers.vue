@@ -5,7 +5,6 @@ import { injectModrinthClient, ServersManagePageIndex } from '@modrinth/ui'
 import { useQuery } from '@tanstack/vue-query'
 import { computed } from 'vue'
 
-import LocalServersSection from '@/components/ui/local-servers/LocalServersSection.vue'
 import { useRootBreadcrumb } from '@/providers/breadcrumbs'
 
 import { config } from '../config'
@@ -31,7 +30,6 @@ const resolvedProducts = computed<Labrinth.Billing.Internal.Product[]>(() => pro
 </script>
 
 <template>
-	<LocalServersSection />
 	<ServersManagePageIndex
 		:stripe-publishable-key="stripePublishableKey"
 		:products="resolvedProducts"

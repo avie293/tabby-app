@@ -124,7 +124,7 @@ pub async fn parse_command(
         let path = PathBuf::from(command_string);
         let path = io::canonicalize(path)?;
         if let Some(ext) = path.extension()
-            && ext == "mrpack"
+            && matches!(ext.to_str(), Some("mrpack" | "tabpack"))
         {
             return Ok(CommandPayload::RunMRPack {
                 path: path.to_string_lossy().into_owned(),

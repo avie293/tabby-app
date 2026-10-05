@@ -567,6 +567,7 @@ export async function export_instance_mrpack(
 	versionId?: string,
 	description?: string,
 	name?: string,
+	format: PackExportFormat = 'modrinth',
 ): Promise<void> {
 	return await invoke('plugin:instance|instance_export_mrpack', {
 		instanceId,
@@ -576,8 +577,11 @@ export async function export_instance_mrpack(
 		versionId,
 		description,
 		name,
+		format,
 	})
 }
+
+export type PackExportFormat = 'modrinth' | 'curseforge'
 
 export type PackExportCandidate = {
 	path: string

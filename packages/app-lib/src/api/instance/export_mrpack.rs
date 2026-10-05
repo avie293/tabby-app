@@ -18,7 +18,7 @@ use crate::state::{
 use crate::util::io::{self, IOError};
 use futures::{StreamExt, stream};
 use path_util::SafeRelativeUtf8UnixPathBuf;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use std::collections::{HashMap, HashSet};
 use std::io::{Read, Seek, Write};
 use std::path::{Path, PathBuf};
@@ -54,6 +54,16 @@ const NEVER_EXPORTABLE_PATH_PREFIXES: &[&str] = &[
     "__MACOSX",
 ];
 const NEVER_EXPORTABLE_PATH_SUFFIXES: &[&str] = &[".DS_Store"];
+
+/// The archive format of an exported modpack. A `.tabpack` is a Modrinth
+/// pack with a different extension.
+#[derive(Debug, Clone, Copy, Default, Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum PackExportFormat {
+    #[default]
+    Modrinth,
+    Curseforge,
+}
 
 #[derive(Debug, Clone, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -172,7 +182,8 @@ pub async fn export_mrpack(
     excluded_export_candidates: Vec<String>,
     version_id: Option<String>,
     description: Option<String>,
-    _name: Option<String>,
+    name: Option<String>,
+    format: PackExportFormat,
 ) -> crate::Result<()> {
     let state = State::get().await?;
     let destination = Path::new(&export_path);
@@ -216,6 +227,9 @@ pub async fn export_mrpack(
         is_path_exportable(&f.path)
             && logical.is_ok_and(|path| export_selection.is_included(&path))
     });
+    if format == PackExportFormat::Curseforge {
+        packfile.files.clear();
+    }
     let packfile_paths = packfile
         .files
         .iter()
@@ -277,6 +291,28 @@ pub async fn export_mrpack(
         }
     }
 
+    let (index_name, index_data, message) = match format {
+        PackExportFormat::Modrinth => (
+            "modrinth.index.json",
+            serde_json::to_vec_pretty(&packfile)?,
+            "Exporting instance to .mrpack",
+        ),
+        PackExportFormat::Curseforge => {
+            let manifest = curseforge_manifest(
+                &metadata,
+                name.unwrap_or_else(|| metadata.instance.name.clone()),
+                packfile.version_id.clone(),
+                &mut override_files,
+            )
+            .await?;
+            (
+                "manifest.json",
+                serde_json::to_vec_pretty(&manifest)?,
+                "Exporting instance to CurseForge modpack",
+            )
+        }
+    };
+
     let total_bytes = override_files
         .iter()
         .fold(1_u64, |total, (_, _, size)| total.saturating_add(*size));
@@ -286,20 +322,81 @@ pub async fn export_mrpack(
             instance_name: metadata.instance.name.clone(),
         },
         total_bytes as f64,
-        "Exporting instance to .mrpack",
+        message,
     )
     .await?;
-    let data = serde_json::to_vec_pretty(&packfile)?;
     tokio::task::spawn_blocking(move || {
         let file = std::fs::File::create(&export_path)
             .map_err(|error| IOError::with_path(error, &export_path))?;
-        write_mrpack_archive(file, override_files, &data, |bytes_written| {
-            emit_loading(&loading_bar, bytes_written as f64, None)
-        })
+        write_pack_archive(
+            file,
+            override_files,
+            index_name,
+            &index_data,
+            |bytes_written| {
+                emit_loading(&loading_bar, bytes_written as f64, None)
+            },
+        )
     })
     .await??;
 
     Ok(())
+}
+
+/// Builds a CurseForge manifest. Mods CurseForge recognises by fingerprint are
+/// referenced by id and removed from `override_files`; everything else stays
+/// in the overrides folder.
+async fn curseforge_manifest(
+    metadata: &InstanceMetadata,
+    name: String,
+    version: String,
+    override_files: &mut Vec<(
+        ReadableContent,
+        SafeRelativeUtf8UnixPathBuf,
+        u64,
+    )>,
+) -> crate::Result<crate::pack::curseforge::Manifest> {
+    use crate::pack::curseforge::{
+        Manifest, ManifestMinecraft, fingerprint, manifest_mod_loader,
+        match_files_by_fingerprint,
+    };
+
+    let mut fingerprints = HashMap::new();
+    if crate::pack::curseforge::api_key().is_some() {
+        for (content, relative_path, _) in override_files.iter() {
+            let path = relative_path.as_str();
+            if !(path.starts_with("mods/") && path.ends_with(".jar")) {
+                continue;
+            }
+            let bytes = io::read(content.path()).await?;
+            fingerprints.insert(path.to_string(), fingerprint(&bytes));
+        }
+    }
+    let matched = match_files_by_fingerprint(&fingerprints).await?;
+    override_files.retain(|(_, relative_path, _)| {
+        !matched.contains_key(relative_path.as_str())
+    });
+
+    let mut files = matched.into_values().collect::<Vec<_>>();
+    files.sort_by_key(|file| (file.project_id, file.file_id));
+    Ok(Manifest {
+        minecraft: ManifestMinecraft {
+            version: metadata.applied_content_set.game_version.clone(),
+            mod_loaders: manifest_mod_loader(
+                metadata.applied_content_set.loader,
+                metadata.applied_content_set.loader_version.as_deref(),
+            )
+            .into_iter()
+            .collect(),
+        },
+        manifest_type: "minecraftModpack".to_string(),
+        manifest_version: 1,
+        name,
+        version,
+        author: String::new(),
+        files,
+        overrides: "overrides".to_string(),
+    })
 }
 
 fn ensure_standard_zip_file_size(size: u64) -> crate::Result<()> {
@@ -313,10 +410,11 @@ fn ensure_standard_zip_file_size(size: u64) -> crate::Result<()> {
     Ok(())
 }
 
-fn write_mrpack_archive<W, F>(
+fn write_pack_archive<W, F>(
     writer: W,
     override_files: Vec<(ReadableContent, SafeRelativeUtf8UnixPathBuf, u64)>,
-    packfile_data: &[u8],
+    index_name: &str,
+    index_data: &[u8],
     mut emit_progress: F,
 ) -> crate::Result<()>
 where
@@ -348,9 +446,9 @@ where
     }
 
     writer
-        .start_file("modrinth.index.json", options)
+        .start_file(index_name, options)
         .map_err(std::io::Error::from)?;
-    writer.write_all(packfile_data)?;
+    writer.write_all(index_data)?;
     writer.finish().map_err(std::io::Error::from)?;
     emit_progress(1)?;
 

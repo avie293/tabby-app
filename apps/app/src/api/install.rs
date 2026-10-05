@@ -81,6 +81,8 @@ impl InstallPostInstallEditRequest {
 pub async fn install_get_modpack_preview(
     location: CreatePackLocation,
 ) -> Result<InstallModpackPreview> {
+    let location =
+        theseus::pack::curseforge::normalize_pack_location(location).await?;
     Ok(theseus::pack::install_from::get_instance_from_pack(location).await?)
 }
 
@@ -108,6 +110,8 @@ pub async fn install_create_modpack_instance(
     location: CreatePackLocation,
     post_install_edit: Option<InstallPostInstallEditRequest>,
 ) -> Result<InstallJobSnapshot> {
+    let location =
+        theseus::pack::curseforge::normalize_pack_location(location).await?;
     Ok(theseus::install::create_modpack_instance(
         location,
         post_install_edit.map(|edit| edit.into_core()).transpose()?,

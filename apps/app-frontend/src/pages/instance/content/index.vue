@@ -1770,7 +1770,7 @@ onMounted(() => {
 			if (event.payload.type !== 'drop' || !instance.value || isInstanceBusy.value) return
 
 			for (const file of event.payload.paths) {
-				if (file.endsWith('.mrpack')) continue
+				if (file.endsWith('.mrpack') || file.endsWith('.tabpack')) continue
 				await add_project_from_path(instance.value.id, file).catch(handleError)
 			}
 			await initProjects()

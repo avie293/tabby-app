@@ -2,6 +2,7 @@
 import { FolderOpenIcon, XIcon } from '@modrinth/assets'
 import {
 	Button,
+	Chips,
 	commonMessages,
 	defineMessages,
 	FileTreeSelect,
@@ -51,7 +52,26 @@ const messages = defineMessages({
 		id: 'app.export-modal.export-complete-description',
 		defaultMessage: '{name} was exported successfully.',
 	},
+	formatLabel: { id: 'app.export-modal.format-label', defaultMessage: 'Format' },
+	formatModrinth: { id: 'app.export-modal.format.modrinth', defaultMessage: 'Modrinth (.mrpack)' },
+	formatCurseforge: {
+		id: 'app.export-modal.format.curseforge',
+		defaultMessage: 'CurseForge (.zip)',
+	},
+	formatTabpack: { id: 'app.export-modal.format.tabpack', defaultMessage: 'Tabbyapp (.tabpack)' },
+	formatCurseforgeHint: {
+		id: 'app.export-modal.format.curseforge-hint',
+		defaultMessage:
+			'Mods available on CurseForge are referenced by ID; all other files are included in the zip.',
+	},
 })
+
+const exportFormats = {
+	mrpack: { label: 'formatModrinth', backend: 'modrinth', filter: 'Modrinth Modpack' },
+	curseforge: { label: 'formatCurseforge', backend: 'curseforge', filter: 'CurseForge Modpack' },
+	tabpack: { label: 'formatTabpack', backend: 'modrinth', filter: 'Tabbyapp Modpack' },
+}
+const extensions = { mrpack: 'mrpack', curseforge: 'zip', tabpack: 'tabpack' }
 
 const props = defineProps({
 	instance: {
@@ -72,6 +92,7 @@ const exportModal = ref(null)
 const nameInput = ref(props.instance.name)
 const exportDescription = ref('')
 const versionInput = ref('1.0.0')
+const exportFormat = ref('mrpack')
 const files = shallowRef([])
 const includedFilePaths = ref([])
 const excludedFilePaths = ref([])
@@ -94,12 +115,14 @@ async function initFiles() {
 }
 
 const exportPack = async () => {
+	const format = exportFormats[exportFormat.value]
+	const extension = extensions[exportFormat.value]
 	const outputPath = await save({
-		defaultPath: `${nameInput.value} ${versionInput.value}.mrpack`,
+		defaultPath: `${nameInput.value} ${versionInput.value}.${extension}`,
 		filters: [
 			{
-				name: 'Modrinth Modpack',
-				extensions: ['mrpack'],
+				name: format.filter,
+				extensions: [extension],
 			},
 		],
 	})
@@ -116,6 +139,7 @@ const exportPack = async () => {
 				versionInput.value,
 				exportDescription.value,
 				nameInput.value,
+				format.backend,
 			)
 
 			const fileName = outputPath.split(/[\\/]/).pop() ?? outputPath
@@ -141,6 +165,7 @@ function resetExportState() {
 	nameInput.value = props.instance.name
 	exportDescription.value = ''
 	versionInput.value = '1.0.0'
+	exportFormat.value = 'mrpack'
 	files.value = []
 	includedFilePaths.value = []
 	excludedFilePaths.value = []
@@ -192,6 +217,18 @@ function normalizeExportPath(path) {
 		max-width="calc(100vw - 2rem)"
 	>
 		<div class="flex flex-col gap-4">
+			<div class="flex flex-col gap-2">
+				<p class="m-0 text-contrast font-semibold">{{ formatMessage(messages.formatLabel) }}</p>
+				<Chips
+					v-model="exportFormat"
+					:items="Object.keys(exportFormats)"
+					:format-label="(item) => formatMessage(messages[exportFormats[item].label])"
+					:capitalize="false"
+				/>
+				<p v-if="exportFormat === 'curseforge'" class="m-0 text-sm text-secondary">
+					{{ formatMessage(messages.formatCurseforgeHint) }}
+				</p>
+			</div>
 			<div class="grid grid-cols-2 gap-4">
 				<div class="labeled_input w-full">
 					<p class="text-contrast font-semibold">{{ formatMessage(messages.modpackNameLabel) }}</p>

@@ -42,6 +42,8 @@ jobs:
 
       - name: Set version from tag and select production environment
         shell: bash
+        env:
+          CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           echo "Building Tabbyapp $VERSION"
@@ -55,6 +57,9 @@ jobs:
           sed -i "0,/^version = .*/s//version = \"$VERSION\"/" apps/app/Cargo.toml
           sed -i "0,/^version = .*/s//version = \"$VERSION\"/" packages/app-lib/Cargo.toml
           cp packages/app-lib/.env.prod packages/app-lib/.env
+          if [ -n "$CURSEFORGE_API_KEY" ]; then
+            printf "\nCURSEFORGE_API_KEY='%s'\n" "$CURSEFORGE_API_KEY" >> packages/app-lib/.env
+          fi
 
       - name: Install dependencies
         run: pnpm install

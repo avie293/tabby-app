@@ -1620,7 +1620,7 @@ async function handleCommand(e) {
 
 	if (e.event === 'RunMRPack') {
 		// RunMRPack should directly install a local mrpack given a path
-		if (e.path.endsWith('.mrpack')) {
+		if (/\.(mrpack|tabpack)$/i.test(e.path)) {
 			const location = { type: 'fromFile', path: e.path }
 			const preview = await install_get_modpack_preview(location).catch(handleError)
 			if (preview?.unknownFile || preview?.externalFilesInModpack.length > 0) {

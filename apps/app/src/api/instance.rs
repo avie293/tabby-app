@@ -1293,6 +1293,7 @@ pub async fn instance_export_mrpack(
     version_id: Option<String>,
     description: Option<String>,
     name: Option<String>,
+    format: Option<theseus::instance::PackExportFormat>,
 ) -> Result<()> {
     theseus::instance::export_mrpack(
         instance_id,
@@ -1302,6 +1303,7 @@ pub async fn instance_export_mrpack(
         version_id,
         description,
         name,
+        format.unwrap_or_default(),
     )
     .await?;
     Ok(())

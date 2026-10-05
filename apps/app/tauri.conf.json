@@ -52,6 +52,10 @@
 			{
 				"ext": ["mrpack"],
 				"mimeType": "application/x-modrinth-modpack+zip"
+			},
+			{
+				"ext": ["tabpack"],
+				"mimeType": "application/x-tabbyapp-modpack+zip"
 			}
 		]
 	},

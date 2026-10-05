@@ -16,6 +16,11 @@ export default new createRouter({
 			component: () => import('@/pages/Servers.vue'),
 		},
 		{
+			path: '/hosting/local/:id',
+			name: 'LocalServer',
+			component: () => import('@/pages/hosting/local/Index.vue'),
+		},
+		{
 			path: '/hosting/manage/:id',
 			name: 'ServerManage',
 			component: () => import('@/pages/hosting/manage/Index.vue'),

@@ -2819,6 +2819,27 @@
   "app.settings.game-options.validation.no-compatible-instances": {
     "message": "Einige deiner Instanzen können diese Einstellung nicht verwenden"
   },
+  "app.settings.holiday-theme.auto": {
+    "message": "Automatisch"
+  },
+  "app.settings.holiday-theme.christmas": {
+    "message": "Weihnachten"
+  },
+  "app.settings.holiday-theme.description": {
+    "message": "Dekorationen für Ostern, Halloween und Weihnachten. Bei „Automatisch“ erscheinen sie rund um den jeweiligen Feiertag."
+  },
+  "app.settings.holiday-theme.easter": {
+    "message": "Ostern"
+  },
+  "app.settings.holiday-theme.halloween": {
+    "message": "Halloween"
+  },
+  "app.settings.holiday-theme.off": {
+    "message": "Aus"
+  },
+  "app.settings.holiday-theme.title": {
+    "message": "Feiertags-Themes"
+  },
   "app.settings.java-installations.location.title": {
     "message": "Java {version, number} Installation"
   },

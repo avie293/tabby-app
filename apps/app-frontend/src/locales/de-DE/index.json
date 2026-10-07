@@ -1451,6 +1451,21 @@
   "app.navigation.next-image": {
     "message": "Nächstes Bild"
   },
+  "app.news.project-update.changelog": {
+    "message": "Changelog"
+  },
+  "app.news.project-update.minecraft": {
+    "message": "Minecraft {versions}"
+  },
+  "app.news.project-update.no-changelog": {
+    "message": "Für dieses Update wurde kein Changelog angegeben."
+  },
+  "app.news.project-update.open-project": {
+    "message": "Projekt öffnen"
+  },
+  "app.news.project-update.summary": {
+    "message": "Minecraft {versions} · {loaders}"
+  },
   "app.news.title": {
     "message": "Neuigkeiten"
   },

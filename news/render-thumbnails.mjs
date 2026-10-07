@@ -110,6 +110,10 @@ const defs = `
 			<stop offset="0" stop-color="#c25aa8"/>
 			<stop offset="1" stop-color="#b86ab8"/>
 		</linearGradient>
+		<linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
+			<stop offset="0" stop-color="#ffe08a"/>
+			<stop offset="1" stop-color="#f5a742"/>
+		</linearGradient>
 		<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
 			<feDropShadow dx="0" dy="18" stdDeviation="26" flood-color="#000" flood-opacity="0.35"/>
 		</filter>
@@ -212,6 +216,96 @@ const thumbnails = {
 					${check(1440, y + 92, 0.62)}`
 			})
 			.join('')}`,
+
+	// Thumbnails for updates of the projects listed in articles.json under "modrinth".
+	'projects/avies-day-counter': () => `
+		${dayHud(250, 300)}
+		${badge(1440, 540, 190, sun(1440, 540))}`,
+
+	'projects/aviesdaycounter-datapack': () => `
+		${dayHud(250, 300)}
+		${badge(1440, 540, 190, cube(1440, 548, 1))}`,
+
+	'projects/avies-ping-display': () => `
+		${glass(360, 150, 1200, 780, 56)}
+		${[
+			['16 ms', '#4ade80', 330],
+			['48 ms', '#4ade80', 260],
+			['92 ms', '#facc15', 380],
+			['210 ms', '#f87171', 300],
+		]
+			.map(([ping, color, nameWidth], index) => {
+				const y = 220 + index * 170
+				const icon = ['url(#blue)', 'url(#pink)', 'url(#teal)', 'url(#orange)'][index]
+				return `${glass(420, y, 1080, 130, 34)}
+					<rect x="456" y="${y + 25}" width="80" height="80" rx="18" fill="${icon}"/>
+					${line(576, y + 48, nameWidth)}
+					<text x="1450" y="${y + 86}" text-anchor="end" font-family="Consolas, Menlo, monospace" font-weight="700" font-size="68" fill="${color}">${ping}</text>`
+			})
+			.join('')}`,
+
+	// Used for projects that have no thumbnail of their own yet.
+	'projects/default': () => `
+		${glass(330, 260, 1000, 560, 56)}
+		<rect x="400" y="330" width="220" height="220" rx="52" fill="url(#brand)"/>
+		${line(670, 360, 520, 44)}${line(670, 430, 360)}${line(670, 490, 420)}
+		<rect x="400" y="620" width="300" height="80" rx="40" fill="url(#brand-bar)"/>
+		${line(740, 643, 300)}
+		${badge(1520, 540, 150, download(1520, 540, 1.2))}`,
+}
+
+/** A glass HUD showing the in-game day, like the Day Counter mod does. */
+function dayHud(x, y) {
+	return `${glass(x, y, 860, 480, 56)}
+		<text x="${x + 80}" y="${y + 230}" font-family="Consolas, Menlo, monospace" font-weight="700" font-size="150" fill="#ffffff">Day 128</text>
+		${line(x + 84, y + 300, 300, 40)}
+		<rect x="${x + 84}" y="${y + 380}" width="690" height="34" rx="17" fill="#ffffff" fill-opacity="0.18"/>
+		<rect x="${x + 84}" y="${y + 380}" width="430" height="34" rx="17" fill="url(#sun)"/>`
+}
+
+function sun(cx, cy) {
+	const rays = Array.from({ length: 8 }, (_, index) => {
+		const angle = (index * Math.PI) / 4
+		const point = (radius) => [cx + Math.cos(angle) * radius, cy + Math.sin(angle) * radius]
+		const [x1, y1] = point(92)
+		const [x2, y2] = point(128)
+		return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#ffd36e" stroke-width="18" stroke-linecap="round"/>`
+	}).join('')
+	return `${rays}<circle cx="${cx}" cy="${cy}" r="68" fill="url(#sun)"/>`
+}
+
+/** An isometric block, standing for a datapack. */
+function cube(cx, cy, scale) {
+	const s = 110 * scale
+	const dx = s * Math.cos(Math.PI / 6)
+	const dy = s * Math.sin(Math.PI / 6)
+	const points = (list) => list.map(([x, y]) => `${cx + x},${cy + y}`).join(' ')
+	const top = [
+		[0, -s],
+		[dx, -s + dy],
+		[0, -s + 2 * dy],
+		[-dx, -s + dy],
+	]
+	const left = [
+		[-dx, -s + dy],
+		[0, -s + 2 * dy],
+		[0, 2 * dy],
+		[-dx, dy],
+	]
+	const right = [
+		[dx, -s + dy],
+		[0, -s + 2 * dy],
+		[0, 2 * dy],
+		[dx, dy],
+	]
+	return `<polygon points="${points(top)}" fill="#c7a6ff"/>
+		<polygon points="${points(left)}" fill="#9d6bf5"/>
+		<polygon points="${points(right)}" fill="#7a4fd1"/>`
+}
+
+function download(cx, cy, scale) {
+	const s = (value) => value * scale
+	return `<path d="M${cx} ${cy - s(56)} v${s(96)} m-${s(40)} -${s(40)} l${s(40)} ${s(40)} l${s(40)} -${s(40)} M${cx - s(52)} ${cy + s(62)} h${s(104)}" fill="none" stroke="#ffffff" stroke-width="${s(16)}" stroke-linecap="round" stroke-linejoin="round"/>`
 }
 
 const seeds = {
@@ -219,6 +313,10 @@ const seeds = {
 	'modrinth-app-import': 19,
 	'modpack-export': 23,
 	'more-stable-downloads': 31,
+	'projects/avies-day-counter': 41,
+	'projects/aviesdaycounter-datapack': 43,
+	'projects/avies-ping-display': 47,
+	'projects/default': 53,
 }
 
 for (const [slug, draw] of Object.entries(thumbnails)) {

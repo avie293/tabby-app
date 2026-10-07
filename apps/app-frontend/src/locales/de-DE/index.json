@@ -308,6 +308,186 @@
   "app.creation.essential.auto-install-error-text": {
     "message": "Essential ist für diese Minecraft-Version und diesen Mod-Loader möglicherweise noch nicht verfügbar. ({error})"
   },
+  "app.dashboard.back-to-collections": {
+    "message": "Zurück zu den Collections"
+  },
+  "app.dashboard.back-to-organizations": {
+    "message": "Zurück zu den Organisationen"
+  },
+  "app.dashboard.collection.delete": {
+    "message": "Collection löschen"
+  },
+  "app.dashboard.collection.delete-description": {
+    "message": "Die Collection wird endgültig gelöscht. Die Projekte darin bleiben unverändert."
+  },
+  "app.dashboard.collection.listed": {
+    "message": "Öffentlich"
+  },
+  "app.dashboard.collection.no-projects": {
+    "message": "Speichere Projekte über ihre Projektseite in dieser Collection."
+  },
+  "app.dashboard.collection.private": {
+    "message": "Privat"
+  },
+  "app.dashboard.collection.projects": {
+    "message": "Projekte"
+  },
+  "app.dashboard.collection.remove-project": {
+    "message": "Entfernen"
+  },
+  "app.dashboard.collection.unlisted": {
+    "message": "Nicht gelistet"
+  },
+  "app.dashboard.collection.visibility": {
+    "message": "Sichtbarkeit"
+  },
+  "app.dashboard.collections.create": {
+    "message": "Collection erstellen"
+  },
+  "app.dashboard.collections.description": {
+    "message": "Beschreibung"
+  },
+  "app.dashboard.collections.empty": {
+    "message": "Du hast noch keine Collections."
+  },
+  "app.dashboard.collections.name": {
+    "message": "Name"
+  },
+  "app.dashboard.collections.project-count": {
+    "message": "{count, plural, one {# Projekt} other {# Projekte}}"
+  },
+  "app.dashboard.collections.title": {
+    "message": "Collections"
+  },
+  "app.dashboard.icon.remove": {
+    "message": "Icon entfernen"
+  },
+  "app.dashboard.icon.upload": {
+    "message": "Icon hochladen"
+  },
+  "app.dashboard.nav.analytics": {
+    "message": "Analytics"
+  },
+  "app.dashboard.nav.collections": {
+    "message": "Collections"
+  },
+  "app.dashboard.nav.creators": {
+    "message": "Creator"
+  },
+  "app.dashboard.nav.organizations": {
+    "message": "Organisationen"
+  },
+  "app.dashboard.nav.overview": {
+    "message": "Übersicht"
+  },
+  "app.dashboard.nav.projects": {
+    "message": "Projekte"
+  },
+  "app.dashboard.nav.revenue": {
+    "message": "Einnahmen"
+  },
+  "app.dashboard.organization.delete": {
+    "message": "Organisation löschen"
+  },
+  "app.dashboard.organization.delete-description": {
+    "message": "Die Organisation wird endgültig gelöscht. Ihre Projekte gehen an ihre Besitzer zurück."
+  },
+  "app.dashboard.organization.invite": {
+    "message": "Einladen"
+  },
+  "app.dashboard.organization.invite-placeholder": {
+    "message": "Modrinth-Benutzername"
+  },
+  "app.dashboard.organization.invited": {
+    "message": "Eingeladen"
+  },
+  "app.dashboard.organization.members": {
+    "message": "Mitglieder"
+  },
+  "app.dashboard.organization.owner": {
+    "message": "Besitzer"
+  },
+  "app.dashboard.organization.projects": {
+    "message": "Projekte"
+  },
+  "app.dashboard.organization.remove-member": {
+    "message": "Entfernen"
+  },
+  "app.dashboard.organization.role": {
+    "message": "Rolle"
+  },
+  "app.dashboard.organization.save-role": {
+    "message": "Rolle speichern"
+  },
+  "app.dashboard.organizations.create": {
+    "message": "Organisation erstellen"
+  },
+  "app.dashboard.organizations.empty": {
+    "message": "Du bist noch in keiner Organisation."
+  },
+  "app.dashboard.organizations.members": {
+    "message": "{count, plural, one {# Mitglied} other {# Mitglieder}}"
+  },
+  "app.dashboard.organizations.name": {
+    "message": "Name"
+  },
+  "app.dashboard.organizations.slug": {
+    "message": "URL"
+  },
+  "app.dashboard.organizations.summary": {
+    "message": "Kurzbeschreibung"
+  },
+  "app.dashboard.organizations.title": {
+    "message": "Organisationen"
+  },
+  "app.dashboard.overview.downloads": {
+    "message": "Downloads"
+  },
+  "app.dashboard.overview.followers": {
+    "message": "Follower"
+  },
+  "app.dashboard.overview.no-projects": {
+    "message": "Du hast noch keine Projekte veröffentlicht."
+  },
+  "app.dashboard.overview.projects": {
+    "message": "Projekte"
+  },
+  "app.dashboard.overview.recent": {
+    "message": "Zuletzt aktualisierte Projekte"
+  },
+  "app.dashboard.overview.welcome": {
+    "message": "Willkommen zurück, {name}"
+  },
+  "app.dashboard.projects.column.name": {
+    "message": "Name"
+  },
+  "app.dashboard.projects.column.status": {
+    "message": "Status"
+  },
+  "app.dashboard.projects.column.type": {
+    "message": "Typ"
+  },
+  "app.dashboard.projects.empty": {
+    "message": "Du hast noch keine Projekte veröffentlicht."
+  },
+  "app.dashboard.projects.search": {
+    "message": "Projekte durchsuchen"
+  },
+  "app.dashboard.projects.title": {
+    "message": "Projekte"
+  },
+  "app.dashboard.save": {
+    "message": "Änderungen speichern"
+  },
+  "app.dashboard.saved": {
+    "message": "Änderungen gespeichert"
+  },
+  "app.dashboard.sign-in": {
+    "message": "Melde dich mit deinem Modrinth-Konto an, um dein Dashboard zu sehen."
+  },
+  "app.dashboard.title": {
+    "message": "Dashboard"
+  },
   "app.debug-export.canceling": {
     "message": "Export wird abgebrochen…"
   },

@@ -13,6 +13,7 @@ import {
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	CompassIcon,
+	DashboardIcon,
 	ImageIcon,
 	LogInIcon,
 	LogOutIcon,
@@ -631,6 +632,10 @@ const messages = defineMessages({
 	removeAccount: {
 		id: 'app.nav.remove-account',
 		defaultMessage: 'Remove account',
+	},
+	dashboard: {
+		id: 'app.dashboard.title',
+		defaultMessage: 'Dashboard',
 	},
 	restarting: {
 		id: 'app.restarting',
@@ -2144,6 +2149,14 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 				"
 			>
 				<ServerStackIcon />
+			</NavButton>
+			<NavButton
+				v-if="credentials"
+				v-tooltip.right="formatMessage(messages.dashboard)"
+				to="/dashboard"
+				:is-primary="(r) => r.path.startsWith('/dashboard')"
+			>
+				<DashboardIcon />
 			</NavButton>
 			<suspense>
 				<QuickInstanceSwitcher>

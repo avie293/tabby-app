@@ -26,6 +26,31 @@ export class LabrinthCollectionsModule extends AbstractModule {
 	}
 
 	/**
+	 * Create a collection for the signed in user (v3)
+	 *
+	 * @param data - Name, optional description and the projects to start with
+	 * @returns Promise resolving to the new collection
+	 *
+	 * @example
+	 * ```typescript
+	 * const collection = await client.labrinth.collections.create({
+	 *   name: 'Favorites',
+	 *   projects: ['AANobbMI'],
+	 * })
+	 * ```
+	 */
+	public async create(
+		data: Labrinth.Collections.CreateCollectionRequest,
+	): Promise<Labrinth.Collections.Collection> {
+		return this.client.request<Labrinth.Collections.Collection>(`/collection`, {
+			api: 'labrinth',
+			version: 3,
+			method: 'POST',
+			body: data,
+		})
+	}
+
+	/**
 	 * Get multiple collections by IDs (v3)
 	 *
 	 * @param ids - Array of collection IDs

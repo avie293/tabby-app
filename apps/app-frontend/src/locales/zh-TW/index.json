@@ -1409,9 +1409,6 @@
   "app.project.actions.label": {
     "message": "專案動作"
   },
-  "app.project.coming-soon": {
-    "message": "即將推出"
-  },
   "app.project.install-button.already-installed": {
     "message": "這個專案已安裝"
   },

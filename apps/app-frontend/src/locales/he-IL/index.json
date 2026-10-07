@@ -1316,9 +1316,6 @@
   "app.project.actions.label": {
     "message": "פעולות פרויקט"
   },
-  "app.project.coming-soon": {
-    "message": "יגיעה בקרוב"
-  },
   "app.project.install-button.already-installed": {
     "message": "פרויקט זה כבר מותקן"
   },

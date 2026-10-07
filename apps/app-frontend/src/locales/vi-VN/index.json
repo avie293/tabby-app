@@ -1409,9 +1409,6 @@
   "app.project.actions.label": {
     "message": "Thao tác với dự án"
   },
-  "app.project.coming-soon": {
-    "message": "Sắp ra mắt"
-  },
   "app.project.install-button.already-installed": {
     "message": "Dự án này đã được cài đặt"
   },

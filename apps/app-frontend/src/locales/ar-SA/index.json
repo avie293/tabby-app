@@ -1319,9 +1319,6 @@
   "app.project.actions.label": {
     "message": "إجراءات المشروع"
   },
-  "app.project.coming-soon": {
-    "message": "قريباً"
-  },
   "app.project.install-button.already-installed": {
     "message": "هذا المشروع مُثبَّت بالفعل"
   },

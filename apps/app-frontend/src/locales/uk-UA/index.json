@@ -1400,9 +1400,6 @@
   "app.project.actions.label": {
     "message": "Дії з проєктом"
   },
-  "app.project.coming-soon": {
-    "message": "Незабаром"
-  },
   "app.project.install-button.already-installed": {
     "message": "Проєкт уже встановлено"
   },

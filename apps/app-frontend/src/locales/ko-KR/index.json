@@ -1409,9 +1409,6 @@
   "app.project.actions.label": {
     "message": "프로젝트 동작"
   },
-  "app.project.coming-soon": {
-    "message": "제공 예정"
-  },
   "app.project.install-button.already-installed": {
     "message": "이미 설치되어 있음"
   },

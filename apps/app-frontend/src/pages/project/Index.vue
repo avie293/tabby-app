@@ -213,6 +213,7 @@
 				<GlobeIcon /> {{ option.label }} <ExternalIcon />
 			</template>
 		</ContextMenu>
+		<SaveToCollectionModal ref="saveModal" :user-id="currentUserId" />
 		<CreationFlowModal
 			v-if="serverInstallContent.isServerContext.value && data?.project_type === 'modpack'"
 			ref="serverSetupModalRef"
@@ -259,6 +260,7 @@ import {
 	defineMessages,
 	getTargetInstallPreferences,
 	IconButton,
+	injectModrinthClient,
 	injectNotificationManager,
 	NavTabs,
 	ProjectBackgroundGradient,
@@ -274,7 +276,7 @@ import {
 	TeleportOverflowMenu,
 	useVIntl,
 } from '@modrinth/ui'
-import { useQueryClient } from '@tanstack/vue-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { openUrl } from '@tauri-apps/plugin-opener'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -283,6 +285,7 @@ import { useRoute, useRouter } from 'vue-router'
 
 import { SwapIcon } from '@/assets/icons/index.js'
 import InstanceIndicator from '@/components/ui/InstanceIndicator.vue'
+import SaveToCollectionModal from '@/components/ui/project/SaveToCollectionModal.vue'
 import {
 	fetchCachedServerStatus,
 	getFreshCachedServerStatus,
@@ -305,6 +308,7 @@ import {
 	list as listInstances,
 } from '@/helpers/instance'
 import { get_loader_versions as getLoaderManifest } from '@/helpers/metadata'
+import { get as getCredentials } from '@/helpers/mr_auth'
 import { get_by_instance_id } from '@/helpers/process'
 import { get_categories, get_game_versions, get_loaders } from '@/helpers/tags'
 import { getServerAddress } from '@/helpers/worlds'
@@ -355,7 +359,14 @@ const messages = defineMessages({
 		id: 'app.project.load-error',
 		defaultMessage: 'Project data could not be loaded.',
 	},
-	comingSoon: { id: 'app.project.coming-soon', defaultMessage: 'Coming soon' },
+	signInToFollow: {
+		id: 'app.project.sign-in-to-follow',
+		defaultMessage: 'Sign in to follow projects',
+	},
+	signInToSave: {
+		id: 'app.project.sign-in-to-save',
+		defaultMessage: 'Sign in to save projects to collections',
+	},
 	backToBrowse: {
 		id: 'app.project.install-context.back-to-browse',
 		defaultMessage: 'Back to discover',
@@ -603,22 +614,51 @@ const serverProjectHeaderMoreActions = computed(() => [
 		action: reportProject,
 	},
 ])
+const modrinthClient = injectModrinthClient()
+const saveModal = ref(null)
+const currentUserId = ref(null)
+getCredentials()
+	.then((credentials) => {
+		currentUserId.value = credentials?.user_id ?? null
+	})
+	.catch(() => {})
+
+const followsKey = computed(() => ['user-follows', currentUserId.value])
+const followsQuery = useQuery({
+	queryKey: followsKey,
+	queryFn: () => modrinthClient.labrinth.users_v2.getFollowedProjects(currentUserId.value),
+	enabled: () => !!currentUserId.value,
+})
+const following = computed(
+	() => !!data.value && !!followsQuery.data.value?.some((project) => project.id === data.value.id),
+)
+const followMutation = useMutation({
+	mutationFn: () =>
+		following.value
+			? modrinthClient.labrinth.projects_v2.unfollow(data.value.id)
+			: modrinthClient.labrinth.projects_v2.follow(data.value.id),
+	onSettled: () => queryClient.invalidateQueries({ queryKey: followsKey.value }),
+	onError: (error) => handleError(error),
+})
+
 const projectHeaderMoreActions = computed(() => [
 	{
 		id: 'follow',
-		label: formatMessage(commonMessages.followButton),
+		label: formatMessage(
+			following.value ? commonMessages.unfollowButton : commonMessages.followButton,
+		),
 		icon: HeartIcon,
-		disabled: true,
-		tooltip: formatMessage(messages.comingSoon),
-		action: () => {},
+		disabled: !currentUserId.value || followMutation.isPending.value,
+		tooltip: currentUserId.value ? undefined : formatMessage(messages.signInToFollow),
+		action: () => followMutation.mutate(),
 	},
 	{
 		id: 'save',
 		label: formatMessage(commonMessages.saveButton),
 		icon: BookmarkIcon,
-		disabled: true,
-		tooltip: formatMessage(messages.comingSoon),
-		action: () => {},
+		disabled: !currentUserId.value,
+		tooltip: currentUserId.value ? undefined : formatMessage(messages.signInToSave),
+		action: () => saveModal.value?.show(data.value.id),
 	},
 	{
 		id: 'open-in-browser',

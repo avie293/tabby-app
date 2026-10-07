@@ -2420,6 +2420,12 @@ export namespace Labrinth {
 			status?: CollectionStatus
 			new_projects?: string[]
 		}
+
+		export type CreateCollectionRequest = {
+			name: string
+			description?: string | null
+			projects: string[]
+		}
 	}
 
 	export namespace State {

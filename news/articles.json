@@ -1,0 +1,32 @@
+{
+	"articles": [
+		{
+			"title": "Stabilere Downloads und Updates",
+			"summary": "Alle Verbesserungen aus der Modrinth App 0.21.8, ein Button für Debug-Infos und 35 neue Skins.",
+			"thumbnail": "https://raw.githubusercontent.com/avie293/tabby-app/main/news/more-stable-downloads/thumbnail.webp",
+			"date": "2026-10-07T12:00:00.000Z",
+			"link": "https://github.com/avie293/tabby-app/releases/tag/v1.2.1"
+		},
+		{
+			"title": "Modpacks exportieren, wie du willst",
+			"summary": "Exportiere Instanzen als .mrpack, als CurseForge-ZIP oder im eigenen Tabbyapp-Format .tabpack.",
+			"thumbnail": "https://raw.githubusercontent.com/avie293/tabby-app/main/news/modpack-export/thumbnail.webp",
+			"date": "2026-10-05T20:00:00.000Z",
+			"link": "https://github.com/avie293/tabby-app/releases/tag/v1.2.0"
+		},
+		{
+			"title": "Umzug aus der Modrinth App",
+			"summary": "Übernimm Instanzen, Welten, Screenshots und Spielzeit aus der Modrinth App und wähle selbst, was mitkommt.",
+			"thumbnail": "https://raw.githubusercontent.com/avie293/tabby-app/main/news/modrinth-app-import/thumbnail.webp",
+			"date": "2026-10-05T12:00:00.000Z",
+			"link": "https://github.com/avie293/tabby-app/releases/tag/v1.1.0"
+		},
+		{
+			"title": "Willkommen bei Tabbyapp",
+			"summary": "Ohne Werbung, mit Essential per Klick und Einstellungen, die zwischen deinen Instanzen synchron bleiben.",
+			"thumbnail": "https://raw.githubusercontent.com/avie293/tabby-app/main/news/welcome/thumbnail.webp",
+			"date": "2026-10-04T12:00:00.000Z",
+			"link": "https://github.com/avie293/tabby-app/releases/tag/v1.0.0"
+		}
+	]
+}

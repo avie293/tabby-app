@@ -105,6 +105,51 @@ export class LabrinthPayoutV3Module extends AbstractModule {
 	 *
 	 * @param id - The payout ID to cancel
 	 */
+	/**
+	 * Calculate the fee and net amount of a withdrawal before requesting it
+	 *
+	 * @example
+	 * ```typescript
+	 * const fees = await client.labrinth.payout_v3.calculateFees({ amount: 10, method: 'paypal', method_id: 'paypal_us' })
+	 * ```
+	 */
+	public async calculateFees(
+		request: Labrinth.Payout.v3.WithdrawRequest,
+	): Promise<Labrinth.Payout.v3.WithdrawalFees> {
+		const fees = await this.client.request<{
+			net_usd: RawDecimal | null
+			fee: RawDecimal | null
+			exchange_rate: RawDecimal | null
+		}>('/payout/fees', {
+			api: 'labrinth',
+			version: 3,
+			method: 'POST',
+			body: request,
+		})
+		return {
+			net_usd: Number(fees.net_usd ?? 0),
+			fee: Number(fees.fee ?? 0),
+			exchange_rate: fees.exchange_rate === null ? null : Number(fees.exchange_rate),
+		}
+	}
+
+	/**
+	 * Request a withdrawal of the available balance
+	 *
+	 * @example
+	 * ```typescript
+	 * await client.labrinth.payout_v3.withdraw({ amount: 10, method: 'paypal', method_id: 'paypal_us' })
+	 * ```
+	 */
+	public async withdraw(request: Labrinth.Payout.v3.WithdrawRequest): Promise<void> {
+		return this.client.request<void>('/payout', {
+			api: 'labrinth',
+			version: 3,
+			method: 'POST',
+			body: request,
+		})
+	}
+
 	public async cancel(id: string): Promise<void> {
 		return this.client.request<void>(`/payout/${id}`, {
 			api: 'labrinth',

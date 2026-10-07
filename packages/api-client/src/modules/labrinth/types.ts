@@ -259,6 +259,16 @@ export namespace Labrinth {
 				exchange_rate: number | null
 			}
 
+			export type WithdrawRequest = {
+				amount: number
+				method: PayoutMethodType
+				method_id: string
+				method_details?: {
+					delivery_email?: string
+					currency?: string
+				}
+			}
+
 			export type PayoutDecimal = number
 
 			export type PayoutInterval = {

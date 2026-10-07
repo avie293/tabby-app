@@ -9,7 +9,7 @@ import {
 	useVIntl,
 } from '@modrinth/ui'
 import { useQuery, useQueryClient } from '@tanstack/vue-query'
-import { type Component,computed } from 'vue'
+import { type Component, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import DescriptionSettings from '@/components/ui/dashboard/project/DescriptionSettings.vue'

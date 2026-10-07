@@ -171,7 +171,7 @@
     "message": "App minimieren"
   },
   "app.appearance-settings.show-play-time.description": {
-    "message": "Zeige an, wie lange du Instanzen gespielt hast."
+    "message": "Zeige an, wie lange du die jeweilige Instanz gespielt haben."
   },
   "app.appearance-settings.show-play-time.title": {
     "message": "Spielzeit anzeigen"
@@ -205,6 +205,12 @@
   },
   "app.behavior-settings.content.title": {
     "message": "Startseite & Inhalte"
+  },
+  "app.behavior-settings.refocus-on-game-close.description": {
+    "message": "Bringe Tabbyapp in den Vordergrund, wenn Minecraft beendet wird."
+  },
+  "app.behavior-settings.refocus-on-game-close.title": {
+    "message": "App neu fokussieren, wenn Minecraft geschlossen wird"
   },
   "app.behavior-settings.startup-and-navigation.title": {
     "message": "Start & Navigation"
@@ -249,7 +255,7 @@
     "message": "Bereits hinzugefügte Server ausblenden"
   },
   "app.browse.hide-installed-modpacks": {
-    "message": "Bereits installiert ausblenden"
+    "message": "Bereits installierte ausblenden"
   },
   "app.browse.project-actions.label": {
     "message": "Projektaktionen"
@@ -302,11 +308,26 @@
   "app.creation.essential.auto-install-error-text": {
     "message": "Essential ist für diese Minecraft-Version und diesen Mod-Loader möglicherweise noch nicht verfügbar. ({error})"
   },
+  "app.debug-export.canceling": {
+    "message": "Export wird abgebrochen…"
+  },
+  "app.debug-export.exporting": {
+    "message": "Wird exportiert…"
+  },
+  "app.debug-export.finishing": {
+    "message": "Wird abgeschlossen…"
+  },
+  "app.debug-export.preparing": {
+    "message": "Dateien werden vorbereitet…"
+  },
   "app.download-manager.active": {
     "message": "Aktiv"
   },
   "app.download-manager.attention": {
-    "message": "Erfordert Aufmerksamkeit"
+    "message": "Benötigt Aufmerksamkeit"
+  },
+  "app.download-manager.bulk-update-content": {
+    "message": "{count, plural, one {# Element} other {# Elemente}}"
   },
   "app.download-manager.cancel": {
     "message": "Installation abbrechen"
@@ -1002,7 +1023,7 @@
     "message": "Installiere..."
   },
   "app.java-selector.path.placeholder": {
-    "message": "/path/to/java"
+    "message": "/pfad/zu/java"
   },
   "app.java-selector.test-installation": {
     "message": "Java-Installation testen"
@@ -1701,7 +1722,7 @@
     "message": "Start-Hooks"
   },
   "app.settings.default-instance-options.memory-allocation.description": {
-    "message": "Maximal verfügbarer Arbeitsspeicher zu jeder Instanz."
+    "message": "Maximale verfügbarer Arbeitsspeicher für jede Instanz."
   },
   "app.settings.default-instance-options.memory-allocation.title": {
     "message": "Arbeitsspeicherzuweisung"
@@ -2903,6 +2924,15 @@
   "app.settings.resource-management.app-directory.title": {
     "message": "App-Verzeichnis"
   },
+  "app.settings.resource-management.debug-info.description": {
+    "message": "Exportiere App-Logs und Diagnosedaten als ZIP-Datei, z. B. um sie bei einer Fehlermeldung anzuhängen."
+  },
+  "app.settings.resource-management.debug-info.export": {
+    "message": "Debug-Infos exportieren"
+  },
+  "app.settings.resource-management.debug-info.title": {
+    "message": "Debug-Infos"
+  },
   "app.settings.resource-management.maximum-concurrent-downloads.description": {
     "message": "Anzahl der Dateien, die die App auf einmal herunterladen kann. Senke dies, wenn downloads auf deiner Verbindung unzuverlässig sind. Benötigt einen App-Neustart."
   },
@@ -3051,7 +3081,7 @@
     "message": "Synchronisieren"
   },
   "app.settings.synced-options.command-history": {
-    "message": "Synchronisiere den Befehlsverlauf"
+    "message": "Befehlsverlauf synchronisieren"
   },
   "app.settings.synced-options.command-history.description": {
     "message": "Verwende denselben Befehlsverlauf für alle deine Instanzen."
@@ -3060,7 +3090,7 @@
     "message": "Befehlsverlauf bearbeiten"
   },
   "app.settings.synced-options.creative-hotbars": {
-    "message": "Synchronisiere gespeicherte Kreativ-Schnellzugriffleisten"
+    "message": "Gespeicherte Kreativ-Schnellzugriffleisten synchronisieren"
   },
   "app.settings.synced-options.creative-hotbars.description": {
     "message": "Verwende dieselben gespeicherten Kreativ-Schnellzugriffleisten in all deinen Instanzen."
@@ -3105,7 +3135,7 @@
     "message": "Verwende dieselben Spieloptionen für alle deine Instanzen."
   },
   "app.settings.synced-options.game-settings.disable-all": {
-    "message": "Alles desynchronisieren"
+    "message": "Alle desynchronisieren"
   },
   "app.settings.synced-options.game-settings.disabled-tooltip": {
     "message": "Aktiviere die Synchronisierung der Spieleinstellungen, bevor du einzelne Einstellungen auswählst."
@@ -3386,6 +3416,12 @@
   "app.skins.section.default-skins": {
     "message": "Standard-Skins"
   },
+  "app.skins.section.dungeons-hero": {
+    "message": "Held aus Dungeons"
+  },
+  "app.skins.section.dungeons-ii-hero": {
+    "message": "Held aus Dungeons II"
+  },
   "app.skins.section.minecon-earth-2017": {
     "message": "MINECON Earth 2017"
   },
@@ -3415,6 +3451,9 @@
   },
   "app.skins.section.tiny-takeover": {
     "message": "Tiny Takeover"
+  },
+  "app.skins.section.wilderness-bound": {
+    "message": "Wilderness Bound"
   },
   "app.skins.sign-in.button": {
     "message": "Bei Microsoft anmelden"
@@ -4359,7 +4398,7 @@
     "message": "Teilen"
   },
   "instance.settings.tabs.synced-options.command-history": {
-    "message": "Desynchronisiere den Befehlsverlauf"
+    "message": "Befehlsverlauf desynchronisieren"
   },
   "instance.settings.tabs.synced-options.command-history.disabled-in-app": {
     "message": "Synchronisierung des Befehlsverlaufs ist in den Einstellungen der App deaktiviert."
@@ -4368,7 +4407,7 @@
     "message": "Den Befehlsverlauf dieser Instanz separat von dem synchronisierten Befehlsverlauf halten."
   },
   "instance.settings.tabs.synced-options.creative-hotbars": {
-    "message": "Desynchronisiere gespeicherte Kreativ-Schnellzugriffleisten"
+    "message": "Gespeicherte Kreativ-Schnellzugriffleisten desynchronisieren"
   },
   "instance.settings.tabs.synced-options.creative-hotbars.disabled-in-app": {
     "message": "Synchronisierung der gespeicherten Kreativ-Schnellzugriffleisten ist in den Einstellungen der App deaktiviert."

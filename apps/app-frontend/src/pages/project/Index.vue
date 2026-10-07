@@ -280,7 +280,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { openUrl } from '@tauri-apps/plugin-opener'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import { computed, ref, shallowRef, watch } from 'vue'
+import { computed, h, ref, shallowRef, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import { SwapIcon } from '@/assets/icons/index.js'
@@ -632,6 +632,22 @@ const followsQuery = useQuery({
 const following = computed(
 	() => !!data.value && !!followsQuery.data.value?.some((project) => project.id === data.value.id),
 )
+// Shares its cache with the save dialog, so saving updates the icon right away.
+const collectionsQuery = useQuery({
+	queryKey: computed(() => ['user-collections', currentUserId.value]),
+	queryFn: () => modrinthClient.labrinth.users_v2.getCollections(currentUserId.value),
+	enabled: () => !!currentUserId.value,
+})
+const saved = computed(
+	() =>
+		!!data.value &&
+		!!collectionsQuery.data.value?.some((collection) =>
+			collection.projects.includes(data.value.id),
+		),
+)
+const FilledHeartIcon = (props) => h(HeartIcon, { ...props, fill: 'currentColor' })
+const FilledBookmarkIcon = (props) => h(BookmarkIcon, { ...props, fill: 'currentColor' })
+
 const followMutation = useMutation({
 	mutationFn: () =>
 		following.value
@@ -647,7 +663,7 @@ const projectHeaderMoreActions = computed(() => [
 		label: formatMessage(
 			following.value ? commonMessages.unfollowButton : commonMessages.followButton,
 		),
-		icon: HeartIcon,
+		icon: following.value ? FilledHeartIcon : HeartIcon,
 		disabled: !currentUserId.value || followMutation.isPending.value,
 		tooltip: currentUserId.value ? undefined : formatMessage(messages.signInToFollow),
 		action: () => followMutation.mutate(),
@@ -655,7 +671,7 @@ const projectHeaderMoreActions = computed(() => [
 	{
 		id: 'save',
 		label: formatMessage(commonMessages.saveButton),
-		icon: BookmarkIcon,
+		icon: saved.value ? FilledBookmarkIcon : BookmarkIcon,
 		disabled: !currentUserId.value,
 		tooltip: currentUserId.value ? undefined : formatMessage(messages.signInToSave),
 		action: () => saveModal.value?.show(data.value.id),

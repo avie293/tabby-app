@@ -314,6 +314,9 @@
   "app.dashboard.back-to-organizations": {
     "message": "Zurück zu den Organisationen"
   },
+  "app.dashboard.back-to-projects": {
+    "message": "Zurück zu den Projekten"
+  },
   "app.dashboard.collection.delete": {
     "message": "Collection löschen"
   },
@@ -458,6 +461,189 @@
   "app.dashboard.overview.welcome": {
     "message": "Willkommen zurück, {name}"
   },
+  "app.dashboard.permission.delete-project": {
+    "message": "Projekt löschen"
+  },
+  "app.dashboard.permission.delete-version": {
+    "message": "Versionen löschen"
+  },
+  "app.dashboard.permission.edit-body": {
+    "message": "Beschreibung bearbeiten"
+  },
+  "app.dashboard.permission.edit-details": {
+    "message": "Details bearbeiten"
+  },
+  "app.dashboard.permission.edit-member": {
+    "message": "Mitglieder bearbeiten"
+  },
+  "app.dashboard.permission.manage-invites": {
+    "message": "Einladungen verwalten"
+  },
+  "app.dashboard.permission.remove-member": {
+    "message": "Mitglieder entfernen"
+  },
+  "app.dashboard.permission.upload-version": {
+    "message": "Versionen hochladen"
+  },
+  "app.dashboard.permission.view-analytics": {
+    "message": "Analytics ansehen"
+  },
+  "app.dashboard.permission.view-payouts": {
+    "message": "Einnahmen ansehen"
+  },
+  "app.dashboard.project.delete": {
+    "message": "Projekt löschen"
+  },
+  "app.dashboard.project.delete-description": {
+    "message": "Das Projekt wird mit allen Versionen, Dateien und Statistiken endgültig gelöscht."
+  },
+  "app.dashboard.project.gallery.choose-file": {
+    "message": "Bild auswählen"
+  },
+  "app.dashboard.project.gallery.delete": {
+    "message": "Löschen"
+  },
+  "app.dashboard.project.gallery.description": {
+    "message": "Beschreibung"
+  },
+  "app.dashboard.project.gallery.edit": {
+    "message": "Bild bearbeiten"
+  },
+  "app.dashboard.project.gallery.empty": {
+    "message": "Zeig dein Projekt mit Screenshots."
+  },
+  "app.dashboard.project.gallery.featured": {
+    "message": "Hervorgehobenes Bild (in Suchergebnissen sichtbar)"
+  },
+  "app.dashboard.project.gallery.title": {
+    "message": "Titel"
+  },
+  "app.dashboard.project.gallery.upload": {
+    "message": "Bild hochladen"
+  },
+  "app.dashboard.project.image-size": {
+    "message": "Bilder dürfen höchstens 1 MB groß sein."
+  },
+  "app.dashboard.project.image-type": {
+    "message": "Bilder müssen PNG-, JPEG-, GIF- oder WebP-Dateien sein."
+  },
+  "app.dashboard.project.license": {
+    "message": "Lizenz"
+  },
+  "app.dashboard.project.license-custom": {
+    "message": "Andere SPDX-Kennung"
+  },
+  "app.dashboard.project.license-description": {
+    "message": "Wähle eine SPDX-Lizenz oder gib ihre Kennung ein. Die Lizenz legt fest, was andere mit deinem Projekt machen dürfen."
+  },
+  "app.dashboard.project.license-url": {
+    "message": "Lizenz-URL (optional)"
+  },
+  "app.dashboard.project.links.add-donation": {
+    "message": "Link hinzufügen"
+  },
+  "app.dashboard.project.links.discord": {
+    "message": "Discord-Einladung"
+  },
+  "app.dashboard.project.links.donations": {
+    "message": "Spenden-Links"
+  },
+  "app.dashboard.project.links.issues": {
+    "message": "Issue-Tracker"
+  },
+  "app.dashboard.project.links.platform": {
+    "message": "Plattform"
+  },
+  "app.dashboard.project.links.source": {
+    "message": "Quellcode"
+  },
+  "app.dashboard.project.links.wiki": {
+    "message": "Wiki"
+  },
+  "app.dashboard.project.members.organization-note": {
+    "message": "Dieses Projekt gehört einer Organisation. Deren Mitglieder können es ebenfalls verwalten."
+  },
+  "app.dashboard.project.members.payout-split": {
+    "message": "Einnahmen-Anteil"
+  },
+  "app.dashboard.project.members.permissions": {
+    "message": "Berechtigungen"
+  },
+  "app.dashboard.project.members.transfer": {
+    "message": "Zum Besitzer machen"
+  },
+  "app.dashboard.project.members.transfer-description": {
+    "message": "Du bist danach nicht mehr Besitzer dieses Projekts und kannst das nicht selbst rückgängig machen."
+  },
+  "app.dashboard.project.name": {
+    "message": "Name"
+  },
+  "app.dashboard.project.slug": {
+    "message": "URL"
+  },
+  "app.dashboard.project.submit": {
+    "message": "Zur Prüfung einreichen"
+  },
+  "app.dashboard.project.submit-description": {
+    "message": "Dein Projekt ist ein Entwurf. Füge eine Beschreibung, eine Lizenz und mindestens eine Version hinzu und reiche es dann ein, damit Modrinth es prüfen kann."
+  },
+  "app.dashboard.project.submitted": {
+    "message": "Zur Prüfung eingereicht"
+  },
+  "app.dashboard.project.summary": {
+    "message": "Kurzbeschreibung"
+  },
+  "app.dashboard.project.tab.description": {
+    "message": "Beschreibung"
+  },
+  "app.dashboard.project.tab.gallery": {
+    "message": "Galerie"
+  },
+  "app.dashboard.project.tab.general": {
+    "message": "Allgemein"
+  },
+  "app.dashboard.project.tab.license": {
+    "message": "Lizenz"
+  },
+  "app.dashboard.project.tab.links": {
+    "message": "Links"
+  },
+  "app.dashboard.project.tab.members": {
+    "message": "Mitglieder"
+  },
+  "app.dashboard.project.tab.tags": {
+    "message": "Tags"
+  },
+  "app.dashboard.project.tab.versions": {
+    "message": "Versionen"
+  },
+  "app.dashboard.project.tags-description": {
+    "message": "Wähle alle passenden Tags. Markiere bis zu drei mit einem Stern, um sie in Suchergebnissen zu zeigen."
+  },
+  "app.dashboard.project.tags-feature": {
+    "message": "In Suchergebnissen zeigen"
+  },
+  "app.dashboard.project.view": {
+    "message": "Projekt ansehen"
+  },
+  "app.dashboard.project.visibility": {
+    "message": "Sichtbarkeit"
+  },
+  "app.dashboard.project.visibility-pending": {
+    "message": "Das Projekt bekommt diese Sichtbarkeit, sobald es freigegeben ist."
+  },
+  "app.dashboard.project.visibility.archived": {
+    "message": "Archiviert"
+  },
+  "app.dashboard.project.visibility.private": {
+    "message": "Privat"
+  },
+  "app.dashboard.project.visibility.public": {
+    "message": "Öffentlich"
+  },
+  "app.dashboard.project.visibility.unlisted": {
+    "message": "Nicht gelistet"
+  },
   "app.dashboard.projects.column.name": {
     "message": "Name"
   },
@@ -467,8 +653,17 @@
   "app.dashboard.projects.column.type": {
     "message": "Typ"
   },
+  "app.dashboard.projects.create": {
+    "message": "Projekt erstellen"
+  },
+  "app.dashboard.projects.create-hint": {
+    "message": "Das Projekt startet als Entwurf. Sein Typ ergibt sich aus den Dateien der ersten Version."
+  },
   "app.dashboard.projects.empty": {
     "message": "Du hast noch keine Projekte veröffentlicht."
+  },
+  "app.dashboard.projects.owner": {
+    "message": "Besitzer"
   },
   "app.dashboard.projects.search": {
     "message": "Projekte durchsuchen"
@@ -487,6 +682,108 @@
   },
   "app.dashboard.title": {
     "message": "Dashboard"
+  },
+  "app.dashboard.versions.add-dependency": {
+    "message": "Abhängigkeit hinzufügen"
+  },
+  "app.dashboard.versions.add-files": {
+    "message": "Dateien hinzufügen"
+  },
+  "app.dashboard.versions.alpha": {
+    "message": "Alpha"
+  },
+  "app.dashboard.versions.archived": {
+    "message": "Archiviert"
+  },
+  "app.dashboard.versions.beta": {
+    "message": "Beta"
+  },
+  "app.dashboard.versions.changelog": {
+    "message": "Changelog"
+  },
+  "app.dashboard.versions.channel": {
+    "message": "Kanal"
+  },
+  "app.dashboard.versions.create": {
+    "message": "Version hochladen"
+  },
+  "app.dashboard.versions.delete": {
+    "message": "Version löschen"
+  },
+  "app.dashboard.versions.delete-description": {
+    "message": "Die Version und ihre Dateien werden endgültig gelöscht."
+  },
+  "app.dashboard.versions.dependencies": {
+    "message": "Abhängigkeiten"
+  },
+  "app.dashboard.versions.dependency-placeholder": {
+    "message": "Projekt-Slug oder -ID"
+  },
+  "app.dashboard.versions.dependency.embedded": {
+    "message": "Eingebettet"
+  },
+  "app.dashboard.versions.dependency.incompatible": {
+    "message": "Inkompatibel"
+  },
+  "app.dashboard.versions.dependency.optional": {
+    "message": "Optional"
+  },
+  "app.dashboard.versions.dependency.required": {
+    "message": "Benötigt"
+  },
+  "app.dashboard.versions.draft": {
+    "message": "Entwurf"
+  },
+  "app.dashboard.versions.edit": {
+    "message": "Version bearbeiten"
+  },
+  "app.dashboard.versions.empty": {
+    "message": "Lade die erste Version deines Projekts hoch."
+  },
+  "app.dashboard.versions.featured": {
+    "message": "Hervorgehobene Version"
+  },
+  "app.dashboard.versions.files": {
+    "message": "Dateien"
+  },
+  "app.dashboard.versions.game-versions": {
+    "message": "Minecraft-Versionen"
+  },
+  "app.dashboard.versions.listed": {
+    "message": "Gelistet"
+  },
+  "app.dashboard.versions.loaders": {
+    "message": "Loader"
+  },
+  "app.dashboard.versions.name": {
+    "message": "Name (optional)"
+  },
+  "app.dashboard.versions.new-file": {
+    "message": "Neu"
+  },
+  "app.dashboard.versions.number": {
+    "message": "Versionsnummer"
+  },
+  "app.dashboard.versions.primary": {
+    "message": "Hauptdatei"
+  },
+  "app.dashboard.versions.release": {
+    "message": "Release"
+  },
+  "app.dashboard.versions.search": {
+    "message": "Versionen filtern"
+  },
+  "app.dashboard.versions.snapshots": {
+    "message": "Snapshots zeigen"
+  },
+  "app.dashboard.versions.status": {
+    "message": "Status"
+  },
+  "app.dashboard.versions.unlisted": {
+    "message": "Nicht gelistet"
+  },
+  "app.dashboard.versions.uploading": {
+    "message": "Wird hochgeladen…"
   },
   "app.debug-export.canceling": {
     "message": "Export wird abgebrochen…"

@@ -77,6 +77,11 @@ export default new createRouter({
 					component: () => import('@/pages/dashboard/Projects.vue'),
 				},
 				{
+					path: 'project/:id',
+					name: 'DashboardProject',
+					component: () => import('@/pages/dashboard/ProjectSettings.vue'),
+				},
+				{
 					path: 'organizations',
 					name: 'DashboardOrganizations',
 					component: () => import('@/pages/dashboard/Organizations.vue'),

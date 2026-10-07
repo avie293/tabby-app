@@ -1,4 +1,5 @@
 import { AbstractModule } from '../../../core/abstract-module'
+import type { UploadHandle } from '../../../types/upload'
 import type { Labrinth } from '../types'
 
 export class LabrinthProjectsV2Module extends AbstractModule {
@@ -130,6 +131,26 @@ export class LabrinthProjectsV2Module extends AbstractModule {
 			api: 'labrinth',
 			version: 2,
 			method: 'DELETE',
+		})
+	}
+
+	/**
+	 * Create a draft project owned by the signed in user (or an organization)
+	 *
+	 * @example
+	 * ```typescript
+	 * const project = await client.labrinth.projects_v2.create({ title: 'My mod', ... }).promise
+	 * ```
+	 */
+	public create(
+		data: Labrinth.Projects.v2.CreateProjectBase,
+	): UploadHandle<Labrinth.Projects.v3.Project> {
+		const formData = new FormData()
+		formData.append('data', JSON.stringify(data))
+		return this.client.upload<Labrinth.Projects.v3.Project>(`/project`, {
+			api: 'labrinth',
+			version: 2,
+			formData,
 		})
 	}
 

@@ -101,8 +101,8 @@ function groupUpdates(project: ModrinthProject, versions: ModrinthVersion[], thu
 	)
 	const groups: ModrinthVersion[][] = []
 	for (const version of sorted) {
-		const group = groups.at(-1)
-		const oldest = group?.at(-1)
+		const group = groups[groups.length - 1]
+		const oldest = group?.[group.length - 1]
 		if (
 			group &&
 			oldest &&

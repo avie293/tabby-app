@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { DownloadIcon, HeartIcon, SearchIcon } from '@modrinth/assets'
+import { DownloadIcon, HeartIcon, PlusIcon, SearchIcon } from '@modrinth/assets'
 import {
 	Avatar,
+	Button,
 	defineMessages,
 	injectModrinthClient,
 	Input,
@@ -11,6 +12,7 @@ import {
 import { useQuery } from '@tanstack/vue-query'
 import { computed, ref } from 'vue'
 
+import CreateProjectModal from '@/components/ui/dashboard/CreateProjectModal.vue'
 import { dashboardKeys, formatNumber, useCurrentUser } from '@/composables/use-dashboard'
 
 const { formatMessage } = useVIntl()
@@ -27,7 +29,10 @@ const messages = defineMessages({
 	name: { id: 'app.dashboard.projects.column.name', defaultMessage: 'Name' },
 	type: { id: 'app.dashboard.projects.column.type', defaultMessage: 'Type' },
 	status: { id: 'app.dashboard.projects.column.status', defaultMessage: 'Status' },
+	create: { id: 'app.dashboard.projects.create', defaultMessage: 'Create project' },
 })
+
+const createModal = ref<InstanceType<typeof CreateProjectModal>>()
 
 const search = ref('')
 const projectsQuery = useQuery({
@@ -44,14 +49,21 @@ const projects = computed(() =>
 
 <template>
 	<div class="flex flex-col gap-4">
+		<CreateProjectModal ref="createModal" />
 		<div class="flex items-center justify-between gap-4">
 			<h1 class="m-0 text-2xl font-bold text-contrast">{{ formatMessage(messages.title) }}</h1>
-			<Input
-				v-model="search"
-				:icon="SearchIcon"
-				class="w-64"
-				:placeholder="formatMessage(messages.search)"
-			/>
+			<div class="flex items-center gap-2">
+				<Input
+					v-model="search"
+					:icon="SearchIcon"
+					class="w-64"
+					:placeholder="formatMessage(messages.search)"
+				/>
+				<Button color="brand" type="colored" @click="createModal?.show()">
+					<PlusIcon aria-hidden="true" />
+					{{ formatMessage(messages.create) }}
+				</Button>
+			</div>
 		</div>
 		<p v-if="!projectsQuery.isPending.value && projects.length === 0" class="m-0 text-secondary">
 			{{ formatMessage(messages.empty) }}

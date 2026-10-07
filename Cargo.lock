@@ -12226,7 +12226,7 @@ dependencies = [
  "serde_with",
  "swift-rs",
  "thiserror 2.0.17",
- "toml 1.1.6+spec-1.1.0",
+ "toml 0.9.8",
  "url",
  "urlpattern 0.6.0",
  "uuid 1.23.3",

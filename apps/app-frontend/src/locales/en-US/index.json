@@ -2819,6 +2819,27 @@
   "app.settings.game-options.validation.no-compatible-instances": {
     "message": "Some of your instances cannot use this setting"
   },
+  "app.settings.holiday-theme.auto": {
+    "message": "Automatic"
+  },
+  "app.settings.holiday-theme.christmas": {
+    "message": "Christmas"
+  },
+  "app.settings.holiday-theme.description": {
+    "message": "Decorations for Easter, Halloween and Christmas. Automatic shows them around each holiday."
+  },
+  "app.settings.holiday-theme.easter": {
+    "message": "Easter"
+  },
+  "app.settings.holiday-theme.halloween": {
+    "message": "Halloween"
+  },
+  "app.settings.holiday-theme.off": {
+    "message": "Off"
+  },
+  "app.settings.holiday-theme.title": {
+    "message": "Holiday themes"
+  },
   "app.settings.java-installations.location.title": {
     "message": "Java {version, number} location"
   },

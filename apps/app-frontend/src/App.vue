@@ -792,7 +792,7 @@ async function setupApp() {
 			)
 		})
 
-	fetch(`https://modrinth.com/news/feed/articles.json`)
+	fetch(`https://raw.githubusercontent.com/avie293/tabby-app/main/news/articles.json`)
 		.then((response) => response.json())
 		.then((res) => {
 			if (res && res.articles) {
@@ -1974,7 +1974,7 @@ async function installUpdate() {
 setAppUpdateActions({
 	download: downloadAvailableUpdate,
 	install: installUpdate,
-	changelog: () => openUrl('https://modrinth.com/news/changelog?filter=app'),
+	changelog: () => openUrl('https://github.com/avie293/tabby-app/releases'),
 })
 
 async function openModrinthProjectLinkInApp(parsed) {
@@ -2424,7 +2424,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 								type="colored"
 								color="brand"
 								size="xl"
-								href="https://modrinth.com/news"
+								href="https://github.com/avie293/tabby-app/releases"
 								target="_blank"
 								class="my-4"
 							>

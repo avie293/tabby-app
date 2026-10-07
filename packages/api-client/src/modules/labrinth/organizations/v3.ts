@@ -119,4 +119,92 @@ export class LabrinthOrganizationsV3Module extends AbstractModule {
 			body: data,
 		})
 	}
+
+	/**
+	 * Create an organization owned by the signed in user
+	 *
+	 * @example
+	 * ```typescript
+	 * await client.labrinth.organizations_v3.create({ name: 'My org', slug: 'my-org', description: '' })
+	 * ```
+	 */
+	public async create(
+		data: Labrinth.Organizations.v3.CreateOrganizationRequest,
+	): Promise<Labrinth.Organizations.v3.Organization> {
+		return this.client.request<Labrinth.Organizations.v3.Organization>(`/organization`, {
+			api: 'labrinth',
+			version: 3,
+			method: 'POST',
+			body: data,
+		})
+	}
+
+	/**
+	 * Edit an organization's name, slug or description
+	 *
+	 * @example
+	 * ```typescript
+	 * await client.labrinth.organizations_v3.edit('my-org', { description: 'New description' })
+	 * ```
+	 */
+	public async edit(
+		idOrSlug: string,
+		data: Labrinth.Organizations.v3.EditOrganizationRequest,
+	): Promise<void> {
+		return this.client.request(`/organization/${idOrSlug}`, {
+			api: 'labrinth',
+			version: 3,
+			method: 'PATCH',
+			body: data,
+		})
+	}
+
+	/**
+	 * Delete an organization
+	 *
+	 * @example
+	 * ```typescript
+	 * await client.labrinth.organizations_v3.delete('my-org')
+	 * ```
+	 */
+	public async delete(idOrSlug: string): Promise<void> {
+		return this.client.request(`/organization/${idOrSlug}`, {
+			api: 'labrinth',
+			version: 3,
+			method: 'DELETE',
+		})
+	}
+
+	/**
+	 * Change an organization's icon
+	 *
+	 * @example
+	 * ```typescript
+	 * await client.labrinth.organizations_v3.editIcon('my-org', iconFile, 'png')
+	 * ```
+	 */
+	public async editIcon(idOrSlug: string, icon: Blob, ext: string): Promise<void> {
+		return this.client.request(`/organization/${idOrSlug}/icon?ext=${ext}`, {
+			api: 'labrinth',
+			version: 3,
+			method: 'PATCH',
+			body: icon,
+		})
+	}
+
+	/**
+	 * Remove an organization's icon
+	 *
+	 * @example
+	 * ```typescript
+	 * await client.labrinth.organizations_v3.deleteIcon('my-org')
+	 * ```
+	 */
+	public async deleteIcon(idOrSlug: string): Promise<void> {
+		return this.client.request(`/organization/${idOrSlug}/icon`, {
+			api: 'labrinth',
+			version: 3,
+			method: 'DELETE',
+		})
+	}
 }

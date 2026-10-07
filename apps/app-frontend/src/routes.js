@@ -63,6 +63,42 @@ export default new createRouter({
 			component: () => import('@/pages/Screenshots.vue'),
 		},
 		{
+			path: '/dashboard',
+			component: () => import('@/pages/dashboard/Index.vue'),
+			children: [
+				{
+					path: '',
+					name: 'Dashboard',
+					component: () => import('@/pages/dashboard/Overview.vue'),
+				},
+				{
+					path: 'projects',
+					name: 'DashboardProjects',
+					component: () => import('@/pages/dashboard/Projects.vue'),
+				},
+				{
+					path: 'organizations',
+					name: 'DashboardOrganizations',
+					component: () => import('@/pages/dashboard/Organizations.vue'),
+				},
+				{
+					path: 'organization/:id',
+					name: 'DashboardOrganization',
+					component: () => import('@/pages/dashboard/Organization.vue'),
+				},
+				{
+					path: 'collections',
+					name: 'DashboardCollections',
+					component: () => import('@/pages/dashboard/Collections.vue'),
+				},
+				{
+					path: 'collection/:id',
+					name: 'DashboardCollection',
+					component: () => import('@/pages/dashboard/Collection.vue'),
+				},
+			],
+		},
+		{
 			path: '/user/:user/:projectType?',
 			name: 'User',
 			component: () => import('@/pages/User.vue'),

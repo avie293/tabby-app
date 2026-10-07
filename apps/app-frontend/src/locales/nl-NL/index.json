@@ -1406,9 +1406,6 @@
   "app.project.actions.label": {
     "message": "Projectacties"
   },
-  "app.project.coming-soon": {
-    "message": "Binnenkort beschikbaar"
-  },
   "app.project.install-button.already-installed": {
     "message": "Dit project is al geïnstalleerd"
   },

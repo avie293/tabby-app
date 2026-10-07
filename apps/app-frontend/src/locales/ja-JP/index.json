@@ -1403,9 +1403,6 @@
   "app.project.actions.label": {
     "message": "プロジェクトの操作"
   },
-  "app.project.coming-soon": {
-    "message": "準備中"
-  },
   "app.project.install-button.already-installed": {
     "message": "このプロジェクトは既にインストールされています"
   },

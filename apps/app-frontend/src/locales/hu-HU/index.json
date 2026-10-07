@@ -1409,9 +1409,6 @@
   "app.project.actions.label": {
     "message": "Projektműveletek"
   },
-  "app.project.coming-soon": {
-    "message": "Nemsokára"
-  },
   "app.project.install-button.already-installed": {
     "message": "Ez a projekt már telepítve van"
   },

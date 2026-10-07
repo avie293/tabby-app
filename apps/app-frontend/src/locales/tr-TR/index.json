@@ -1409,9 +1409,6 @@
   "app.project.actions.label": {
     "message": "Proje eylemleri"
   },
-  "app.project.coming-soon": {
-    "message": "Yakında"
-  },
   "app.project.install-button.already-installed": {
     "message": "Bu proje zaten kurulu"
   },

@@ -1478,9 +1478,6 @@
   "app.project.actions.label": {
     "message": "Projektaktionen"
   },
-  "app.project.coming-soon": {
-    "message": "Bald verfügbar"
-  },
   "app.project.install-button.already-installed": {
     "message": "Dieses Projekt ist bereits installiert"
   },
@@ -1498,6 +1495,30 @@
   },
   "app.project.more-options": {
     "message": "Weitere Optionen"
+  },
+  "app.project.save.create": {
+    "message": "Erstellen"
+  },
+  "app.project.save.empty": {
+    "message": "Du hast noch keine Collections. Erstelle unten eine."
+  },
+  "app.project.save.header": {
+    "message": "In Collection speichern"
+  },
+  "app.project.save.name-placeholder": {
+    "message": "Name der Collection"
+  },
+  "app.project.save.new-collection": {
+    "message": "Neue Collection"
+  },
+  "app.project.save.project-count": {
+    "message": "{count, plural, one {# Projekt} other {# Projekte}}"
+  },
+  "app.project.sign-in-to-follow": {
+    "message": "Melde dich an, um Projekten zu folgen"
+  },
+  "app.project.sign-in-to-save": {
+    "message": "Melde dich an, um Projekte in Collections zu speichern"
   },
   "app.project.tab.description": {
     "message": "Beschreibung"

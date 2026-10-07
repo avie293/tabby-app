@@ -134,6 +134,42 @@ export class LabrinthProjectsV2Module extends AbstractModule {
 	}
 
 	/**
+	 * Follow a project as the signed in user
+	 *
+	 * @param id - Project ID or slug
+	 *
+	 * @example
+	 * ```typescript
+	 * await client.labrinth.projects_v2.follow('sodium')
+	 * ```
+	 */
+	public async follow(id: string): Promise<void> {
+		return this.client.request(`/project/${id}/follow`, {
+			api: 'labrinth',
+			version: 2,
+			method: 'POST',
+		})
+	}
+
+	/**
+	 * Stop following a project as the signed in user
+	 *
+	 * @param id - Project ID or slug
+	 *
+	 * @example
+	 * ```typescript
+	 * await client.labrinth.projects_v2.unfollow('sodium')
+	 * ```
+	 */
+	public async unfollow(id: string): Promise<void> {
+		return this.client.request(`/project/${id}/follow`, {
+			api: 'labrinth',
+			version: 2,
+			method: 'DELETE',
+		})
+	}
+
+	/**
 	 * Get dependencies for a project
 	 *
 	 * @param id - Project ID or slug

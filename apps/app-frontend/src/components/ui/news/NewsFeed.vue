@@ -13,7 +13,7 @@ import { fetchNews, formatGameVersions, loaderName, type NewsItem } from '@/help
 
 import ProjectUpdateModal from './ProjectUpdateModal.vue'
 
-const NEWS_LIMIT = 5
+const NEWS_LIMIT = 8
 
 const { formatMessage } = useVIntl()
 const formatDate = useFormatDateTime({ dateStyle: 'long' })

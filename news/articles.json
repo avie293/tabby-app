@@ -1,6 +1,13 @@
 {
 	"articles": [
 		{
+			"title": "Your creator dashboard, right in the app",
+			"summary": "Manage projects, versions, organizations and collections, check analytics and withdraw revenue. Plus follow and save, and holiday themes.",
+			"thumbnail": "https://raw.githubusercontent.com/avie293/tabby-app/main/news/creator-dashboard/thumbnail.webp",
+			"date": "2026-10-07T18:00:00.000Z",
+			"link": "https://github.com/avie293/tabby-app/releases/tag/v1.3.0"
+		},
+		{
 			"title": "More reliable downloads and updates",
 			"summary": "Every improvement from Modrinth App 0.21.8, a button to export debug info and 35 new skins.",
 			"thumbnail": "https://raw.githubusercontent.com/avie293/tabby-app/main/news/more-stable-downloads/thumbnail.webp",

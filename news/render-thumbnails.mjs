@@ -217,6 +217,18 @@ const thumbnails = {
 			})
 			.join('')}`,
 
+	'creator-dashboard': () => `
+		${windowFrame(170, 170, 1100, 740)}
+		<rect x="230" y="260" width="200" height="34" rx="17" fill="url(#brand-bar)"/>
+		${line(230, 320, 160)}${line(230, 380, 180)}${line(230, 440, 140)}${line(230, 500, 170)}
+		${glass(470, 260, 740, 380, 36)}
+		<polyline points="520,580 620,520 720,550 820,450 920,480 1020,380 1150,330" fill="none" stroke="url(#brand-bar)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+		${glass(470, 670, 360, 180, 32)}${line(510, 710, 200)}
+		<rect x="510" y="770" width="240" height="44" rx="22" fill="url(#teal)"/>
+		${glass(850, 670, 360, 180, 32)}${line(890, 710, 200)}
+		<rect x="890" y="770" width="180" height="44" rx="22" fill="url(#orange)"/>
+		${badge(1520, 540, 190, `<g transform="translate(1520 540)"><path d="M-70 40 v-110 M-70 40 h140" stroke="#ffffff" stroke-width="16" stroke-linecap="round" fill="none"/><rect x="-46" y="-6" width="28" height="46" rx="6" fill="#c7a6ff"/><rect x="-6" y="-46" width="28" height="86" rx="6" fill="#ffffff"/><rect x="34" y="-26" width="28" height="66" rx="6" fill="#c7a6ff"/></g>`)}`,
+
 	// Thumbnails for updates of the projects listed in articles.json under "modrinth".
 	'projects/avies-day-counter': () => `
 		${dayHud(250, 300)}
@@ -313,6 +325,7 @@ const seeds = {
 	'modrinth-app-import': 19,
 	'modpack-export': 23,
 	'more-stable-downloads': 31,
+	'creator-dashboard': 37,
 	'projects/avies-day-counter': 41,
 	'projects/aviesdaycounter-datapack': 43,
 	'projects/avies-ping-display': 47,

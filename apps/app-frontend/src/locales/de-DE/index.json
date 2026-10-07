@@ -308,6 +308,42 @@
   "app.creation.essential.auto-install-error-text": {
     "message": "Essential ist für diese Minecraft-Version und diesen Mod-Loader möglicherweise noch nicht verfügbar. ({error})"
   },
+  "app.dashboard.analytics.downloads": {
+    "message": "Downloads"
+  },
+  "app.dashboard.analytics.empty": {
+    "message": "Veröffentliche ein Projekt, um hier seine Analytics zu sehen."
+  },
+  "app.dashboard.analytics.playtime": {
+    "message": "Spielzeit (Stunden)"
+  },
+  "app.dashboard.analytics.projects": {
+    "message": "Projekte"
+  },
+  "app.dashboard.analytics.range.month": {
+    "message": "30 Tage"
+  },
+  "app.dashboard.analytics.range.quarter": {
+    "message": "90 Tage"
+  },
+  "app.dashboard.analytics.range.week": {
+    "message": "7 Tage"
+  },
+  "app.dashboard.analytics.range.year": {
+    "message": "1 Jahr"
+  },
+  "app.dashboard.analytics.revenue": {
+    "message": "Einnahmen"
+  },
+  "app.dashboard.analytics.title": {
+    "message": "Analytics"
+  },
+  "app.dashboard.analytics.total": {
+    "message": "Gesamt"
+  },
+  "app.dashboard.analytics.views": {
+    "message": "Aufrufe"
+  },
   "app.dashboard.back-to-collections": {
     "message": "Zurück zu den Collections"
   },
@@ -671,6 +707,48 @@
   "app.dashboard.projects.title": {
     "message": "Projekte"
   },
+  "app.dashboard.revenue.available": {
+    "message": "Verfügbar"
+  },
+  "app.dashboard.revenue.cancel": {
+    "message": "Abbrechen"
+  },
+  "app.dashboard.revenue.fee": {
+    "message": "Gebühr {fee}"
+  },
+  "app.dashboard.revenue.income": {
+    "message": "Creator-Belohnungen"
+  },
+  "app.dashboard.revenue.no-transactions": {
+    "message": "Noch keine Transaktionen."
+  },
+  "app.dashboard.revenue.pending": {
+    "message": "Ausstehend"
+  },
+  "app.dashboard.revenue.title": {
+    "message": "Einnahmen"
+  },
+  "app.dashboard.revenue.transactions": {
+    "message": "Transaktionen"
+  },
+  "app.dashboard.revenue.upcoming": {
+    "message": "Anstehende Auszahlungen"
+  },
+  "app.dashboard.revenue.upcoming-note": {
+    "message": "Einnahmen werden etwa 60 Tage nach dem Ende ihres Monats verfügbar."
+  },
+  "app.dashboard.revenue.withdraw": {
+    "message": "Auszahlen"
+  },
+  "app.dashboard.revenue.withdrawal": {
+    "message": "Auszahlung über {method}"
+  },
+  "app.dashboard.revenue.withdrawn-total": {
+    "message": "Insgesamt ausgezahlt"
+  },
+  "app.dashboard.revenue.withdrawn-year": {
+    "message": "Dieses Jahr ausgezahlt"
+  },
   "app.dashboard.save": {
     "message": "Änderungen speichern"
   },
@@ -784,6 +862,51 @@
   },
   "app.dashboard.versions.uploading": {
     "message": "Wird hochgeladen…"
+  },
+  "app.dashboard.withdraw.amount": {
+    "message": "Betrag (USD)"
+  },
+  "app.dashboard.withdraw.country": {
+    "message": "Ländercode"
+  },
+  "app.dashboard.withdraw.done": {
+    "message": "Deine Auszahlung über {amount} wurde beantragt. Sie erscheint in deinen Transaktionen."
+  },
+  "app.dashboard.withdraw.email": {
+    "message": "E-Mail für die Zustellung"
+  },
+  "app.dashboard.withdraw.fee": {
+    "message": "Gebühr"
+  },
+  "app.dashboard.withdraw.header": {
+    "message": "Auszahlen"
+  },
+  "app.dashboard.withdraw.limits": {
+    "message": "Zwischen {min} und {max}"
+  },
+  "app.dashboard.withdraw.method": {
+    "message": "Auszahlungsmethode"
+  },
+  "app.dashboard.withdraw.net": {
+    "message": "Du erhältst"
+  },
+  "app.dashboard.withdraw.no-methods": {
+    "message": "Für dieses Land gibt es keine Auszahlungsmethoden."
+  },
+  "app.dashboard.withdraw.open-website": {
+    "message": "Modrinth-Website öffnen"
+  },
+  "app.dashboard.withdraw.submit": {
+    "message": "{amount} auszahlen"
+  },
+  "app.dashboard.withdraw.tax-form": {
+    "message": "Ohne Steuerformular kannst du dieses Jahr noch bis zu {amount} auszahlen. Für mehr fülle das Steuerformular auf der Modrinth-Website aus."
+  },
+  "app.dashboard.withdraw.terms": {
+    "message": "Ich stimme den Bedingungen des Modrinth Rewards Program zu."
+  },
+  "app.dashboard.withdraw.website-only": {
+    "message": "Banküberweisungen und Krypto brauchen eine Identitätsprüfung, die nur auf der Modrinth-Website möglich ist."
   },
   "app.debug-export.canceling": {
     "message": "Export wird abgebrochen…"

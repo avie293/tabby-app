@@ -92,6 +92,16 @@ export default new createRouter({
 					component: () => import('@/pages/dashboard/Organization.vue'),
 				},
 				{
+					path: 'analytics',
+					name: 'DashboardAnalytics',
+					component: () => import('@/pages/dashboard/Analytics.vue'),
+				},
+				{
+					path: 'revenue',
+					name: 'DashboardRevenue',
+					component: () => import('@/pages/dashboard/Revenue.vue'),
+				},
+				{
 					path: 'collections',
 					name: 'DashboardCollections',
 					component: () => import('@/pages/dashboard/Collections.vue'),

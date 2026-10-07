@@ -308,6 +308,42 @@
   "app.creation.essential.auto-install-error-text": {
     "message": "Essential may not be available for this Minecraft version and mod loader yet. ({error})"
   },
+  "app.dashboard.analytics.downloads": {
+    "message": "Downloads"
+  },
+  "app.dashboard.analytics.empty": {
+    "message": "Publish a project to see its analytics here."
+  },
+  "app.dashboard.analytics.playtime": {
+    "message": "Playtime (hours)"
+  },
+  "app.dashboard.analytics.projects": {
+    "message": "Projects"
+  },
+  "app.dashboard.analytics.range.month": {
+    "message": "30 days"
+  },
+  "app.dashboard.analytics.range.quarter": {
+    "message": "90 days"
+  },
+  "app.dashboard.analytics.range.week": {
+    "message": "7 days"
+  },
+  "app.dashboard.analytics.range.year": {
+    "message": "1 year"
+  },
+  "app.dashboard.analytics.revenue": {
+    "message": "Revenue"
+  },
+  "app.dashboard.analytics.title": {
+    "message": "Analytics"
+  },
+  "app.dashboard.analytics.total": {
+    "message": "Total"
+  },
+  "app.dashboard.analytics.views": {
+    "message": "Views"
+  },
   "app.dashboard.back-to-collections": {
     "message": "Back to collections"
   },
@@ -671,6 +707,48 @@
   "app.dashboard.projects.title": {
     "message": "Projects"
   },
+  "app.dashboard.revenue.available": {
+    "message": "Available"
+  },
+  "app.dashboard.revenue.cancel": {
+    "message": "Cancel"
+  },
+  "app.dashboard.revenue.fee": {
+    "message": "Fee {fee}"
+  },
+  "app.dashboard.revenue.income": {
+    "message": "Creator rewards"
+  },
+  "app.dashboard.revenue.no-transactions": {
+    "message": "No transactions yet."
+  },
+  "app.dashboard.revenue.pending": {
+    "message": "Pending"
+  },
+  "app.dashboard.revenue.title": {
+    "message": "Revenue"
+  },
+  "app.dashboard.revenue.transactions": {
+    "message": "Transactions"
+  },
+  "app.dashboard.revenue.upcoming": {
+    "message": "Upcoming payouts"
+  },
+  "app.dashboard.revenue.upcoming-note": {
+    "message": "Revenue becomes available about 60 days after the end of its month."
+  },
+  "app.dashboard.revenue.withdraw": {
+    "message": "Withdraw"
+  },
+  "app.dashboard.revenue.withdrawal": {
+    "message": "Withdrawal via {method}"
+  },
+  "app.dashboard.revenue.withdrawn-total": {
+    "message": "Withdrawn in total"
+  },
+  "app.dashboard.revenue.withdrawn-year": {
+    "message": "Withdrawn this year"
+  },
   "app.dashboard.save": {
     "message": "Save changes"
   },
@@ -784,6 +862,51 @@
   },
   "app.dashboard.versions.uploading": {
     "message": "Uploading…"
+  },
+  "app.dashboard.withdraw.amount": {
+    "message": "Amount (USD)"
+  },
+  "app.dashboard.withdraw.country": {
+    "message": "Country code"
+  },
+  "app.dashboard.withdraw.done": {
+    "message": "Your withdrawal of {amount} was requested. It shows up in your transactions."
+  },
+  "app.dashboard.withdraw.email": {
+    "message": "Delivery email"
+  },
+  "app.dashboard.withdraw.fee": {
+    "message": "Fee"
+  },
+  "app.dashboard.withdraw.header": {
+    "message": "Withdraw"
+  },
+  "app.dashboard.withdraw.limits": {
+    "message": "Between {min} and {max}"
+  },
+  "app.dashboard.withdraw.method": {
+    "message": "Payout method"
+  },
+  "app.dashboard.withdraw.net": {
+    "message": "You receive"
+  },
+  "app.dashboard.withdraw.no-methods": {
+    "message": "No payout methods are available for this country."
+  },
+  "app.dashboard.withdraw.open-website": {
+    "message": "Open Modrinth website"
+  },
+  "app.dashboard.withdraw.submit": {
+    "message": "Withdraw {amount}"
+  },
+  "app.dashboard.withdraw.tax-form": {
+    "message": "You can withdraw up to {amount} more this year without a tax form. To withdraw more, fill out the tax form on the Modrinth website."
+  },
+  "app.dashboard.withdraw.terms": {
+    "message": "I agree to the Modrinth Rewards Program terms."
+  },
+  "app.dashboard.withdraw.website-only": {
+    "message": "Bank transfers and crypto need an identity check that only the Modrinth website can do."
   },
   "app.debug-export.canceling": {
     "message": "Canceling export…"

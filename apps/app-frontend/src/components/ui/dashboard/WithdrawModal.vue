@@ -16,7 +16,10 @@ import { useQuery } from '@tanstack/vue-query'
 import { openUrl } from '@tauri-apps/plugin-opener'
 import { computed, ref, watch } from 'vue'
 
-const props = defineProps<{ balance: Labrinth.Payout.v3.PayoutBalance; defaultEmail?: string | null }>()
+const props = defineProps<{
+	balance: Labrinth.Payout.v3.PayoutBalance
+	defaultEmail?: string | null
+}>()
 const emit = defineEmits<{ withdrawn: [] }>()
 
 const { formatMessage } = useVIntl()

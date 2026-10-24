@@ -107,8 +107,7 @@ const saveMutation = useMutation({
 })
 
 const deleteMutation = useMutation({
-	mutationFn: (url: string) =>
-		client.labrinth.projects_v3.deleteGalleryImage(props.project.id, url),
+	mutationFn: (url: string) => client.labrinth.projects_v3.deleteGalleryImage(url),
 	onSettled: props.refresh,
 	onError: (error) => handleError(error as Error),
 })

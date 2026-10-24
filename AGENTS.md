@@ -17,7 +17,7 @@ This is a private fork of the Modrinth monorepo, focused on the Modrinth App. Th
 | `app`             | Desktop/app shell (Tauri)      |
 | `app-playground`  | Testing playground for app     |
 | `labrinth`        | Backend API service            |
-| `daedalus_client` | Daedalus client implementation |
+| `docs`            | Documentation site (Astro)     |
 
 ### Packages (`packages/`)
 
@@ -30,7 +30,6 @@ This is a private fork of the Modrinth monorepo, focused on the Modrinth App. Th
 | `blog`             | Blog system and changelog data                        |
 | `utils`            | Shared utility functions (mostly deprecated)          |
 | `moderation`       | Moderation utilities                                  |
-| `daedalus`         | Daedalus protocol                                     |
 | `tooling-config`   | ESLint, Prettier, TypeScript configs                  |
 | `ariadne`          | Analytics library                                     |
 | `modrinth-log`     | Logging utilities                                     |

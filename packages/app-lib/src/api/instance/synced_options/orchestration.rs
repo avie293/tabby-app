@@ -2,6 +2,7 @@ use crate::state::instances::adapters::sqlite::instance_rows;
 use crate::state::{InstanceLink, InstanceMetadata, SyncedOption};
 use crate::util::io;
 use crate::{ErrorKind, State};
+use anyhow::bail;
 use quartz_nbt::NbtCompound;
 use serde::{Deserialize, Serialize};
 use std::future::Future;
@@ -138,7 +139,7 @@ pub async fn get_global_options() -> crate::Result<GlobalSyncedOptions> {
 
 pub async fn get_initialized_options() -> crate::Result<GlobalSyncedOptions> {
     let state = State::get().await?;
-    let _guard = state.lock_synced_options().await;
+    let _guard = state.synced_options.lock().await;
     let mut options = GlobalSyncedOptions::default();
 
     for option in SyncedOption::ALL {
@@ -183,7 +184,7 @@ pub async fn get_overview(
     let global_options = get_global_options_with_state(&state).await?;
     let metadata = crate::state::get_instance(instance_id, &state.pool)
         .await?
-        .ok_or_else(|| ErrorKind::InputError("Unknown instance".to_string()))?;
+        .ok_or(ErrorKind::InputError("unknown instance".to_string()))?;
     let mut capabilities = Vec::with_capacity(SyncedOption::ALL.len());
 
     for option in SyncedOption::ALL {
@@ -329,8 +330,10 @@ async fn version_capability(
         option,
         SyncedOption::CreativeHotbars | SyncedOption::CommandHistory
     );
-    let is_supported_release =
-        matches!(&version.type_, daedalus::minecraft::VersionType::Release);
+    let is_supported_release = matches!(
+        &version.ty,
+        minecraft_meta_manifest::minecraft::VersionType::Release
+    );
 
     if version.release_time >= cutoff.release_time
         && (!release_only_option || is_supported_release)
@@ -362,13 +365,12 @@ pub async fn set_global_option(
     base_instance_id: Option<&str>,
 ) -> crate::Result<GlobalSyncedOptions> {
     if !option.is_available() {
-        return Err(ErrorKind::InputError(
-            "Data pack syncing is currently disabled.".to_string(),
-        )
-        .into());
+        bail!(ErrorKind::InputError(
+            "data pack syncing is currently disabled".to_string(),
+        ));
     }
     let state = State::get().await?;
-    let _guard = state.lock_synced_options().await;
+    let _guard = state.synced_options.lock().await;
     pending::cancel(option, None, &state).await?;
     set_global_option_with_state(option, enabled, base_instance_id, &state)
         .await
@@ -391,16 +393,14 @@ async fn set_global_option_with_state(
             let source =
                 crate::state::get_instance(base_instance_id, &state.pool)
                     .await?
-                    .ok_or_else(|| {
-                        ErrorKind::InputError(
-                            "Unknown sync source instance.".to_string(),
-                        )
-                    })?;
+                    .ok_or(ErrorKind::InputError(
+                        "unknown sync source instance".to_string(),
+                    ))?;
             match capability_status(&source, option, true, state).await {
                 CapabilityStatus::Supported => {}
                 CapabilityStatus::Unsupported(reason)
                 | CapabilityStatus::Indeterminate(reason) => {
-                    return Err(ErrorKind::InputError(reason).into());
+                    bail!(ErrorKind::InputError(reason));
                 }
             }
             if sync_files_are_protected(&source) {
@@ -507,14 +507,14 @@ async fn enable_global_option_from_base(
 ) -> crate::Result<GlobalSyncedOptions> {
     let source = crate::state::get_instance(base_instance_id, &state.pool)
         .await?
-        .ok_or_else(|| {
-            ErrorKind::InputError("Unknown sync source instance.".to_string())
-        })?;
+        .ok_or(ErrorKind::InputError(
+            "unknown sync source instance".to_string(),
+        ))?;
     match capability_status(&source, option, true, state).await {
         CapabilityStatus::Supported => {}
         CapabilityStatus::Unsupported(reason)
         | CapabilityStatus::Indeterminate(reason) => {
-            return Err(ErrorKind::InputError(reason).into());
+            bail!(ErrorKind::InputError(reason));
         }
     }
     if sync_files_are_protected(&source)
@@ -689,16 +689,15 @@ pub async fn set_instance_option(
     resolution: Option<SyncedOptionJoinResolution>,
 ) -> crate::Result<InstanceMetadata> {
     if !option.is_available() {
-        return Err(ErrorKind::InputError(
-            "Data pack syncing is currently disabled.".to_string(),
-        )
-        .into());
+        bail!(ErrorKind::InputError(
+            "data pack syncing is currently disabled".to_string(),
+        ));
     }
     let state = State::get().await?;
-    let _guard = state.lock_synced_options().await;
+    let _guard = state.synced_options.lock().await;
     let metadata = crate::state::get_instance(instance_id, &state.pool)
         .await?
-        .ok_or_else(|| ErrorKind::InputError("Unknown instance".to_string()))?;
+        .ok_or(ErrorKind::InputError("unknown instance".to_string()))?;
     let previous_enabled = instance_option_enabled(&metadata, option);
     if previous_enabled == enabled {
         return Ok(metadata);
@@ -711,21 +710,19 @@ pub async fn set_instance_option(
         let eligibility =
             capability(&metadata, option, global.get(option), &state).await;
         if !eligibility.supported {
-            return Err(ErrorKind::InputError(
+            bail!(ErrorKind::InputError(
                 eligibility.disabled_reason.unwrap_or_default(),
-            )
-            .into());
+            ));
         }
         let action =
             instance_option_join_action(&metadata, option, &state).await?;
         if action == SyncedOptionJoinAction::RequiresResolution
             && resolution.is_none()
         {
-            return Err(ErrorKind::InputError(
-                "Choose whether to use the synced hotbars or this instance's hotbars."
+            bail!(ErrorKind::InputError(
+                "choose whether to use the synced hotbars or this instance's hotbars"
                     .to_string(),
-            )
-            .into());
+            ));
         }
         if can_reconcile {
             pending::cancel(option, Some(instance_id), &state).await?;
@@ -787,9 +784,7 @@ pub async fn set_instance_option(
 
     crate::state::get_instance(instance_id, &state.pool)
         .await?
-        .ok_or_else(|| {
-            ErrorKind::InputError("Unknown instance".to_string()).into()
-        })
+        .ok_or(ErrorKind::InputError("unknown instance".to_string()).into())
 }
 
 pub async fn get_instance_option_join_preview(
@@ -797,18 +792,17 @@ pub async fn get_instance_option_join_preview(
     option: SyncedOption,
 ) -> crate::Result<SyncedOptionJoinPreview> {
     let state = State::get().await?;
-    let _guard = state.lock_synced_options().await;
+    let _guard = state.synced_options.lock().await;
     let metadata = crate::state::get_instance(instance_id, &state.pool)
         .await?
-        .ok_or_else(|| ErrorKind::InputError("Unknown instance".to_string()))?;
+        .ok_or(ErrorKind::InputError("unknown instance".to_string()))?;
     let global = get_global_options_with_state(&state).await?;
     let eligibility =
         capability(&metadata, option, global.get(option), &state).await;
     if !eligibility.supported {
-        return Err(ErrorKind::InputError(
+        bail!(ErrorKind::InputError(
             eligibility.disabled_reason.unwrap_or_default(),
-        )
-        .into());
+        ));
     }
 
     Ok(SyncedOptionJoinPreview {
@@ -951,7 +945,7 @@ async fn apply_pending_changes(state: &State) -> crate::Result<()> {
 
 pub async fn reconcile_all() -> crate::Result<()> {
     let state = State::get().await?;
-    let _guard = state.lock_synced_options().await;
+    let _guard = state.synced_options.lock().await;
     create_synced_directories(&state).await?;
     apply_pending_changes(&state).await?;
     let instances = crate::state::list_instances(&state.pool).await?;
@@ -1023,11 +1017,11 @@ pub fn reconcile_instance(
 
 async fn reconcile_instance_inner(instance_id: &str) -> crate::Result<()> {
     let state = State::get().await?;
-    let _guard = state.lock_synced_options().await;
+    let _guard = state.synced_options.lock().await;
     apply_pending_changes(&state).await?;
     let metadata = crate::state::get_instance(instance_id, &state.pool)
         .await?
-        .ok_or_else(|| ErrorKind::InputError("Unknown instance".to_string()))?;
+        .ok_or(ErrorKind::InputError("unknown instance".to_string()))?;
     reconcile_instance_with_state(&metadata, &state, false).await
 }
 
@@ -1035,10 +1029,10 @@ pub(crate) async fn reconcile_instance_after_pack_update(
     instance_id: &str,
 ) -> crate::Result<()> {
     let state = State::get().await?;
-    let _guard = state.lock_synced_options().await;
+    let _guard = state.synced_options.lock().await;
     let metadata = crate::state::get_instance(instance_id, &state.pool)
         .await?
-        .ok_or_else(|| ErrorKind::InputError("Unknown instance".to_string()))?;
+        .ok_or(ErrorKind::InputError("unknown instance".to_string()))?;
     reconcile_instance_with_state(&metadata, &state, true).await
 }
 
@@ -1046,10 +1040,10 @@ pub(crate) async fn prepare_instance_update(
     instance_id: &str,
 ) -> crate::Result<()> {
     let state = State::get().await?;
-    let _guard = state.lock_synced_options().await;
+    let _guard = state.synced_options.lock().await;
     let metadata = crate::state::get_instance(instance_id, &state.pool)
         .await?
-        .ok_or_else(|| ErrorKind::InputError("Unknown instance".to_string()))?;
+        .ok_or(ErrorKind::InputError("unknown instance".to_string()))?;
     if let Err(error) =
         synced_packs::prepare_instance_update(&metadata, &state).await
     {
@@ -1170,7 +1164,7 @@ pub(crate) async fn ensure_synced_links_before_launch(
     instance_id: &str,
 ) -> crate::Result<()> {
     let state = State::get().await?;
-    let _guard = state.lock_synced_options().await;
+    let _guard = state.synced_options.lock().await;
     let metadata = crate::state::get_instance(instance_id, &state.pool)
         .await?
         .ok_or_else(|| ErrorKind::InputError("Unknown instance".to_string()))?;
@@ -1195,11 +1189,11 @@ pub async fn reconcile_changed_file(
     file_name: &str,
 ) -> crate::Result<()> {
     let state = State::get().await?;
-    let _guard = state.lock_synced_options().await;
+    let _guard = state.synced_options.lock().await;
     apply_pending_changes(&state).await?;
     let metadata = crate::state::get_instance(instance_id, &state.pool)
         .await?
-        .ok_or_else(|| ErrorKind::InputError("Unknown instance".to_string()))?;
+        .ok_or(ErrorKind::InputError("unknown instance".to_string()))?;
     if sync_files_are_protected(&metadata) {
         return Ok(());
     }

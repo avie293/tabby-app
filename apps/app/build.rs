@@ -304,6 +304,7 @@ fn main() {
                         "instance_share_remove_users",
                         "instance_share_get_publish_preview",
                         "instance_share_publish",
+                        "instance_share_publish_support_details",
                         "instance_share_unlink",
                         "instance_share_unpublish",
                         "instance_export_mrpack",
@@ -410,6 +411,8 @@ fn main() {
                         "record_ads_click",
                         "open_link",
                         "get_ads_personalization",
+                        "get_ads_debug_state",
+                        "report_ads_debug_state",
                     ])
                     .default_permission(
                         DefaultPermissionRule::AllowAllCommands,
@@ -427,6 +430,9 @@ fn main() {
                         "file_rename",
                         "file_delete",
                         "file_save_as",
+                        "files_select_external",
+                        "files_save_external",
+                        "files_release_external",
                         "file_read_dragged_file",
                     ])
                     .default_permission(

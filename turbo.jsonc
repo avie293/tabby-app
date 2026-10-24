@@ -163,9 +163,10 @@
 				"--check",
 				"apps/labrinth",
 				"apps/app-playground",
-				"apps/daedalus_client",
+				"apps/meta-generator",
 				"packages/app-lib",
-				"packages/daedalus"
+				"packages/minecraft-meta-model",
+				"packages/minecraft-meta-manifest"
 			]
 		},
 		"modrinth-rust#fix:ancillary": {
@@ -177,9 +178,10 @@
 				"--write",
 				"apps/labrinth",
 				"apps/app-playground",
-				"apps/daedalus_client",
+				"apps/meta-generator",
 				"packages/app-lib",
-				"packages/daedalus"
+				"packages/minecraft-meta-model",
+				"packages/minecraft-meta-manifest"
 			]
 		},
 		"labrinth#dev": {

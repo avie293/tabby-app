@@ -195,6 +195,7 @@ pub(super) async fn import_modrinth_app(
             instance.name
         ))
     })?;
+    let state = State::get().await?;
     let loader = ModLoader::from_string(&instance.loader);
     let loader_version = if loader == ModLoader::Vanilla {
         None
@@ -203,6 +204,7 @@ pub(super) async fn import_modrinth_app(
             &game_version,
             loader,
             instance.loader_version.as_deref(),
+            &state.directories,
         )
         .await?
         .map(|version| version.id)
@@ -240,7 +242,6 @@ pub(super) async fn import_modrinth_app(
     )
     .await?;
 
-    let state = State::get().await?;
     copy_dotminecraft_filtered_with_reporter(
         instance_id,
         source_dir,
@@ -255,6 +256,7 @@ pub(super) async fn import_modrinth_app(
         instance_id,
         false,
         Some(reporter),
+        &state,
     )
     .await?;
 

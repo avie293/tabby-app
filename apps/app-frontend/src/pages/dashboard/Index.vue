@@ -11,7 +11,7 @@ import { defineMessages, useVIntl } from '@modrinth/ui'
 import type { Component } from 'vue'
 
 import { useCurrentUser } from '@/composables/use-dashboard'
-import { useRootBreadcrumb } from '@/providers/breadcrumbs'
+import { useRootBreadcrumb } from '@/shared/breadcrumbs'
 
 const { formatMessage } = useVIntl()
 const { query } = useCurrentUser()

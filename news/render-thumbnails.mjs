@@ -229,6 +229,21 @@ const thumbnails = {
 		<rect x="890" y="770" width="180" height="44" rx="22" fill="url(#orange)"/>
 		${badge(1520, 540, 190, `<g transform="translate(1520 540)"><path d="M-70 40 v-110 M-70 40 h140" stroke="#ffffff" stroke-width="16" stroke-linecap="round" fill="none"/><rect x="-46" y="-6" width="28" height="46" rx="6" fill="#c7a6ff"/><rect x="-6" y="-46" width="28" height="86" rx="6" fill="#ffffff"/><rect x="34" y="-26" width="28" height="66" rx="6" fill="#c7a6ff"/></g>`)}`,
 
+	'refreshed-settings': () => `
+		${windowFrame(240, 170, 1060, 740)}
+		${[0, 1, 2, 3].map((index) => `<rect x="300" y="${270 + index * 130}" width="${index === 0 ? 220 : 180}" height="${index === 0 ? 44 : 34}" rx="${index === 0 ? 22 : 17}" fill="${index === 0 ? 'url(#brand-bar)' : '#ffffff'}" fill-opacity="${index === 0 ? 1 : 0.22}"/>`).join('')}
+		${[0, 1, 2]
+			.map((index) => {
+				const y = 270 + index * 190
+				const on = index !== 1
+				return `${glass(580, y, 660, 150, 34)}
+				${line(620, y + 40, 300)}${line(620, y + 92, 200, 26)}
+				<rect x="1080" y="${y + 50}" width="110" height="56" rx="28" fill="${on ? 'url(#brand-bar)' : '#ffffff'}" fill-opacity="${on ? 1 : 0.22}"/>
+				<circle cx="${on ? 1162 : 1108}" cy="${y + 78}" r="22" fill="#ffffff"/>`
+			})
+			.join('')}
+		${badge(1540, 540, 170, `<path d="M1540 476 A64 64 0 1 1 1484.6 508" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round"/><path d="M1562 452 L1538 476 L1562 500" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>`)}`,
+
 	// Thumbnails for updates of the projects listed in articles.json under "modrinth".
 	'projects/avies-day-counter': () => `
 		${dayHud(250, 300)}
@@ -326,6 +341,7 @@ const seeds = {
 	'modpack-export': 23,
 	'more-stable-downloads': 31,
 	'creator-dashboard': 37,
+	'refreshed-settings': 59,
 	'projects/avies-day-counter': 41,
 	'projects/aviesdaycounter-datapack': 43,
 	'projects/avies-ping-display': 47,
